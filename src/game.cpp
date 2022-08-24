@@ -5,15 +5,15 @@ void Game::initVariables(){
 }
 
 void Game::initWindow(){
-	this->videoMode.height = 600;
-	this->videoMode.width = 600;
-	this->window = new sf::RenderWindow(this->videoMode, "test", sf::Style::Fullscreen);
+	this->window = new sf::RenderWindow(sf::VideoMode(1920,1080,32), "test", sf::Style::Fullscreen);
+	this->window->setFramerateLimit(60);
 }
 
-Game::Game(int delay){
-	this->delay = delay;
+Game::Game(){
+	this->sprite_sheet.loadFromFile("res/0x72_16x16DungeonTileset.v4.png");
 	initVariables();
 	initWindow();
+	this->player = new Player(this->sprite_sheet, this->window);
 }
 
 Game::~Game(){
@@ -31,21 +31,52 @@ void Game::pollEvents(){
 				this->window->close();
 				break;
 			case sf::Event::KeyPressed :
-				//handle key press
 				break;
 		}
 	}
 }
 
+void Game::handleKeyPress(){
+	float speed = this->player->speed;
+	
+	sf::Keyboard::Key W = sf::Keyboard::W;
+	sf::Keyboard::Key A = sf::Keyboard::A;
+	sf::Keyboard::Key S = sf::Keyboard::S;
+	sf::Keyboard::Key D = sf::Keyboard::D;
+
+	this->player->direction.x = 0.f;
+	this->player->direction.y = 0.f;
+
+	if (sf::Keyboard::isKeyPressed(W)){
+		this->player->direction.y += speed*-1.f;
+	}
+	if (sf::Keyboard::isKeyPressed(A)){
+		this->player->direction.x += speed*-1.f;
+	}
+	if (sf::Keyboard::isKeyPressed(S)){
+		this->player->direction.y += speed;
+	}
+	if (sf::Keyboard::isKeyPressed(D)){
+		this->player->direction.x += speed;
+	}
+	//slow when in diagnal
+	if (this->player->direction.x != 0.f &&
+			this->player->direction.y != 0.f ){
+		this->player->direction.x/=1.5;
+		this->player->direction.y/=1.5;
+	}
+}
+
 void Game::update(){
 	this->pollEvents();
+	this->handleKeyPress();
+	this->player->update();
 }
 
 void Game::render(){
-	window->clear();
+	this->window->clear();
 
-	//draw stuff
+	this->player->render();
 
-	window->display();
-	usleep(this->delay);
+	this->window->display();
 }
