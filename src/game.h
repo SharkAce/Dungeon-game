@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <unistd.h>
 
-#idndef GAME_H
+#ifndef GAME_H
 #define GAME_H
 
 class Game {
