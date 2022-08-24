@@ -1,9 +1,9 @@
+#ifndef GAME_H
+#define GAME_H
+
 #include <string>
 #include <SFML/Graphics.hpp>
 #include "entity.h"
-
-#ifndef GAME_H
-#define GAME_H
 
 class Game {
 	private:
