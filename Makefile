@@ -8,8 +8,13 @@ all: $(EXEC_FILE)
 $(EXEC_FILE): $(OBJECTS)
 	$(CC) $^ -o $@ $(LIBRARIES)
 
+$(OBJECTS): build
+
+build:
+	mkdir build
+
 build/%.o: src/%.cpp
-	$(CC) -o $@ -c $< 
+	$(CC) -o $@ -c $<
 
 install: $(EXEC_FILE)
 	cp $(EXEC_FILE) /usr/bin/
