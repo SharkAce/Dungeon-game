@@ -2,6 +2,9 @@
 #include <SFML/Graphics.hpp>
 #include <unistd.h>
 
+#idndef GAME_H
+#define GAME_H
+
 class Game {
 	private:
 		sf::RenderWindow* window;
@@ -22,3 +25,5 @@ class Game {
 		void render();
 		void update();
 };
+
+#endif
