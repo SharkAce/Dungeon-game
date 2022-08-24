@@ -1,7 +1,7 @@
 #include "game.h"
 
 int main(){
-	Game game(1000);
+	Game game;
 	
 	while(game.isOpen()){
 		game.update();

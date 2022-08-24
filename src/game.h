@@ -1,6 +1,6 @@
 #include <string>
 #include <SFML/Graphics.hpp>
-#include <unistd.h>
+#include "entity.h"
 
 #ifndef GAME_H
 #define GAME_H
@@ -14,13 +14,18 @@ class Game {
 		void initVariables();
 		void initWindow();
 
+		Player* player;
+
+		void handleKeyPress();
+
 	public:
-		Game(int delay);
+		Game();
 		virtual ~Game();
 		
-		int delay;
-		bool isOpen();
+		int framerate;
+		sf::Texture sprite_sheet;
 
+		bool isOpen();
 		void pollEvents();
 		void render();
 		void update();
