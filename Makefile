@@ -8,7 +8,7 @@ all: $(EXEC_FILE)
 $(EXEC_FILE): $(OBJECTS)
 	$(CC) $^ -o $@ $(LIBRARIES)
 
-$(OBJECTS): build
+$(OBJECTS): | build
 
 build:
 	mkdir build
