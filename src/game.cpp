@@ -13,7 +13,7 @@ Game::Game(){
 	this->sprite_sheet.loadFromFile("res/0x72_16x16DungeonTileset.v4.png");
 	initVariables();
 	initWindow();
-	this->player = new Player(this->sprite_sheet, this->window);
+	this->player = new Player(&(this->sprite_sheet), this->window);
 }
 
 Game::~Game(){
