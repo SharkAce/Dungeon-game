@@ -3,14 +3,17 @@
 
 
 #include <SFML/Graphics.hpp>
+#include <math.h>
+#include <cmath>
 
 class Base_entity{
 	private:
 
 	public:
 		Base_entity(sf::Texture* texture, sf::RenderWindow* window);
+		void make_entity_sprite();
 		void render();
-		void update();
+		void base_update();
 
 		sf::Sprite sprite;
 		sf::Texture* texture;
@@ -23,13 +26,23 @@ class Base_entity{
 		int sprite_coord_y;
 		int px_height;
 		int px_width;
+		float scale;
 		float speed;
 		sf::Vector2f direction;
+		sf::Vector2f position;
 };
 
 class Player: public Base_entity{
 	public:
 		Player(sf::Texture*, sf::RenderWindow*);
+
+		sf::Sprite sword;
+		int sword_sprite_id;
+		void update();
+		void update_sword();
+		void render_sowrd();
+		void sword_attack();
+		void make_sword_sprite();
 };
 
 

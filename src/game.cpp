@@ -78,6 +78,7 @@ void Game::handleKeyPress(){
 void Game::update(){
 	this->pollEvents();
 	this->handleKeyPress();
+	this->player->base_update();
 	this->player->update();
 }
 
@@ -85,5 +86,6 @@ void Game::render(){
 	this->window->clear();
 	this->current_level->render_bg();
 	this->player->render();
+	this->player->render_sowrd();
 	this->window->display();
 }
