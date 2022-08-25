@@ -4,6 +4,7 @@
 #include <string>
 #include <SFML/Graphics.hpp>
 #include "entity.h"
+#include "level.h"
 
 class Game {
 	private:
@@ -22,6 +23,7 @@ class Game {
 		Game();
 		virtual ~Game();
 		
+		Level* current_level;
 		int framerate;
 		sf::Texture sprite_sheet;
 

@@ -25,7 +25,7 @@ void Base_entity::update(){
 Player::Player(sf::Texture* texture, sf::RenderWindow* window): 
 		Base_entity(texture, window){
 	
-	this->sprite.setScale(4.0, 4.0);
+	this->sprite.setScale(3.0, 3.0);
 
 	this->max_hp = 100;
 	this->current_hp = 100;
