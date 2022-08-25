@@ -1,6 +1,6 @@
 #include "entity.h"
 
-Base_entity::Base_entity(sf::Texture texture, sf::RenderWindow* window){
+Base_entity::Base_entity(sf::Texture* texture, sf::RenderWindow* window){
 	this->texture = texture;
 	this->window = window;
 	this->direction.x = 0.f;
@@ -8,7 +8,7 @@ Base_entity::Base_entity(sf::Texture texture, sf::RenderWindow* window){
 }
 
 void Base_entity::render(){
-	this->sprite.setTexture(texture);
+	this->sprite.setTexture(*texture);
 	this->sprite.setTextureRect(sf::IntRect(
 		sprite_coord_x,
 		sprite_coord_y,
@@ -22,7 +22,7 @@ void Base_entity::update(){
 	this->sprite.move(this->direction);
 }
 
-Player::Player(sf::Texture texture, sf::RenderWindow* window): 
+Player::Player(sf::Texture* texture, sf::RenderWindow* window): 
 		Base_entity(texture, window){
 	
 	this->sprite.setScale(4.0, 4.0);

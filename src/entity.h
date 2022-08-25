@@ -8,12 +8,12 @@ class Base_entity{
 	private:
 
 	public:
-		Base_entity(sf::Texture texture, sf::RenderWindow* window);
+		Base_entity(sf::Texture* texture, sf::RenderWindow* window);
 		void render();
 		void update();
 
 		sf::Sprite sprite;
-		sf::Texture texture;
+		sf::Texture* texture;
 		sf::RenderWindow* window;
 
 		int max_hp;
@@ -29,7 +29,7 @@ class Base_entity{
 
 class Player: public Base_entity{
 	public:
-		Player(sf::Texture texture, sf::RenderWindow*);
+		Player(sf::Texture*, sf::RenderWindow*);
 };
 
 
