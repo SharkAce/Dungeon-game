@@ -14,6 +14,14 @@ Game::Game(){
 	initVariables();
 	initWindow();
 	this->player = new Player(&(this->sprite_sheet), this->window);
+	
+	//bg test
+	this->current_level = new Level(&(this->sprite_sheet), this->window);	
+	this->current_level->set_tile_id_multi(17,13,27,0,23);
+	this->current_level->set_tile_id(7,0,0);
+	this->current_level->set_tile_id(64,1,0);
+	this->current_level->create_bg();
+
 }
 
 Game::~Game(){
@@ -75,6 +83,7 @@ void Game::update(){
 
 void Game::render(){
 	this->window->clear();
+	this->current_level->render_bg();
 	this->player->render();
 	this->window->display();
 }
