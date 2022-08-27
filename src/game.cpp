@@ -14,6 +14,13 @@ Game::Game(){
 	initVariables();
 	initWindow();
 	this->player = new Player(&(this->sprite_sheet), this->window);
+	this->base_clock = new sf::Clock;
+	this->default_font = new sf::Font;
+	this->default_font->loadFromFile("res/ARCADECLASSIC.TTF");
+	this->default_text = new sf::Text;
+	this->default_text->setFont(*(this->default_font));
+	this->default_text->setFillColor(sf::Color::White);
+	this->current_frame = 1;
 	
 	//Temporary stuff
 	this->current_level = new Level(&(this->sprite_sheet), this->window);	
@@ -87,17 +94,36 @@ void Game::handleKeyPress(){
 	}
 }
 
+void Game::drawFramerate(){
+	sf::Text text = *(this->default_text);
+	std::string str = std::to_string((int)this->framerate);
+	text.setString(str);
+	sf::Rect size = text.getGlobalBounds();
+	text.setPosition(
+		this->window->getSize().x - (size.top*4.f),
+		size.left
+	);
+	this->window->draw(text);
+
+}
+
 void Game::update(){
 	this->pollEvents();
 	this->handleKeyPress();
 	this->player->base_update();
 	this->player->update();
+	if (this->current_frame % 20 == 0)
+		this->framerate = 1.f / this->base_clock->getElapsedTime().asSeconds();
+  this->base_clock->restart();
+	this->current_frame ++;
 }
 
 void Game::render(){
 	this->window->clear(sf::Color(96,8,64));
+	
 	this->current_level->render_bg();
 	this->player->render();
 	this->player->render_sowrd();
+	this->drawFramerate();
 	this->window->display();
 }

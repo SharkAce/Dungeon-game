@@ -19,14 +19,20 @@ class Game {
 		Player* player;
 
 		void handleKeyPress();
+		void drawFramerate();
 
 	public:
 		Game();
 		virtual ~Game();
 		
 		Level* current_level;
+		long int current_frame;
 		int framerate;
 		sf::Texture sprite_sheet;
+		sf::Clock* base_clock;
+		sf::Font* default_font;
+		sf::Text* default_text;
+		
 
 		bool isOpen();
 		void pollEvents();
