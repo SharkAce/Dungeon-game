@@ -19,6 +19,10 @@ class Base_entity{
 		sf::Texture* texture;
 		sf::RenderWindow* window;
 
+		bool collision_check();
+		void set_solid_tiles_sprites(std::vector<sf::Sprite>* sts);
+		std::vector<sf::Sprite>* solid_tiles_sprites;
+
 		int max_hp;
 		int current_hp;
 		int damage;

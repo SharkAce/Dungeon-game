@@ -10,6 +10,7 @@ class Level {
 		// (60/34 tiles)
 		std::vector<std::vector<int>> bg_tiles_ids;
 		std::vector<sf::Sprite> bg_tiles_sprites;
+		std::vector<sf::Sprite> solid_tiles_sprites;
 		sf::Texture* texture;
 		sf::RenderWindow* window;
 

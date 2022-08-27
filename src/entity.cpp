@@ -12,7 +12,7 @@ void Base_entity::render(){
 }
 
 void Base_entity::base_update(){
-	this->sprite.move(this->direction);
+	if (!(collision_check())) this->sprite.move(this->direction);
 	this->position = this->sprite.getPosition();
 }
 void Base_entity::make_entity_sprite(){
@@ -25,6 +25,26 @@ void Base_entity::make_entity_sprite(){
 		px_height
 	));
 	this->sprite.setOrigin(this->px_width/2,this->px_height/2);
+}
+
+void Base_entity::set_solid_tiles_sprites(std::vector<sf::Sprite>* sts){
+	this->solid_tiles_sprites = sts;
+}
+
+bool Base_entity::collision_check(){
+	sf::Rect sprite_ghost	= this->sprite.getGlobalBounds();
+	sprite_ghost.top += this->direction.y;
+	sprite_ghost.left += this->direction.x;
+
+	for	(int i=0; i<this->solid_tiles_sprites->size();i++){
+		sf::Sprite tile_sprite = this->solid_tiles_sprites->at(i);
+		if(sprite_ghost.intersects(
+				tile_sprite.getGlobalBounds())
+			) {
+			return true;
+		}
+	}
+	return false;
 }
 
 Player::Player(sf::Texture* texture, sf::RenderWindow* window): 
