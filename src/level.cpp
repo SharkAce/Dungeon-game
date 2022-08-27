@@ -37,6 +37,10 @@ void Level::set_tile_sprite (int x, int y){
 	sprite.setScale(3.0,3.0);
 	sprite.setPosition(x*48,y*48);
 	this->bg_tiles_sprites.push_back(sprite);
+		
+	if (tile_id == 17) {
+		this->solid_tiles_sprites.push_back(sprite);
+	}
 }
 
 // (60/34 tiles)

@@ -14,6 +14,7 @@ class Game {
 
 		void initVariables();
 		void initWindow();
+		void initLevel(Level* level);
 
 		Player* player;
 
