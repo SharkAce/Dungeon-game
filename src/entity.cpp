@@ -56,8 +56,8 @@ Player::Player(sf::Texture* texture, sf::RenderWindow* window):
 	this->current_hp = 100;
 	this->damage = 20;
 	this->sprite_coord_x = 224;
-	this->sprite_coord_y = 224;
-	this->px_height = 32;
+	this->sprite_coord_y = 236;
+	this->px_height = 20;
 	this->px_width = 16;
 	this->speed = 8.f;
 	this->sword_sprite_id = 63;
@@ -86,6 +86,7 @@ void Player::render_sowrd(){
 void Player::update_sword(){
 	
 	sf::Vector2f playerPos = this->position;
+	playerPos.y -= 10;
 	this->sword.setPosition(playerPos);
 
 	sf::Vector2i mousePos = sf::Mouse::getPosition(*(this->window));
