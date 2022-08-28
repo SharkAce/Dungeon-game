@@ -52,7 +52,6 @@ void Level::setTileSprite(int x, int y) {
 	}
 };
 
-// (60/34 tiles)
 void Level::createBg() {
 	for (int i=0; i<this->tiles_x; i++){
 		for (int j=0; j<this->tiles_y; j++){
