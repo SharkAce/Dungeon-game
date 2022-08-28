@@ -1,0 +1,24 @@
+#ifndef PLAYER_H
+#define PLAYER_H
+
+#include "../Entity/Entity.hpp"
+#include "../Item/Item.hpp"
+
+namespace Dungeon {
+
+class Player: public Entity {
+	private:
+		Dungeon::Items::Item *weapon;
+	public:
+		Player(sf::Texture*, sf::RenderWindow*);
+
+		void sword_attack();
+
+		void update() override;
+		void render() override;
+		
+};
+
+};
+
+#endif
