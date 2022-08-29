@@ -15,7 +15,7 @@ Player::Player(
 	this->sprite_coord_y = 236;
 	this->px_height = 20;
 	this->px_width = 16;
-	this->speed = 8.f;
+	this->speed = 7.f;
 
 	this->weapon = new Dungeon::Items::Item(
 		this->texture,

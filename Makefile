@@ -8,7 +8,6 @@ LIBRARIES := -lsfml-graphics -lsfml-window -lsfml-system
 WARNINGS := -Wall 
 OPTIONS := --verbose
 
-HEADERS := $(shell find src -name '*.hpp')
 SOURCE := $(shell find src -name '*.cpp')
 OBJECTS := $(SOURCE:.cpp=.o)
 

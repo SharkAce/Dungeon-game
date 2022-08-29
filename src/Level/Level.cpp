@@ -52,7 +52,6 @@ void Level::setTileSprite(int x, int y) {
 	}
 };
 
-// (60/34 tiles)
 void Level::createBg() {
 	for (int i=0; i<this->tiles_x; i++){
 		for (int j=0; j<this->tiles_y; j++){
@@ -65,6 +64,18 @@ void Level::renderBg() {
 	for (int i = 0; i < (int)(bg_tiles_sprites.size()); i++){
 		this->window->draw(bg_tiles_sprites[i]);
 	}	
+};
+
+void Level::updateEnemyList(){
+	for (int i=0; i<this->enemy_list.size(); i++){
+		this->enemy_list[i]->update();
+	}
+};
+
+void Level::renderEnemyList(){
+	for (int i=0; i<this->enemy_list.size(); i++){
+		this->enemy_list[i]->render();
+	}
 };
 
 };

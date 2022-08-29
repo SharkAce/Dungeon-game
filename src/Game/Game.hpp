@@ -11,27 +11,27 @@ namespace Dungeon {
 
 class Game {
 	private:
-		sf::RenderWindow *window;
 		sf::VideoMode videoMode;
 		sf::Event events;
 
 		void initVariables();
 		void initWindow(bool is_fullscreen);
-		void initLevel(Dungeon::Level *level);
 
-		Dungeon::Player *player;
 
 		void handleKeyPress();
 		void drawFramerate();
 
 	public:
+		void initLevel(Dungeon::Level *level);
 		Game(bool is_fullscreen);
 		virtual ~Game();
 		
 		Dungeon::Level* current_level;
+		Dungeon::Player *player;
 		long int current_frame;
 		int framerate;
 
+		sf::RenderWindow *window;
 		sf::Texture sprite_sheet;
 		sf::Clock* base_clock;
 		sf::Font* default_font;
