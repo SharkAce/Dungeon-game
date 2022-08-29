@@ -21,9 +21,8 @@ class Entity {
 		void setSolidTilesSprites(std::vector<sf::Sprite> *sts);
 		std::vector<sf::Sprite> *solid_tiles_sprites; // This should be a class, called Wall or Tile or something
 
-		int max_hp;
-		int current_hp;
-		int damage;
+		void setPosition(float x, float y);
+
 		int sprite_coord_x;
 		int sprite_coord_y;
 		int px_height;

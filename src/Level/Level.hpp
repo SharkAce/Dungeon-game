@@ -3,13 +3,13 @@
 
 #include <SFML/Graphics.hpp>
 #include <vector>
+#include "../Enemy/Enemy.hpp"
 
 namespace Dungeon {
 
 class Level {
 	public:
 		Level(sf::Texture* texture, sf::RenderWindow* window);
-		// (60/34 tiles)
 		std::vector<std::vector<int>> bg_tiles_ids;
 		std::vector<sf::Sprite> bg_tiles_sprites;
 		std::vector<sf::Sprite> solid_tiles_sprites;
@@ -40,7 +40,9 @@ class Level {
 		int tile_px;
 
 		
-		//std::vector<Entity> enemy_list;
+		std::vector<Enemy*> enemy_list;
+		void updateEnemyList();
+		void renderEnemyList();
 		//std::vector<Game_obj> Game_obj_list;
 
 };

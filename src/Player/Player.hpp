@@ -16,6 +16,10 @@ class Player: public Entity {
 
 		void update() override;
 		void render() override;
+
+		int max_hp;
+		int current_hp;
+		int damage;
 		
 };
 

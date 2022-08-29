@@ -16,6 +16,9 @@ void Game::update() {
 	this->player->Entity::update(); // This is collision check and storing the sprites position, this could be a player method
 	this->player->update();
 
+	//Enemy update
+	this->current_level->updateEnemyList();
+
 	// Clock things
 	if (this->current_frame % 20 == 0)
 		this->framerate = 1.f / this->base_clock->getElapsedTime().asSeconds();
@@ -30,6 +33,7 @@ void Game::render() {
 	
 	// Render 
 	this->current_level->renderBg();
+	this->current_level->renderEnemyList();
 	this->player->render();
 
 	// Display framerate in top left corner
