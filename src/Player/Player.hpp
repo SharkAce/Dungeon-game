@@ -8,8 +8,8 @@ namespace Dungeon {
 
 class Player: public Entity {
 	private:
-	public:
 		Dungeon::Items::Item *weapon;
+	public:
 		Player(Game* parent_game);
 
 		void sword_attack();
