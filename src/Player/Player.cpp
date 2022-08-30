@@ -2,10 +2,7 @@
 
 namespace Dungeon {
 
-Player::Player(
-	sf::Texture *texture,
-	sf::RenderWindow *window
-): Dungeon::Entity(texture, window) {
+Player::Player(Game* parent_game): Dungeon::Entity(parent_game) {
 
 	this->scale = 3.0;
 	this->max_hp = 100;

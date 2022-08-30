@@ -7,7 +7,7 @@ Game::Game(bool is_fullscreen) {
 	
 	initWindow(is_fullscreen);
 
-	this->player = new Player(&(this->sprite_sheet), this->window);
+	this->player = new Player(this);
 	this->base_clock = new sf::Clock;
 	this->default_font = new sf::Font;
 	this->default_font->loadFromFile("res/ARCADECLASSIC.TTF");

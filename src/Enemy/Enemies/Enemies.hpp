@@ -7,7 +7,7 @@ namespace Dungeon {
 
 class Zombie: public Enemy {
 	public:
-		Zombie(sf::Texture*, sf::RenderWindow*);
+		Zombie(Game* parent_game);
 
 		void update() override;
 

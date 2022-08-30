@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
 
 	//init level
 
-	game.initLevel(Dungeon::testLevel(&(game.sprite_sheet), game.window));
+	game.initLevel(Dungeon::testLevel(&game));
 	game.player->setPosition(20*48,11*48);
 
 	// Start Game

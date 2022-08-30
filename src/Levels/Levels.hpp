@@ -6,7 +6,9 @@
 
 namespace Dungeon {
 
-	Level* testLevel(sf::Texture* sprite_sheet, sf::RenderWindow* window);
+	class Game;
+
+	Level* testLevel(Game* game_ptr);
 
 };
 
