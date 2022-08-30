@@ -2,7 +2,6 @@
 #define ENTITY_H
 
 #include <SFML/Graphics.hpp>
-//#include "../Game/Game.hpp"
 
 namespace Dungeon {
 
