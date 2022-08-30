@@ -1,10 +1,12 @@
 #include "Level.hpp"
+#include "../Game/Game.hpp"
 
 namespace Dungeon {
 
-Level::Level(sf::Texture* texture, sf::RenderWindow* window) {
-	this->texture = texture;
-	this->window = window;
+Level::Level(Game* parent_game) {
+	this->parent_game = parent_game;
+	this->texture = &(parent_game->sprite_sheet);
+	this->window = parent_game->window;
 	this->tiles_x = 40;
 	this->tiles_y = 23;
 	this->tile_px = 16;

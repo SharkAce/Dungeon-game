@@ -4,10 +4,7 @@ namespace Dungeon {
 
 
 
-Enemy::Enemy(
-	sf::Texture *texture,
-	sf::RenderWindow *window
-): Dungeon::Entity(texture, window) {
+Enemy::Enemy(Game* parent_game): Dungeon::Entity(parent_game) {
 
 };
 

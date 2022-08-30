@@ -2,10 +2,7 @@
 
 namespace Dungeon {
 
-Zombie::Zombie(
-	sf::Texture *texture,
-	sf::RenderWindow *window
-): Dungeon::Enemy(texture, window) {
+Zombie::Zombie(Game* parent_game): Dungeon::Enemy(parent_game) {
 
 	this->scale = 3.0;
 	this->max_hp = 100;

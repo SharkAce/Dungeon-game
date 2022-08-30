@@ -8,9 +8,9 @@ namespace Dungeon {
 
 class Player: public Entity {
 	private:
-		Dungeon::Items::Item *weapon;
 	public:
-		Player(sf::Texture*, sf::RenderWindow*);
+		Dungeon::Items::Item *weapon;
+		Player(Game* parent_game);
 
 		void sword_attack();
 

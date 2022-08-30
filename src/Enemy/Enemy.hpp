@@ -7,7 +7,7 @@ namespace Dungeon {
 
 class Enemy: public Entity { 
 	public:
-		Enemy(sf::Texture*, sf::RenderWindow*);
+		Enemy(Game* parent_game);
 
 
 		int max_hp;

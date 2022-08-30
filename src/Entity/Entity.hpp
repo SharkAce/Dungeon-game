@@ -2,12 +2,18 @@
 #define ENTITY_H
 
 #include <SFML/Graphics.hpp>
+//#include "../Game/Game.hpp"
 
 namespace Dungeon {
 
+class Game;
+
 class Entity {
+	private:
+		Game* parent_game;
+
 	public:
-		Entity(sf::Texture *texture, sf::RenderWindow *window);
+		Entity(Game* parent_game);
 		void makeEntitySprite();
 
 		virtual void update();
