@@ -20,6 +20,10 @@ Game::Game(bool is_fullscreen) {
 
 Game::~Game() {
 	delete this->window;
+	delete this->player;
+	delete this->base_clock;
+	delete this->default_font;
+	delete this->current_level;
 };
 
 };

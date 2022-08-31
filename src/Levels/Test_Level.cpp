@@ -2,7 +2,7 @@
 
 namespace Dungeon {
 
-Level* testLevel(Game* game_ptr){
+Level *testLevel(Game *game_ptr){
 
 	Dungeon::Level* test_level = new Dungeon::Level(game_ptr);	
 	test_level->setTileIdMulti(17,13,27,0,23);

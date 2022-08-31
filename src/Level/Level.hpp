@@ -11,13 +11,13 @@ class Game;
 
 class Level {
 	public:
-		Level(Game* parent_game);
+		Level(Game *parent_game);
 		std::vector<std::vector<int>> bg_tiles_ids;
 		std::vector<sf::Sprite> bg_tiles_sprites;
 		std::vector<sf::Sprite> solid_tiles_sprites;
-		sf::Texture* texture;
-		sf::RenderWindow* window;
-		Game* parent_game;
+		sf::Texture *texture;
+		sf::RenderWindow *window;
+		Game *parent_game;
 
 		void setTileSprite(int x, int y);
 

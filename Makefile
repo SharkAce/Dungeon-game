@@ -5,8 +5,7 @@ BUILD_DIR := build
 
 LIBRARIES := -lsfml-graphics -lsfml-window -lsfml-system
 
-WARNINGS := -Wall 
-OPTIONS := --verbose
+OPTIONS := -Wall -O3
 
 SOURCE := $(shell find src -name '*.cpp')
 OBJECTS := $(SOURCE:.cpp=.o)
@@ -14,10 +13,10 @@ OBJECTS := $(SOURCE:.cpp=.o)
 all: $(BUILD_DIR)/$(EXEC)
 
 vbuild: $(OBJECTS) $(BUILD_DIR)/$(EXEC)
-	$(CC) $(WARNINGS) $(OPTIONS) -o $(BUILD_DIR)/$(EXEC) $(OBJECTS) $(LIBRARIES)
+	$(CC) $(OPTIONS) --verbose -o $(BUILD_DIR)/$(EXEC) $(OBJECTS) $(LIBRARIES)
 
 $(BUILD_DIR)/$(EXEC): $(OBJECTS)
-	$(CC) $(WARNINGS) -o $@ $^ $(LIBRARIES)
+	$(CC) $(OPTIONS) -o $@ $^ $(LIBRARIES)
 
 $(OBJECTS): | $(BUILD_DIR)
 

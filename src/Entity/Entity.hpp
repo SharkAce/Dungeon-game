@@ -2,6 +2,7 @@
 #define ENTITY_H
 
 #include <SFML/Graphics.hpp>
+#include <math.h>
 
 namespace Dungeon {
 
@@ -9,10 +10,9 @@ class Game;
 
 class Entity {
 	private:
-		Game* parent_game;
 
 	public:
-		Entity(Game* parent_game);
+		Entity(Game *parent_game);
 		void makeEntitySprite();
 
 		virtual void update();
@@ -21,12 +21,16 @@ class Entity {
 		sf::Sprite sprite;
 		sf::Texture *texture;
 		sf::RenderWindow *window;
+		Game* parent_game;
 
-		bool collisionCheck();
+		bool wallCollisionCheck();
 		void setSolidTilesSprites(std::vector<sf::Sprite> *sts);
 		std::vector<sf::Sprite> *solid_tiles_sprites; // This should be a class, called Wall or Tile or something
 
 		void setPosition(float x, float y);
+		void applyKnockback();
+		void startKnockback(int angle, int force);
+
 
 		int sprite_coord_x;
 		int sprite_coord_y;
@@ -34,6 +38,9 @@ class Entity {
 		int px_width;
 		float scale;
 		float speed;
+		int kb_current_frame;
+		int kb_last_frame;
+		float kb_angle;
 		sf::Vector2f direction;
 		sf::Vector2f position;
 };

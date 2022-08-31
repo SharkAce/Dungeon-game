@@ -2,7 +2,7 @@
 
 namespace Dungeon {
 
-bool Entity::collisionCheck() {
+bool Entity::wallCollisionCheck() {
 	sf::Rect sprite_ghost	= this->sprite.getGlobalBounds();
 	sprite_ghost.top += this->direction.y;
 	sprite_ghost.left += this->direction.x;

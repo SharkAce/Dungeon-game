@@ -8,7 +8,7 @@ namespace Dungeon {
 
 	class Game;
 
-	Level* testLevel(Game* game_ptr);
+	Level *testLevel(Game *game_ptr);
 
 };
 

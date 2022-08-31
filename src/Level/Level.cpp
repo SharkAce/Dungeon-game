@@ -3,7 +3,7 @@
 
 namespace Dungeon {
 
-Level::Level(Game* parent_game) {
+Level::Level(Game *parent_game) {
 	this->parent_game = parent_game;
 	this->texture = &(parent_game->sprite_sheet);
 	this->window = parent_game->window;
