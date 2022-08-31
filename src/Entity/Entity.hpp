@@ -29,7 +29,7 @@ class Entity {
 
 		void setPosition(float x, float y);
 		void applyKnockback();
-		void startKnockback(int angle, int force);
+		void startKnockback(int angle, float force);
 
 
 		int sprite_coord_x;

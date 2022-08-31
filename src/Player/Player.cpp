@@ -48,7 +48,7 @@ void Player::handleEnemyCollision(){
 			sf::Vector2f enemy_pos = this->enemy_list->at(i)->sprite.getPosition();
 			float angle = std::atan2(this->position.y - enemy_pos.y, this->position.x - enemy_pos.x);
 			angle = angle*180/M_PI;
-			this->startKnockback(angle,10);
+			this->startKnockback(angle,this->enemy_list->at(i)->kb_force);
 		}
 	}
 };
