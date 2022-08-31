@@ -1,8 +1,9 @@
 #include "Player.hpp"
+#include "../Game/Game.hpp"
 
 namespace Dungeon {
 
-Player::Player(Game* parent_game): Dungeon::Entity(parent_game) {
+Player::Player(Game *parent_game): Dungeon::Entity(parent_game) {
 
 	this->scale = 3.0;
 	this->max_hp = 100;
@@ -21,18 +22,35 @@ Player::Player(Game* parent_game): Dungeon::Entity(parent_game) {
 	);
 
 	this->makeEntitySprite();
-	
 	this->sprite.setOrigin(this->px_width/2,this->px_height/1.5);
 };
 
 
 void Player::update() {
+	this->handleEnemyCollision();
 	this->weapon->update();
 };
 	
 void Player::render() {
 	this->weapon->render();
 	this->window->draw(this->sprite);
+};
+
+void Player::setEnemyList(){
+	this->enemy_list = &(this->parent_game->current_level->enemy_list);
+};
+	
+void Player::handleEnemyCollision(){
+	for (int i=0; i<this->enemy_list->size(); i++){
+		if (this->enemy_list->at(i)->sprite.getGlobalBounds()
+		.intersects(this->sprite.getGlobalBounds())
+		){
+			sf::Vector2f enemy_pos = this->enemy_list->at(i)->sprite.getPosition();
+			float angle = std::atan2(this->position.y - enemy_pos.y, this->position.x - enemy_pos.x);
+			angle = angle*180/M_PI;
+			this->startKnockback(angle,10);
+		}
+	}
 };
 
 };

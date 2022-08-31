@@ -26,16 +26,16 @@ class Game {
 		Game(bool is_fullscreen);
 		virtual ~Game();
 		
-		Dungeon::Level* current_level;
+		Dungeon::Level *current_level;
 		Dungeon::Player *player;
 		long int current_frame;
 		int framerate;
 
 		sf::RenderWindow *window;
 		sf::Texture sprite_sheet;
-		sf::Clock* base_clock;
-		sf::Font* default_font;
-		sf::Text* default_text;	
+		sf::Clock *base_clock;
+		sf::Font *default_font;
+		sf::Text *default_text;	
 
 		bool isOpen();
 		void pollEvents();

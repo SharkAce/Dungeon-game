@@ -7,7 +7,7 @@ namespace Dungeon {
 
 class Enemy: public Entity { 
 	public:
-		Enemy(Game* parent_game);
+		Enemy(Game *parent_game);
 
 
 		int max_hp;
