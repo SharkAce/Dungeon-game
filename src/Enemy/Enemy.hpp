@@ -13,6 +13,7 @@ class Enemy: public Entity {
 		int max_hp;
 		int current_hp;
 		int damage;
+		float kb_force;
 
 };
 
