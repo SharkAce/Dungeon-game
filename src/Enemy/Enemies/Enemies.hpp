@@ -13,6 +13,14 @@ class Zombie: public Enemy {
 
 };
 
+class Sorcerer: public Enemy {
+	public:
+		Sorcerer(Game* parent_game);
+
+		void update() override;
+
+};
+
 };
 
 

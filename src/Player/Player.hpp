@@ -12,11 +12,11 @@ class Enemy;
 
 class Player: public Entity {
 	private:
-		Dungeon::Items::Item *weapon;
 		std::vector<Enemy*> *enemy_list;
 	public:
 		Player(Game *parent_game);
 
+		Dungeon::Items::Item *weapon;
 		void sword_attack();
 		void handleEnemyCollision();
 		void setEnemyList();

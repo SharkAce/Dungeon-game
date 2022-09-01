@@ -12,7 +12,7 @@ Level *testLevel(Game *game_ptr){
 	test_level->setTileId(64,1,0);
 	test_level->createBg();
 	test_level->enemy_list.push_back(new Dungeon::Zombie(game_ptr));
-	test_level->enemy_list.push_back(new Dungeon::Zombie(game_ptr));
+	test_level->enemy_list.push_back(new Dungeon::Sorcerer(game_ptr));
 	test_level->enemy_list[0]->setPosition(22*48,3*48);
 	test_level->enemy_list[1]->setPosition(18*48,3*48);
 
