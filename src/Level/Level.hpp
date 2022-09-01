@@ -46,6 +46,9 @@ class Level {
 		std::vector<Enemy*> enemy_list;
 		void updateEnemyList();
 		void renderEnemyList();
+
+		void enemiesSetSolidTilesSprites();
+
 		//std::vector<Game_obj> Game_obj_list;
 
 };

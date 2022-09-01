@@ -71,12 +71,19 @@ void Level::renderBg() {
 void Level::updateEnemyList(){
 	for (int i=0; i<this->enemy_list.size(); i++){
 		this->enemy_list[i]->update();
+		this->enemy_list[i]->Entity::update();
 	}
 };
 
 void Level::renderEnemyList(){
 	for (int i=0; i<this->enemy_list.size(); i++){
 		this->enemy_list[i]->render();
+	}
+};
+
+void Level::enemiesSetSolidTilesSprites(){
+	for (int i=0; i<this->enemy_list.size(); i++){
+		this->enemy_list[i]->setSolidTilesSprites(&(this->solid_tiles_sprites));
 	}
 };
 

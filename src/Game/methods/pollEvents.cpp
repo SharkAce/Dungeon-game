@@ -1,4 +1,5 @@
 #include "../Game.hpp"
+#include <SFML/Window/Mouse.hpp>
 
 namespace Dungeon {
 
@@ -8,7 +9,11 @@ void Game::pollEvents() {
 			case sf::Event::Closed :
 				this->window->close();
 				break;
-			case sf::Event::KeyPressed :
+			case sf::Event::MouseButtonPressed :
+				if (this->events.mouseButton.button == sf::Mouse::Left)
+					if (this->player->weapon->can_attack){
+						this->player->weapon->initAttack();
+					}
 				break;
 			default:
 				break;

@@ -16,13 +16,11 @@ Player::Player(Game *parent_game): Dungeon::Entity(parent_game) {
 	this->speed = 7.f;
 
 	this->weapon = new Dungeon::Items::Item(
-		this->texture,
-		this->window,
 		this
 	);
 
 	this->makeEntitySprite();
-	this->sprite.setOrigin(this->px_width/2,this->px_height/1.5);
+	this->sprite.setOrigin(float(this->px_width)/2,float(this->px_height)/1.5);
 };
 
 
