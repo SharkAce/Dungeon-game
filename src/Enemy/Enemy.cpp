@@ -12,6 +12,7 @@ Enemy::Enemy(Game *parent_game): Dungeon::Entity(parent_game) {
 void Enemy::hit(int angle, float force){
 	this->startKnockback(angle, force);
 	this->is_hit = true;
+	this->sprite.setColor(sf::Color::Red);
 };
 
 };

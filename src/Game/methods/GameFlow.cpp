@@ -9,6 +9,14 @@ bool Game::isOpen() {
 void Game::update() {
 	// Events
 	this->pollEvents();
+
+	//set mouse position
+	mouse_pos = sf::Mouse::getPosition(*(this->window));
+
+	if (this->pause) {
+		return;
+	}
+
 	this->handleKeyPress();
 
 	// Player update
@@ -38,6 +46,9 @@ void Game::render() {
 
 	// Display framerate in top left corner
 	this->drawFramerate();
+
+	// Display pause message
+	if (this->pause) this->drawPause();
 
 	// 
 	this->window->display();

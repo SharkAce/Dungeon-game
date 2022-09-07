@@ -2,6 +2,8 @@
 #define ZOMBIE_H
 
 #include "../Enemy.hpp"
+#include <SFML/Graphics/Color.hpp>
+#include <SFML/System/Vector2.hpp>
 
 namespace Dungeon {
 

@@ -20,6 +20,7 @@ class Game {
 
 		void handleKeyPress();
 		void drawFramerate();
+		void drawPause();
 
 	public:
 		void initLevel(Dungeon::Level *level);
@@ -30,17 +31,22 @@ class Game {
 		Dungeon::Player *player;
 		long int current_frame;
 		int framerate;
+		bool pause;
 
 		sf::RenderWindow *window;
 		sf::Texture sprite_sheet;
 		sf::Clock *base_clock;
 		sf::Font *default_font;
 		sf::Text *default_text;	
+		sf::Vector2i mouse_pos;
 
 		bool isOpen();
 		void pollEvents();
 		void render();
 		void update();
+
+		static float degToRad(float degree);
+		static float RadToDeg(float radian);
 };
 
 };

@@ -8,10 +8,10 @@ Sorcerer::Sorcerer(Game* parent_game): Dungeon::Enemy(parent_game) {
 	this->max_hp = 100;
 	this->current_hp = 100;
 	this->damage = 20;
-	this->sprite_coord_x = 16;
-	this->sprite_coord_y = 176;
+	this->sprite_coord_x = 81;
+	this->sprite_coord_y = 144;
 	this->px_height = 16;
-	this->px_width = 16;
+	this->px_width = 15;
 	this->speed = 8.f;
 	this->kb_force = 15.f;
 

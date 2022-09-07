@@ -26,6 +26,7 @@ Player::Player(Game *parent_game): Dungeon::Entity(parent_game) {
 
 void Player::update() {
 	this->handleEnemyCollision();
+	this->setPlayerMouseAngle();
 	this->weapon->update();
 };
 	
@@ -37,6 +38,14 @@ void Player::render() {
 void Player::setEnemyList(){
 	this->enemy_list = &(this->parent_game->current_level->enemy_list);
 };
+
+void Player::setPlayerMouseAngle(){
+	float player_mouse_angle = std::atan2(
+			this->position.y - this->parent_game->mouse_pos.y,
+			this->position.x - this->parent_game->mouse_pos.x
+	);
+	this->player_mouse_angle = Game::RadToDeg(player_mouse_angle);
+}; 
 	
 void Player::handleEnemyCollision(){
 	for (int i=0; i<this->enemy_list->size(); i++){
@@ -47,6 +56,7 @@ void Player::handleEnemyCollision(){
 			float angle = std::atan2(this->position.y - enemy_pos.y, this->position.x - enemy_pos.x);
 			angle = angle*180/M_PI;
 			this->startKnockback(angle,this->enemy_list->at(i)->kb_force);
+			this->sprite.setColor(sf::Color::Red);
 		}
 	}
 };

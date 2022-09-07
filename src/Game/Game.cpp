@@ -15,6 +15,7 @@ Game::Game(bool is_fullscreen) {
 	this->default_text->setFont(*(this->default_font));
 	this->default_text->setFillColor(sf::Color::White);
 	this->current_frame = 1;
+	this->pause = false;
 	
 };
 
