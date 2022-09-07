@@ -9,6 +9,7 @@ void Entity::update() {
 		if (this->kb_last_frame == this->kb_current_frame){
 			this->direction.x = 0;
 			this->direction.y = 0;
+			this->sprite.setColor(sf::Color::White);
 		}
 	}
 

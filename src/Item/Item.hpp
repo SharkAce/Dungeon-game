@@ -28,8 +28,8 @@ public:
 
 	void update() override;
 	void render() override;
-
-	sf::Vector2f position;
+	void setItemPosition();
+	void setItemAngle();
 
 	bool is_attacking;
 	bool can_attack;
@@ -37,9 +37,11 @@ public:
 	int charge;
 	int attack_frame;
 	int cooldown_frame;
+	int frame_per_attack;
 	void initAttack();
 	void initAttackCooldown();
 	void updateCooldown();
+	void updateAttackFrame();
 	void handleEnemyCollision();
 };
 

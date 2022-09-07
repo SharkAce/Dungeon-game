@@ -20,6 +20,7 @@ class Player: public Entity {
 		void sword_attack();
 		void handleEnemyCollision();
 		void setEnemyList();
+		void setPlayerMouseAngle();
 
 		void update() override;
 		void render() override;
@@ -27,6 +28,7 @@ class Player: public Entity {
 		int max_hp;
 		int current_hp;
 		int damage;	
+		float player_mouse_angle;
 		
 };
 

@@ -1,4 +1,5 @@
 #include "../Game.hpp"
+#include <SFML/Window/Keyboard.hpp>
 #include <SFML/Window/Mouse.hpp>
 
 namespace Dungeon {
@@ -14,6 +15,10 @@ void Game::pollEvents() {
 					if (this->player->weapon->can_attack){
 						this->player->weapon->initAttack();
 					}
+			case sf::Event::KeyPressed :
+				if (this->events.key.code == sf::Keyboard::Escape){
+					this->pause = !(this->pause);
+				}
 				break;
 			default:
 				break;
