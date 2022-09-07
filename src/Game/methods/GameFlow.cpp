@@ -13,7 +13,7 @@ void Game::update() {
 	//set mouse position
 	mouse_pos = sf::Mouse::getPosition(*(this->window));
 
-	if (this->pause) {
+	if (this->pause || this->game_over) {
 		return;
 	}
 
@@ -48,7 +48,12 @@ void Game::render() {
 	this->drawFramerate();
 
 	// Display pause message
-	if (this->pause) this->drawPause();
+	if (this->pause && !game_over) this->drawPause();
+
+	if (this->game_over) this->drawGameOver();
+
+	// Display player hearts
+	this->drawHearts();
 
 	// 
 	this->window->display();

@@ -1,4 +1,5 @@
 #include "Game.hpp"
+#include <SFML/Graphics/Rect.hpp>
 
 namespace Dungeon {
 
@@ -16,6 +17,10 @@ Game::Game(bool is_fullscreen) {
 	this->default_text->setFillColor(sf::Color::White);
 	this->current_frame = 1;
 	this->pause = false;
+	this->game_over = false;
+	this->heart_sprite.setTexture(this->sprite_sheet);
+	this->heart_sprite.setTextureRect(sf::IntRect(0,16*15,16,16));
+	this->heart_sprite.scale(2.5,2.5);
 	
 };
 

@@ -70,8 +70,13 @@ void Level::renderBg() {
 
 void Level::updateEnemyList(){
 	for (int i=0; i<this->enemy_list.size(); i++){
-		this->enemy_list[i]->update();
-		this->enemy_list[i]->Entity::update();
+		if (this->enemy_list[i]->is_dead){
+			this->enemy_list.erase(this->enemy_list.begin()+i);
+		}else{
+			this->enemy_list[i]->update();
+			this->enemy_list[i]->Enemy::update();
+			this->enemy_list[i]->Entity::update();
+		}
 	}
 };
 

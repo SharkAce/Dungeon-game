@@ -6,8 +6,8 @@ namespace Dungeon {
 Player::Player(Game *parent_game): Dungeon::Entity(parent_game) {
 
 	this->scale = 3.0;
-	this->max_hp = 100;
-	this->current_hp = 100;
+	this->max_hp = 5;
+	this->current_hp = 5;
 	this->damage = 20;
 	this->sprite_coord_x = 224;
 	this->sprite_coord_y = 236;
@@ -28,6 +28,7 @@ void Player::update() {
 	this->handleEnemyCollision();
 	this->setPlayerMouseAngle();
 	this->weapon->update();
+	if (this->current_hp <= 0) this->parent_game->game_over = true;
 };
 	
 void Player::render() {
@@ -57,6 +58,7 @@ void Player::handleEnemyCollision(){
 			angle = angle*180/M_PI;
 			this->startKnockback(angle,this->enemy_list->at(i)->kb_force);
 			this->sprite.setColor(sf::Color::Red);
+			this->current_hp -= 1;
 		}
 	}
 };

@@ -1,6 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include <SFML/Graphics/Sprite.hpp>
 #include <string>
 #include <SFML/Graphics.hpp>
 
@@ -21,6 +22,8 @@ class Game {
 		void handleKeyPress();
 		void drawFramerate();
 		void drawPause();
+		void drawHearts();
+		void drawGameOver();
 
 	public:
 		void initLevel(Dungeon::Level *level);
@@ -32,6 +35,7 @@ class Game {
 		long int current_frame;
 		int framerate;
 		bool pause;
+		bool game_over;
 
 		sf::RenderWindow *window;
 		sf::Texture sprite_sheet;
@@ -39,6 +43,7 @@ class Game {
 		sf::Font *default_font;
 		sf::Text *default_text;	
 		sf::Vector2i mouse_pos;
+		sf::Sprite heart_sprite;
 
 		bool isOpen();
 		void pollEvents();
