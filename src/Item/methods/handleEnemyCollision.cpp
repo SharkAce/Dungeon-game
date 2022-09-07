@@ -16,7 +16,7 @@ void Item::handleEnemyCollision(){
 			if (enemy->sprite.getGlobalBounds().intersects(this->sprite.getGlobalBounds())){
 				
 				int attack_degree = std::atan2(this->parent->position.y - enemy_pos.y, this->parent->position.x - enemy_pos.x)*180/M_PI;
-				enemy->hit(attack_degree-180,12);
+				enemy->hit(attack_degree-180,12,this->damage);
 			}
 		}
 	}	

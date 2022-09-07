@@ -13,6 +13,7 @@ Item::Item(
 	this->parent = parent;
 	this->parent_game = parent->parent_game;
 	this->scale = 3.f;
+	this->damage = 34.f;
 	this->frame_per_attack = 11;
 	this->attack_frame = 0;
 	this->is_attacking = false;

@@ -38,6 +38,7 @@ public:
 	int attack_frame;
 	int cooldown_frame;
 	int frame_per_attack;
+	float damage;
 	void initAttack();
 	void initAttackCooldown();
 	void updateCooldown();

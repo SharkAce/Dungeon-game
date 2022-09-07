@@ -16,7 +16,9 @@ class Enemy: public Entity {
 		float kb_force;
 
 		bool is_hit;
-		void hit(int angle, float force);
+		bool is_dead;
+		void hit(int angle, float force, float damage);
+		void update() override;
 
 };
 
