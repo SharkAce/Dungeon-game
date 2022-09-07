@@ -2,13 +2,14 @@
 
 namespace Dungeon {
 
-void Game::drawPause(){
+void Game::writeToScreen(std::string text_to_print, float posX, float posY){
+
 	sf::Text text = *(this->default_text);
-	std::string str = "Paused";
-	text.setString(str);
+	text.setString(text_to_print);
 	text.setOrigin(text.getLocalBounds().width/2.0f,text.getLocalBounds().height/2.0f);
-	text.setPosition(this->window->getSize().x/2.0f,this->window->getSize().y/3.0f);
+	text.setPosition(posX,posY);
 	this->window->draw(text);
+
 };
 
 };
