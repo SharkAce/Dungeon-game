@@ -19,6 +19,9 @@ void Game::pollEvents() {
 				if (this->events.key.code == sf::Keyboard::Escape){
 					this->pause = !(this->pause);
 				}
+				else if (this->events.key.code == sf::Keyboard::Enter){
+					if (this->game_over) this->restart();
+				}
 				break;
 			default:
 				break;

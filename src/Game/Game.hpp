@@ -2,11 +2,13 @@
 #define GAME_H
 
 #include <SFML/Graphics/Sprite.hpp>
+#include <SFML/System/Vector2.hpp>
 #include <string>
 #include <SFML/Graphics.hpp>
 
 #include "../Player/Player.hpp"
 #include "../Level/Level.hpp"
+#include "../Levels//Levels.hpp"
 
 namespace Dungeon {
 
@@ -49,9 +51,12 @@ class Game {
 		void pollEvents();
 		void render();
 		void update();
+		void restart();
 
 		static float degToRad(float degree);
 		static float RadToDeg(float radian);
+
+		void writeToScreen(std::string text_to_print, float posX, float posY);
 };
 
 };
