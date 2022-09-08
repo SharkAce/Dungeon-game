@@ -1,4 +1,5 @@
 #include "./Levels.hpp"
+#include "../Game/Game.hpp"
 
 namespace Dungeon {
 
@@ -13,6 +14,7 @@ Level *testLevel(Game *game_ptr){
 	test_level->enemy_list.push_back(new Dungeon::Sorcerer(game_ptr));
 	test_level->enemy_list[0]->setPosition(22*48,3*48);
 	test_level->enemy_list[1]->setPosition(18*48,3*48);
+	game_ptr->player->setPosition(20*48,11*48);
 
 	return test_level;
 
