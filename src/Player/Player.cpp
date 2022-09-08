@@ -45,7 +45,7 @@ void Player::setPlayerMouseAngle(){
 			this->position.y - this->parent_game->mouse_pos.y,
 			this->position.x - this->parent_game->mouse_pos.x
 	);
-	this->player_mouse_angle = Game::RadToDeg(player_mouse_angle);
+	this->player_mouse_angle = Game::radToDeg(player_mouse_angle);
 }; 
 	
 void Player::handleEnemyCollision(){
@@ -54,8 +54,7 @@ void Player::handleEnemyCollision(){
 		.intersects(this->sprite.getGlobalBounds())
 		){
 			sf::Vector2f enemy_pos = this->enemy_list->at(i)->sprite.getPosition();
-			float angle = std::atan2(this->position.y - enemy_pos.y, this->position.x - enemy_pos.x);
-			angle = angle*180/M_PI;
+			float angle = Game::radToDeg(std::atan2(this->position.y - enemy_pos.y, this->position.x - enemy_pos.x));
 			this->startKnockback(angle,this->enemy_list->at(i)->kb_force);
 			this->sprite.setColor(sf::Color::Red);
 			this->current_hp -= 1;

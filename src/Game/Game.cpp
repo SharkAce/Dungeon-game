@@ -9,15 +9,22 @@ Game::Game(bool is_fullscreen) {
 	initWindow(is_fullscreen);
 
 	this->player = new Player(this);
-	this->base_clock = new sf::Clock;
+
+	//Font stuff
 	this->default_font = new sf::Font;
 	this->default_font->loadFromFile("res/ARCADECLASSIC.TTF");
 	this->default_text = new sf::Text;
 	this->default_text->setFont(*(this->default_font));
 	this->default_text->setFillColor(sf::Color::White);
+	
+	//Clock stuff
+	this->base_clock = new sf::Clock;
 	this->current_frame = 1;
+
 	this->pause = false;
 	this->game_over = false;
+	
+	//Heart sprite
 	this->heart_sprite.setTexture(this->sprite_sheet);
 	this->heart_sprite.setTextureRect(sf::IntRect(0,16*15,16,16));
 	this->heart_sprite.scale(2.5,2.5);

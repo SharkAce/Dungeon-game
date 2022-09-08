@@ -11,7 +11,7 @@ void Entity::makeEntitySprite() {
 		px_width,
 		px_height
 	));
-	this->sprite.setOrigin(this->px_width/2,this->px_height/2);
+	this->sprite.setOrigin(this->px_width/2.f,this->px_height/2.f);
 };
 
 };

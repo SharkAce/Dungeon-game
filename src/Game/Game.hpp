@@ -54,7 +54,7 @@ class Game {
 		void restart();
 
 		static float degToRad(float degree);
-		static float RadToDeg(float radian);
+		static float radToDeg(float radian);
 
 		void writeToScreen(std::string text_to_print, float posX, float posY);
 };

@@ -7,11 +7,9 @@ int main(int argc, char *argv[])
 	Dungeon::Game game(argc > 1 ? argv[1][0] == 'f' : false);
 
 	//init level
-
 	game.initLevel(Dungeon::testLevel(&game));
-	game.player->setPosition(20*48,11*48);
 
-	// Start Game
+	// Main loop
 	while(game.isOpen()){
 		game.update();
 		game.render();
