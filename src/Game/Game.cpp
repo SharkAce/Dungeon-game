@@ -9,6 +9,7 @@ Game::Game(bool is_fullscreen) {
 	initWindow(is_fullscreen);
 
 	this->player = new Player(this);
+	this->current_level = nullptr;
 
 	//Font stuff
 	this->default_font = new sf::Font;
