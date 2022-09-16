@@ -16,6 +16,10 @@ Level::Level(Game *parent_game) {
 	);
 };
 
+Level::~Level(){
+	for (int i=0; i<this->enemy_list.size(); i++) delete this->enemy_list[i];
+};
+
 void Level::setTileId(int tile_id, int x, int y) {
 	this->bg_tiles_ids[x][y] = tile_id;
 };
