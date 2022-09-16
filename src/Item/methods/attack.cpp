@@ -31,7 +31,7 @@ void Item::updateCooldown(){
 	
 	this->cooldown_frame ++;
 
-	if (this->cooldown_frame >= 40) {
+	if (this->cooldown_frame >= this->frame_per_attack+5) {
 		this->can_attack = true;
 		for (int i=0; i<this->parent_game->current_level->enemy_list.size(); i++){
 			this->parent_game->current_level->enemy_list[i]->is_hit = false;
