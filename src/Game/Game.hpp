@@ -47,6 +47,8 @@ class Game {
 		sf::Vector2i mouse_pos;
 		sf::Sprite heart_sprite;
 
+		int sprite_size;
+
 		bool isOpen();
 		void pollEvents();
 		void render();
