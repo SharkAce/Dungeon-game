@@ -5,6 +5,7 @@ namespace Dungeon {
 
 Game::Game(bool is_fullscreen) {
 	this->sprite_sheet.loadFromFile("res/0x72_16x16DungeonTileset.v4.png");
+	this->sprite_size = 16;
 	
 	initWindow(is_fullscreen);
 

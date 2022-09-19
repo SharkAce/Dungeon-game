@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include "../Enemy/Enemy.hpp"
+#include "../Tile/Tile.hpp"
 
 namespace Dungeon {
 
@@ -14,7 +15,7 @@ class Level {
 		Level(Game *parent_game);
 		virtual ~Level();
 		std::vector<std::vector<int>> bg_tiles_ids;
-		std::vector<sf::Sprite> bg_tiles_sprites;
+		std::vector<Tile> bg_tiles_sprites;
 		std::vector<sf::Sprite> solid_tiles_sprites;
 		sf::Texture *texture;
 		sf::RenderWindow *window;
