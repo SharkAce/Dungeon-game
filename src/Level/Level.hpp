@@ -18,7 +18,6 @@ class Level {
 	public:
 		Level(Game *parent_game);
 		virtual ~Level();
-		std::vector<std::vector<int>> bg_tiles_ids;
 		std::vector<Tile> bg_tiles;
 		std::vector<Tile> fg_tiles;
 		std::vector<sf::FloatRect> solid_tiles_rect;
@@ -26,24 +25,8 @@ class Level {
 		sf::RenderWindow *window;
 		Game *parent_game;
 
-		void setTileSprite(int x, int y);
-
-		void setTileId(
-			int tile_id,
-			int x,
-			int y
-		);
-
-		void setTileIdMulti(
-			int tile_id,
-			int x1,
-			int x2,
-			int y1,
-			int y2
-		);
-
+		void parsePtsfFile(std::string file_path);
 		void renderBg();
-		void createBg();
 
 		int tiles_x;
 		int tiles_y;
@@ -54,7 +37,6 @@ class Level {
 		std::vector<Enemy*> enemy_list;
 		void updateEnemyList();
 		void renderEnemyList();
-		void parsePtsfFile(std::string file_path);
 		void enemiesSetSolidTilesSprites();
 
 		//std::vector<Game_obj> Game_obj_list;
