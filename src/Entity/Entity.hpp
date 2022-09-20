@@ -2,6 +2,7 @@
 #define ENTITY_H
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Graphics/Rect.hpp>
 #include <math.h>
 
 namespace Dungeon {
@@ -24,8 +25,8 @@ class Entity {
 		Game* parent_game;
 
 		bool wallCollisionCheck();
-		void setSolidTilesSprites(std::vector<sf::Sprite> *sts);
-		std::vector<sf::Sprite> *solid_tiles_sprites; // This should be a class, called Wall or Tile or something
+		void setCollisionBounds(std::vector<sf::FloatRect> *sts);
+		std::vector<sf::FloatRect> *collision_bounds; // This should be a class, called Wall or Tile or something
 
 		void setPosition(float x, float y);
 		void applyKnockback();

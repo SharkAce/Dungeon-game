@@ -1,5 +1,9 @@
 #include "Level.hpp"
 #include "../Game/Game.hpp"
+#include <SFML/Graphics/Rect.hpp>
+#include <SFML/System/Vector2.hpp>
+#include <string>
+#include <vector>
 
 namespace Dungeon {
 
@@ -10,6 +14,7 @@ Level::Level(Game *parent_game) {
 	this->tiles_x = 40;
 	this->tiles_y = 23;
 	this->tile_px = 16;
+	this->sprite_scale = 3.f;
 	this->bg_tiles_ids.resize(
 		this->tiles_x, 
 		std::vector<int>(this->tiles_y,-1)
@@ -50,10 +55,10 @@ void Level::setTileSprite(int x, int y) {
 		sf::Vector2i(x,y)
 	);
 
-	this->bg_tiles_sprites.push_back(tile);
+	this->bg_tiles.push_back(tile);
 		
 	if (tile_id == 17) {
-		this->solid_tiles_sprites.push_back(tile.sprite);
+		this->solid_tiles_rect.push_back(tile.sprite.getGlobalBounds());
 	}
 };
 
@@ -66,8 +71,12 @@ void Level::createBg() {
 };
 
 void Level::renderBg() {
-	for (int i = 0; i < (int)(bg_tiles_sprites.size()); i++){
-		this->bg_tiles_sprites[i].render();
+	for (int i = 0; i < (int)(bg_tiles.size()); i++){
+		this->bg_tiles[i].render();
+	}	
+
+	for (int i = 0; i < (int)(fg_tiles.size()); i++){
+		this->fg_tiles[i].render();
 	}	
 };
 
@@ -91,7 +100,7 @@ void Level::renderEnemyList(){
 
 void Level::enemiesSetSolidTilesSprites(){
 	for (int i=0; i<this->enemy_list.size(); i++){
-		this->enemy_list[i]->setSolidTilesSprites(&(this->solid_tiles_sprites));
+		this->enemy_list[i]->setCollisionBounds(&(this->solid_tiles_rect));
 	}
 };
 

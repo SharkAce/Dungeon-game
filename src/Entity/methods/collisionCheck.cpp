@@ -7,11 +7,8 @@ bool Entity::wallCollisionCheck() {
 	sprite_ghost.top += this->direction.y;
 	sprite_ghost.left += this->direction.x;
 
-	for	(int i = 0; i < (int)(this->solid_tiles_sprites->size()); i++){
-		sf::Sprite tile_sprite = this->solid_tiles_sprites->at(i);
-		if(sprite_ghost.intersects(
-				tile_sprite.getGlobalBounds())
-			) {
+	for	(int i = 0; i < (int)(this->collision_bounds->size()); i++){
+		if(sprite_ghost.intersects(this->collision_bounds->at(i))) {
 			return true;
 		}
 	}
