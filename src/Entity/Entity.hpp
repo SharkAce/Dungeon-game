@@ -24,7 +24,7 @@ class Entity {
 		sf::RenderWindow *window;
 		Game* parent_game;
 
-		bool wallCollisionCheck();
+		sf::Vector2<bool> wallCollisionCheck();
 		void setCollisionBounds(std::vector<sf::FloatRect> *sts);
 		std::vector<sf::FloatRect> *collision_bounds; // This should be a class, called Wall or Tile or something
 
