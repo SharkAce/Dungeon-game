@@ -28,9 +28,6 @@ Tile::Tile(Game *parent_game, int tile_id, int rotation, float scale, sf::Vector
 
 	sprite.setScale(scale,scale);
 
-
-	//setPosition
-	//this->sprite.setOrigin(0,0);
 	this->sprite.setPosition(
 		position.x * (sprite_size*scale) + ((sprite_size*scale)/2), 
 		position.y * (sprite_size*scale) + ((sprite_size*scale)/2)

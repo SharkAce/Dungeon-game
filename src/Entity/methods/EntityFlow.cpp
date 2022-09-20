@@ -1,4 +1,5 @@
 #include "../Entity.hpp"
+#include <SFML/System/Vector2.hpp>
 
 namespace Dungeon {
 
@@ -17,9 +18,15 @@ void Entity::update() {
 		this->applyKnockback();
 	} else this->kb_last_frame = 0;
 
-	if (!(wallCollisionCheck())) {
-		this->sprite.move(this->direction);
-	}
+	sf::Vector2<bool> collisions = wallCollisionCheck();
+
+	if (collisions.x) this->direction.x = 0;
+	if (collisions.y) this->direction.y = 0;
+
+
+	this->sprite.move(this->direction);
+
+	
 	this->position = this->sprite.getPosition();
 };
 
