@@ -1,28 +1,39 @@
-CC := c++
-EXEC_FILE := Dungeon-game
+CC := g++
+
+EXEC := debug
 BUILD_DIR := build
-OBJECTS := $(shell find src/ -name '*.cpp' | sed 's/.cpp/.o/g;s/src\//build\//g')
-LIBRARIES	:= -lsfml-graphics -lsfml-window -lsfml-system
 
-all: $(EXEC_FILE)
+LIBRARIES := -lsfml-graphics -lsfml-window -lsfml-system
 
-$(EXEC_FILE): $(OBJECTS)
-	$(CC) $^ -o $@ $(LIBRARIES)
+OPTIONS := -Wall -O3
+
+SOURCE := $(shell find src -name '*.cpp')
+OBJECTS := $(SOURCE:.cpp=.o)
+
+all: $(BUILD_DIR)/$(EXEC)
+
+vbuild: $(OBJECTS) $(BUILD_DIR)/$(EXEC)
+	$(CC) $(OPTIONS) --verbose -o $(BUILD_DIR)/$(EXEC) $(OBJECTS) $(LIBRARIES)
+
+$(BUILD_DIR)/$(EXEC): $(OBJECTS)
+	$(CC) $(OPTIONS) -o $@ $^ $(LIBRARIES)
 
 $(OBJECTS): | $(BUILD_DIR)
 
 $(BUILD_DIR):
 	mkdir build
 
-build/%.o: src/%.cpp
-	$(CC) -o $@ -c $<
-
-install: $(EXEC_FILE)
-	cp $(EXEC_FILE) /usr/bin/
-
-uninstall:
-	unlink /usr/bin/$(EXEC_FILE)
+$(OBJECTS): %.o : %.cpp
+	$(CC) -o $@ -c $<	
 
 clean:
-	rm -f build/*
-	rm -f $(EXEC_FILE)
+	rm -f $(BUILD_DIR)/$(EXEC)
+	rm -f $(OBJECTS)
+
+# Run in Fullscreen
+run:
+	$(BUILD_DIR)/$(EXEC) f
+
+# Run windowed
+runw:
+	$(BUILD_DIR)/$(EXEC)
