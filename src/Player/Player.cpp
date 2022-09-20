@@ -55,9 +55,9 @@ void Player::handleEnemyCollision(){
 		){
 			sf::Vector2f enemy_pos = this->enemy_list->at(i)->sprite.getPosition();
 			float angle = Game::radToDeg(std::atan2(this->position.y - enemy_pos.y, this->position.x - enemy_pos.x));
+			if (this->kb_last_frame == 0) this->current_hp -= 1;
 			this->startKnockback(angle,this->enemy_list->at(i)->kb_force);
 			this->sprite.setColor(sf::Color::Red);
-			this->current_hp -= 1;
 		}
 	}
 };
