@@ -47,17 +47,37 @@ void Player::setPlayerMouseAngle(){
 	);
 	this->player_mouse_angle = Game::radToDeg(player_mouse_angle);
 }; 
+
+void Player::hit(int angle, float force){
+			if (this->kb_last_frame == 0) this->current_hp -= 1;
+			this->startKnockback(angle,force);
+			this->sprite.setColor(sf::Color::Red);
+}
 	
 void Player::handleEnemyCollision(){
 	for (int i=0; i<this->enemy_list->size(); i++){
 		if (this->enemy_list->at(i)->sprite.getGlobalBounds()
 		.intersects(this->sprite.getGlobalBounds())
 		){
+
 			sf::Vector2f enemy_pos = this->enemy_list->at(i)->sprite.getPosition();
 			float angle = Game::radToDeg(std::atan2(this->position.y - enemy_pos.y, this->position.x - enemy_pos.x));
-			if (this->kb_last_frame == 0) this->current_hp -= 1;
-			this->startKnockback(angle,this->enemy_list->at(i)->kb_force);
-			this->sprite.setColor(sf::Color::Red);
+			this->hit(angle,this->enemy_list->at(i)->kb_force);
+
+		}
+
+		if (this->enemy_list->at(i)->has_projectiles){
+			for (int j=0; j<this->enemy_list->at(i)->projectiles.size(); j++){
+				if (this->enemy_list->at(i)->projectiles.at(j)->sprite.getGlobalBounds()
+				.intersects(this->sprite.getGlobalBounds())
+				){
+
+					sf::Vector2f ptile_pos = this->enemy_list->at(i)->projectiles.at(j)->sprite.getPosition();
+					float ptile_angle = Game::radToDeg(std::atan2(this->position.y - ptile_pos.y, this->position.x - ptile_pos.x));
+					this->enemy_list->at(i)->projectiles.at(j)->end_of_life = true;
+					this->hit(ptile_angle,this->enemy_list->at(i)->kb_force);
+				}
+			}
 		}
 	}
 };

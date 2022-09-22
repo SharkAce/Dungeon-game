@@ -1,6 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include <SFML/Graphics/Rect.hpp>
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/System/Vector2.hpp>
 #include <string>
@@ -46,6 +47,7 @@ class Game {
 		sf::Text *default_text;	
 		sf::Vector2i mouse_pos;
 		sf::Sprite heart_sprite;
+		sf::FloatRect window_bound;
 
 		int sprite_size;
 
