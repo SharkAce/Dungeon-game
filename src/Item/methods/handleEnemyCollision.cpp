@@ -1,6 +1,8 @@
 #include "../Item.hpp"
 #include "../../Enemy/Enemy.hpp"
 #include "../../Game/Game.hpp"
+#include "../../Projectile/Projectile.hpp"
+#include <vector>
 
 namespace Dungeon {
 
@@ -17,6 +19,15 @@ void Item::handleEnemyCollision(){
 				
 				int attack_degree = std::atan2(this->parent->position.y - enemy_pos.y, this->parent->position.x - enemy_pos.x)*180/M_PI;
 				enemy->hit(attack_degree-180,12,this->damage);
+			}
+		}
+		if (enemy->has_projectiles){
+			for (int j=0; j<this->parent_game->current_level->enemy_list.at(i)->projectiles.size(); j++){
+				Projectile *ptile = this->parent_game->current_level->enemy_list.at(i)->projectiles[j];
+
+				if (ptile->sprite.getGlobalBounds().intersects(this->sprite.getGlobalBounds())){
+					ptile->end_of_life = true;
+				}
 			}
 		}
 	}	

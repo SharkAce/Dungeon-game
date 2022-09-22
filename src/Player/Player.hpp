@@ -24,6 +24,7 @@ class Player: public Entity {
 
 		void update() override;
 		void render() override;
+		void hit(int angle, float force);
 
 		int max_hp;
 		int current_hp;

@@ -15,17 +15,19 @@ void Level::renderBg() {
 void Level::updateEnemyList(){
 	for (int i=0; i<this->enemy_list.size(); i++){
 		if (this->enemy_list[i]->is_dead){
+			delete this->enemy_list[i];
 			this->enemy_list.erase(this->enemy_list.begin()+i);
 		}else{
-			this->enemy_list[i]->update();
 			this->enemy_list[i]->Enemy::update();
 			this->enemy_list[i]->Entity::update();
+			this->enemy_list[i]->update();
 		}
 	}
 };
 
 void Level::renderEnemyList(){
 	for (int i=0; i<this->enemy_list.size(); i++){
+		this->enemy_list[i]->Entity::render();
 		this->enemy_list[i]->render();
 	}
 };
