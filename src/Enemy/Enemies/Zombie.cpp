@@ -15,6 +15,7 @@ Zombie::Zombie(Game* parent_game): Dungeon::Enemy(parent_game) {
 	this->px_width = 12;
 	this->speed = 8.f;
 	this->kb_force = 14.f;
+	this->has_projectiles = false;
 
 	this->makeEntitySprite();
 

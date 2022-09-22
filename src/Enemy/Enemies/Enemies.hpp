@@ -2,8 +2,10 @@
 #define ZOMBIE_H
 
 #include "../Enemy.hpp"
+#include "../../Projectile/Projectile.hpp"
 #include <SFML/Graphics/Color.hpp>
 #include <SFML/System/Vector2.hpp>
+#include <vector>
 
 namespace Dungeon {
 
@@ -20,6 +22,13 @@ class Sorcerer: public Enemy {
 		Sorcerer(Game* parent_game);
 
 		void update() override;
+		
+
+		int projectile_max_count;
+		int projectile_cooldown;
+		int projectile_cooldown_current;
+		bool is_projectile_cooldown;
+
 
 };
 
