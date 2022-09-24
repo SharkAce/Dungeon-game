@@ -21,7 +21,7 @@ Sorcerer::Sorcerer(Game* parent_game): Dungeon::Enemy(parent_game) {
 	this->projectile_cooldown = 60;
 	this->projectile_cooldown_current = 0;
 	this->projectile_max_count = 10;
-	this->is_projectile_cooldown = false;
+	this->is_projectile_cooldown = true;
 	this->has_projectiles = true;
 
 	this->makeEntitySprite();
@@ -40,10 +40,10 @@ void Sorcerer::update(){
 
 	if (!(this->is_projectile_cooldown) && this->projectiles.size() <= this->projectile_max_count){
 		sf::Rect<int>	sprite_rect;
-		sprite_rect.top = 52;
-		sprite_rect.left = 20;
-		sprite_rect.width = 8;
-		sprite_rect.height = 9;
+		sprite_rect.top = 245;
+		sprite_rect.left = 18;
+		sprite_rect.width = 12;
+		sprite_rect.height = 10;
 
 		float enemy_player_angle = Game::radToDeg(atan2(
 					this->parent_game->player->position.y - this->position.y, 
