@@ -21,7 +21,7 @@ Projectile::Projectile(
 	this->angle = angle;
 	this->end_of_life = false;
 	this->makeEntitySprite();
-	this->sprite.setRotation(angle);
+	this->sprite.setRotation(360-(angle-90));
 	this->setCollisionBounds(collision_bounds);
 	this->setPosition(start_position.x, start_position.y);
 };
