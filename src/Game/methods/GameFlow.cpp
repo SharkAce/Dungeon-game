@@ -24,6 +24,9 @@ void Game::update() {
 	this->player->Entity::update(); // This is collision check and storing the sprites position, this could be a player method
 	this->player->update();
 
+	//Check if player collides with a finish rect and changes current_level accordingly
+	this->current_level->updateFinishRects();
+
 	//Enemy update
 	this->current_level->updateEnemyList();
 

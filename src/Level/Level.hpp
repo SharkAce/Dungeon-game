@@ -7,12 +7,14 @@
 #include <string>
 #include <fstream>
 #include <sstream>
+#include <functional>
 #include "../Enemy/Enemy.hpp"
 #include "../Tile/Tile.hpp"
 
 namespace Dungeon {
 
 class Game;
+class FinishRect;
 
 class Level {
 	public:
@@ -35,11 +37,22 @@ class Level {
 
 		
 		std::vector<Enemy*> enemy_list;
+		std::vector<FinishRect> finish_rect_list;
 		void updateEnemyList();
 		void renderEnemyList();
 		void enemiesSetSolidTilesSprites();
+		void updateFinishRects();
 
 		//std::vector<Game_obj> Game_obj_list;
+
+};
+
+class FinishRect {
+	public:
+		FinishRect(sf::FloatRect rect, std::function<Level *(Game*)> level_callback);
+		sf::FloatRect rect;
+		std::function<Level *(Game*)> level_callback;
+		bool check_player_collision(sf::FloatRect player_pos);
 
 };
 

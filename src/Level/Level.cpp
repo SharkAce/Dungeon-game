@@ -28,4 +28,13 @@ void Level::enemiesSetSolidTilesSprites(){
 	}
 };
 
+FinishRect::FinishRect(sf::FloatRect rect, std::function<Level *(Game*)> level_callback){
+	this->rect = rect;
+	this->level_callback = level_callback;
+};
+
+bool FinishRect::check_player_collision(sf::FloatRect player_pos){
+	return player_pos.intersects(this->rect);
+};
+
 };
