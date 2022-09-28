@@ -1,4 +1,8 @@
 #include "../Level.hpp"
+#include "../../Game/Game.hpp"
+
+#include <SFML/Graphics/Rect.hpp>
+#include <iostream>
 
 namespace Dungeon {
 
@@ -30,6 +34,15 @@ void Level::renderEnemyList(){
 		this->enemy_list[i]->Entity::render();
 		this->enemy_list[i]->render();
 	}
+};
+
+void Level::updateFinishRects(){
+	for (int i=0; i<this->finish_rect_list.size(); i++){
+		if (this->finish_rect_list[i].check_player_collision(this->parent_game->player->sprite.getGlobalBounds())){
+			this->parent_game->initLevel(this->finish_rect_list[i].level_callback(this->parent_game));
+		}
+	}
+
 };
 
 };
