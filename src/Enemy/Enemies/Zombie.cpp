@@ -3,7 +3,7 @@
 
 namespace Dungeon {
 
-Zombie::Zombie(Game* parent_game): Dungeon::Enemy(parent_game) {
+Zombie::Zombie(Game* parent_game, sf::Vector2<float> start_position): Dungeon::Enemy(parent_game, start_position) {
 
 	this->scale = 3.0;
 	this->max_hp = 100;

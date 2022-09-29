@@ -3,6 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/Rect.hpp>
+#include <SFML/System/Vector2.hpp>
 #include <math.h>
 
 namespace Dungeon {
@@ -29,6 +30,7 @@ class Entity {
 		std::vector<sf::FloatRect> *collision_bounds; // This should be a class, called Wall or Tile or something
 
 		void setPosition(float x, float y);
+		void setPosition(sf::Vector2<float> pos);
 		void applyKnockback();
 		void startKnockback(int angle, float force);
 

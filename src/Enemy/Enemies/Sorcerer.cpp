@@ -1,12 +1,13 @@
 #include "Enemies.hpp"
 #include <SFML/Graphics/Rect.hpp>
+#include <SFML/System/Vector2.hpp>
 #include <vector>
 #include <iostream>
 #include "../../Game/Game.hpp"
 
 namespace Dungeon {
 
-Sorcerer::Sorcerer(Game* parent_game): Dungeon::Enemy(parent_game) {
+Sorcerer::Sorcerer(Game* parent_game, sf::Vector2<float> start_position): Dungeon::Enemy(parent_game, start_position) {
 
 	this->scale = 3.0;
 	this->max_hp = 100;

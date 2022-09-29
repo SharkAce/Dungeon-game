@@ -7,7 +7,7 @@ void Game::restart(){
 	this->player = new Player(this);
 
 
-	this->initLevel(testLevel(this));
+	this->initLevel(testLevel(this),sf::Vector2f(20*48,20*48));
 
 	this->game_over = false;
 
