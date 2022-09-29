@@ -18,6 +18,8 @@ void Level::renderBg() {
 void Level::updateEnemyList(){
 	for (int i=0; i<this->enemy_list.size(); i++){
 		if (this->enemy_list[i]->is_dead){
+			if (std::rand()%3 == 0)
+				this->consumable_list.push_back(Potion(this->parent_game, this->enemy_list[i]->position));
 			this->parent_game->dead_enemies[this->enemy_list[i]->id] = true;
 			delete this->enemy_list[i];
 			this->enemy_list.erase(this->enemy_list.begin()+i);
@@ -29,10 +31,27 @@ void Level::updateEnemyList(){
 	}
 };
 
+void Level::updateConsumableList(){
+	for (int i=0; i<this->consumable_list.size(); i++){
+		Consumable *consumable = &(this->consumable_list[i]);
+		if (consumable->end_of_life){
+			this->consumable_list.erase(this->consumable_list.begin()+i);
+		}else{
+			consumable->Entity::update();
+		}
+	}
+}
+
 void Level::renderEnemyList(){
 	for (int i=0; i<this->enemy_list.size(); i++){
 		this->enemy_list[i]->Entity::render();
 		this->enemy_list[i]->render();
+	}
+};
+
+void Level::renderConsumableList(){
+	for (int i=0; i<this->consumable_list.size(); i++){
+		this->consumable_list[i].Entity::render();
 	}
 };
 

@@ -19,6 +19,7 @@ class Player: public Entity {
 		Dungeon::Items::Item *weapon;
 		void sword_attack();
 		void handleEnemyCollision();
+		void handleConsumableCollision();
 		void setEnemyList();
 		void setPlayerMouseAngle();
 

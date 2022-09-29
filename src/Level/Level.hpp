@@ -9,8 +9,10 @@
 #include <fstream>
 #include <sstream>
 #include <functional>
+#include <cstdlib>
 #include "../Enemy/Enemy.hpp"
 #include "../Tile/Tile.hpp"
+#include "../Consumable/Consumables.hpp"
 
 namespace Dungeon {
 
@@ -38,9 +40,15 @@ class Level {
 
 		
 		std::vector<Enemy*> enemy_list;
+		std::vector<Consumable> consumable_list;
 		std::vector<FinishRect> finish_rect_list;
 		void updateEnemyList();
 		void renderEnemyList();
+
+
+		void updateConsumableList();
+		void renderConsumableList();
+
 		void enemiesSetSolidTilesSprites();
 		void updateFinishRects();
 

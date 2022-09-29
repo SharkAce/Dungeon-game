@@ -30,6 +30,9 @@ void Game::update() {
 	//Enemy update
 	this->current_level->updateEnemyList();
 
+	//Consumable update
+	this->current_level->updateConsumableList();
+
 	// Clock things
 	if (this->current_frame % 20 == 0)
 		this->framerate = 1.f / this->base_clock->getElapsedTime().asSeconds();
@@ -44,6 +47,7 @@ void Game::render() {
 	
 	// Render 
 	this->current_level->renderBg();
+	this->current_level->renderConsumableList();
 	this->current_level->renderEnemyList();
 	this->player->render();
 

@@ -7,6 +7,8 @@
 #include <string>
 #include <SFML/Graphics.hpp>
 #include <map>
+#include <cstdlib>
+#include <time.h>
 
 #include "../Player/Player.hpp"
 #include "../Level/Level.hpp"
