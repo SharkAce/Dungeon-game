@@ -1,5 +1,6 @@
 #include "Player.hpp"
 #include "../Game/Game.hpp"
+#include <iostream>
 
 namespace Dungeon {
 
@@ -26,6 +27,7 @@ Player::Player(Game *parent_game): Dungeon::Entity(parent_game) {
 
 void Player::update() {
 	this->handleEnemyCollision();
+	this->handleConsumableCollision();
 	this->setPlayerMouseAngle();
 	this->weapon->update();
 	if (this->current_hp <= 0) this->parent_game->game_over = true;
@@ -53,6 +55,16 @@ void Player::hit(int angle, float force){
 			this->startKnockback(angle,force);
 			this->sprite.setColor(sf::Color::Red);
 }
+
+void Player::handleConsumableCollision(){
+	for (int i=0; i<this->parent_game->current_level->consumable_list.size(); i++){
+		Consumable *consumable = &this->parent_game->current_level->consumable_list[i];
+		if (consumable->sprite.getGlobalBounds().intersects(this->sprite.getGlobalBounds())){
+			if (consumable->name == "potion") this->current_hp ++;
+			consumable->end_of_life = true;
+		}
+	}
+};
 	
 void Player::handleEnemyCollision(){
 	for (int i=0; i<this->enemy_list->size(); i++){

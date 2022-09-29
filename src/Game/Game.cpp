@@ -30,6 +30,9 @@ Game::Game(bool is_fullscreen) {
 	this->heart_sprite.setTexture(this->sprite_sheet);
 	this->heart_sprite.setTextureRect(sf::IntRect(0,16*15,16,16));
 	this->heart_sprite.scale(2.5,2.5);
+
+	//Generate seed for rand()
+	std::srand(std::time(nullptr));
 	
 };
 
