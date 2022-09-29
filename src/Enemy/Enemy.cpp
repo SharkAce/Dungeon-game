@@ -6,10 +6,17 @@
 
 namespace Dungeon {
 
-Enemy::Enemy(Game *parent_game, sf::Vector2<float> start_position): Dungeon::Entity(parent_game) {
+Enemy::Enemy(Game *parent_game, sf::Vector2<float> start_position, int id): Dungeon::Entity(parent_game) {
 	this->setPosition(start_position);
 	this->is_hit = false;
 	this->is_dead = false;
+	this->id = id;
+
+	std::map<int,bool> *dead_enemies = &(this->parent_game->dead_enemies);
+
+	if (dead_enemies->find(id) != dead_enemies->end()){
+		dead_enemies->insert({id,false});
+	}
 };
 
 void Enemy::hit(int angle, float force, float damage){

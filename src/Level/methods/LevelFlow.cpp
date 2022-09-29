@@ -18,6 +18,7 @@ void Level::renderBg() {
 void Level::updateEnemyList(){
 	for (int i=0; i<this->enemy_list.size(); i++){
 		if (this->enemy_list[i]->is_dead){
+			this->parent_game->dead_enemies[this->enemy_list[i]->id] = true;
 			delete this->enemy_list[i];
 			this->enemy_list.erase(this->enemy_list.begin()+i);
 		}else{
