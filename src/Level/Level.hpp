@@ -3,6 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/Rect.hpp>
+#include <SFML/System/Vector2.hpp>
 #include <vector>
 #include <string>
 #include <fstream>
@@ -49,8 +50,10 @@ class Level {
 
 class FinishRect {
 	public:
-		FinishRect(sf::FloatRect rect, std::function<Level *(Game*)> level_callback);
+		FinishRect(char rect_type, std::function<Level *(Game*)> level_callback);
+		FinishRect(sf::FloatRect rect, sf::Vector2<bool> axis, std::function<Level *(Game*)> level_callback);
 		sf::FloatRect rect;
+		sf::Vector2<bool> axis;
 		std::function<Level *(Game*)> level_callback;
 		bool check_player_collision(sf::FloatRect player_pos);
 

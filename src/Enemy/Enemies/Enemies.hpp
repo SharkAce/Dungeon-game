@@ -11,7 +11,7 @@ namespace Dungeon {
 
 class Zombie: public Enemy {
 	public:
-		Zombie(Game* parent_game);
+		Zombie(Game* parent_game, sf::Vector2<float> start_position);
 
 		void update() override;
 
@@ -19,7 +19,7 @@ class Zombie: public Enemy {
 
 class Sorcerer: public Enemy {
 	public:
-		Sorcerer(Game* parent_game);
+		Sorcerer(Game* parent_game, sf::Vector2<float> start_position);
 
 		void update() override;
 		

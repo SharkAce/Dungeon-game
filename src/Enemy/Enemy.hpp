@@ -2,13 +2,13 @@
 #define ENEMY_H
 
 #include "../Entity/Entity.hpp"
-#include "../Projectile//Projectile.hpp"
+#include "../Projectile/Projectile.hpp"
 
 namespace Dungeon {
 
 class Enemy: public Entity { 
 	public:
-		Enemy(Game *parent_game);
+		Enemy(Game *parent_game, sf::Vector2<float> start_position);
 
 
 		int max_hp;

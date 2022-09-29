@@ -1,11 +1,13 @@
 #include "./Enemy.hpp"
 #include "../Game/Game.hpp"
 
+#include <SFML/System/Vector2.hpp>
 #include <iostream>
 
 namespace Dungeon {
 
-Enemy::Enemy(Game *parent_game): Dungeon::Entity(parent_game) {
+Enemy::Enemy(Game *parent_game, sf::Vector2<float> start_position): Dungeon::Entity(parent_game) {
+	this->setPosition(start_position);
 	this->is_hit = false;
 	this->is_dead = false;
 };

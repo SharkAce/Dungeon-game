@@ -2,7 +2,6 @@
 #include "../../Game/Game.hpp"
 
 #include <SFML/Graphics/Rect.hpp>
-#include <iostream>
 
 namespace Dungeon {
 
@@ -38,8 +37,12 @@ void Level::renderEnemyList(){
 
 void Level::updateFinishRects(){
 	for (int i=0; i<this->finish_rect_list.size(); i++){
-		if (this->finish_rect_list[i].check_player_collision(this->parent_game->player->sprite.getGlobalBounds())){
-			this->parent_game->initLevel(this->finish_rect_list[i].level_callback(this->parent_game));
+		FinishRect finish_rect = this->finish_rect_list[i];
+		if (finish_rect.check_player_collision(this->parent_game->player->sprite.getGlobalBounds())){
+			this->parent_game->initLevel(
+				finish_rect.level_callback(this->parent_game),
+				this->parent_game->getMirroredVector2(this->parent_game->player->position, finish_rect.axis,52)
+			);
 		}
 	}
 

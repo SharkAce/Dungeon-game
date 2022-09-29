@@ -29,7 +29,7 @@ class Game {
 		void drawGameOver();
 
 	public:
-		void initLevel(Dungeon::Level *level);
+		void initLevel(Dungeon::Level *level, sf::Vector2f playerPos);
 		Game(bool is_fullscreen);
 		virtual ~Game();
 		
@@ -61,6 +61,7 @@ class Game {
 		static float radToDeg(float radian);
 
 		void writeToScreen(std::string text_to_print, float posX, float posY);
+		sf::Vector2f getMirroredVector2(sf::Vector2f vec, sf::Vector2<bool> axis,float center_offset);
 };
 
 };

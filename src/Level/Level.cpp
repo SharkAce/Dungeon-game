@@ -28,10 +28,41 @@ void Level::enemiesSetSolidTilesSprites(){
 	}
 };
 
-FinishRect::FinishRect(sf::FloatRect rect, std::function<Level *(Game*)> level_callback){
-	this->rect = rect;
+FinishRect::FinishRect(char rect_type, std::function<Level *(Game*)> level_callback){
+	//tile_px * scale * tiles_x/y
+	float width  = 16*3*40;
+	float height = 16*3*23;
+
+	switch (rect_type) {
+		case 't':{
+							 this->rect = sf::FloatRect(0,0,width,0.1);
+							 this->axis = sf::Vector2<bool>(false,true);
+							 break;
+						 }
+		case 'b':{
+							 this->rect = sf::FloatRect(0,height,width,0.1);
+							 this->axis = sf::Vector2<bool>(false,true);
+							 break;
+						 }
+		case 'l':{
+							 this->rect = sf::FloatRect(0,0,0.1,height);
+							 this->axis = sf::Vector2<bool>(true,false);
+							 break;
+						 }
+		case 'r':{
+							 this->rect = sf::FloatRect(width,0,0.1,height);
+							 this->axis = sf::Vector2<bool>(true,false);
+							 break;
+						 }
+	}
+	
 	this->level_callback = level_callback;
 };
+FinishRect::FinishRect(sf::FloatRect rect, sf::Vector2<bool> axis, std::function<Level *(Game*)> level_callback){
+	this->rect = rect;
+	this->axis = axis;
+	this->level_callback = level_callback;
+}
 
 bool FinishRect::check_player_collision(sf::FloatRect player_pos){
 	return player_pos.intersects(this->rect);
