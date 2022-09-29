@@ -8,13 +8,14 @@ namespace Dungeon {
 
 class Enemy: public Entity { 
 	public:
-		Enemy(Game *parent_game, sf::Vector2<float> start_position);
+		Enemy(Game *parent_game, sf::Vector2<float> start_position, int id);
 
 
 		int max_hp;
 		int current_hp;
 		int damage;
 		float kb_force;
+		int id;
 
 		bool is_hit;
 		bool is_dead;

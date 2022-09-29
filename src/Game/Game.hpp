@@ -6,6 +6,7 @@
 #include <SFML/System/Vector2.hpp>
 #include <string>
 #include <SFML/Graphics.hpp>
+#include <map>
 
 #include "../Player/Player.hpp"
 #include "../Level/Level.hpp"
@@ -28,6 +29,8 @@ class Game {
 		void drawHearts();
 		void drawGameOver();
 
+		void deleteDeadEnemies(std::vector<Enemy*> *enemy_list);
+
 	public:
 		void initLevel(Dungeon::Level *level, sf::Vector2f playerPos);
 		Game(bool is_fullscreen);
@@ -35,6 +38,7 @@ class Game {
 		
 		Dungeon::Level *current_level;
 		Dungeon::Player *player;
+		std::map<int,bool> dead_enemies;
 		long int current_frame;
 		int framerate;
 		bool pause;
