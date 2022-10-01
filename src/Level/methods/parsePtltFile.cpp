@@ -4,7 +4,7 @@
 
 namespace Dungeon {
 
-void Level::parsePtsfFile(std::string file_path){
+void Level::parsePtltFile(std::string file_path){
 	std::fstream file;
 	std::string current_line;
 	std::string segment;

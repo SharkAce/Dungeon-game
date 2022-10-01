@@ -30,7 +30,7 @@ class Level {
 		sf::RenderWindow *window;
 		Game *parent_game;
 
-		void parsePtsfFile(std::string file_path);
+		void parsePtltFile(std::string file_path);
 		void renderBg();
 
 		int tiles_x;
