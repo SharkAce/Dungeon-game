@@ -58,36 +58,38 @@ void Player::hit(int angle, float force){
 
 void Player::handleConsumableCollision(){
 	for (int i=0; i<this->parent_game->current_level->consumable_list.size(); i++){
-		Consumable *consumable = &this->parent_game->current_level->consumable_list[i];
-		if (consumable->sprite.getGlobalBounds().intersects(this->sprite.getGlobalBounds())){
-			if (consumable->name == "potion") this->current_hp ++;
-			consumable->end_of_life = true;
+		Consumable& consumable = this->parent_game->current_level->consumable_list[i];
+		if (consumable.sprite.getGlobalBounds().intersects(this->sprite.getGlobalBounds())){
+			if (consumable.name == "potion") this->current_hp ++;
+			consumable.end_of_life = true;
 		}
 	}
 };
 	
 void Player::handleEnemyCollision(){
 	for (int i=0; i<this->enemy_list->size(); i++){
-		if (this->enemy_list->at(i)->sprite.getGlobalBounds()
+		Enemy& enemy = *enemy_list->at(i);
+		if (enemy.sprite.getGlobalBounds()
 		.intersects(this->sprite.getGlobalBounds())
 		){
 
-			sf::Vector2f enemy_pos = this->enemy_list->at(i)->sprite.getPosition();
+			sf::Vector2f enemy_pos = enemy.sprite.getPosition();
 			float angle = Game::radToDeg(std::atan2(this->position.y - enemy_pos.y, this->position.x - enemy_pos.x));
-			this->hit(angle,this->enemy_list->at(i)->kb_force);
+			this->hit(angle,enemy.kb_force);
 
 		}
 
-		if (this->enemy_list->at(i)->has_projectiles){
-			for (int j=0; j<this->enemy_list->at(i)->projectiles.size(); j++){
-				if (this->enemy_list->at(i)->projectiles.at(j)->sprite.getGlobalBounds()
+		if (enemy.has_projectiles){
+			for (int j=0; j<enemy.projectiles.size(); j++){
+				Projectile& projectile = *enemy.projectiles.at(j);
+				if (projectile.sprite.getGlobalBounds()
 				.intersects(this->sprite.getGlobalBounds())
 				){
 
-					sf::Vector2f ptile_pos = this->enemy_list->at(i)->projectiles.at(j)->sprite.getPosition();
+					sf::Vector2f ptile_pos = projectile.sprite.getPosition();
 					float ptile_angle = Game::radToDeg(std::atan2(this->position.y - ptile_pos.y, this->position.x - ptile_pos.x));
-					this->enemy_list->at(i)->projectiles.at(j)->end_of_life = true;
-					this->hit(ptile_angle,this->enemy_list->at(i)->kb_force);
+					projectile.end_of_life = true;
+					this->hit(ptile_angle,enemy.kb_force);
 				}
 			}
 		}

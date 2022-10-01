@@ -56,8 +56,7 @@ class Level {
 
 };
 
-class FinishRect {
-	public:
+struct FinishRect {
 		FinishRect(char rect_type, std::function<Level *(Game*)> level_callback);
 		FinishRect(sf::FloatRect rect, sf::Vector2<bool> axis, std::function<Level *(Game*)> level_callback);
 		sf::FloatRect rect;

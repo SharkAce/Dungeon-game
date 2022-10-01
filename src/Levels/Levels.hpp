@@ -6,14 +6,14 @@
 
 namespace Dungeon {
 
-	class Game;
+class Game;
 
-	Level *testLevel(Game *game_ptr);
-	Level *testLevel2(Game *game_ptr);
-	Level *level1(Game *game_ptr);
-	Level *level2(Game *game_ptr);
-	Level *level3(Game *game_ptr);
-	Level *level4(Game *game_ptr);
+struct World1 {
+	static Level *level1(Game *game_ptr);
+	static Level *level2(Game *game_ptr);
+	static Level *level3(Game *game_ptr);
+	static Level *level4(Game *game_ptr);
+};
 
 };
 

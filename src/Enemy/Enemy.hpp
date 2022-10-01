@@ -22,8 +22,8 @@ class Enemy: public Entity {
 		bool has_projectiles;
 		std::vector<Projectile*> projectiles	;
 		void hit(int angle, float force, float damage);
-		void update() override;
-		void render() override;
+		virtual void update() override;
+		virtual void render() override;
 
 };
 
