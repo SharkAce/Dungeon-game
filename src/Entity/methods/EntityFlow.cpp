@@ -21,8 +21,10 @@ void Entity::update() {
 
 	sf::Vector2<bool> wall_collisions = wallCollisionCheck();
 
-	if (wall_collisions.x) this->direction.x = 0;
-	if (wall_collisions.y) this->direction.y = 0;
+	if (this->has_collisions){
+		if (wall_collisions.x) this->direction.x = 0;
+		if (wall_collisions.y) this->direction.y = 0;
+	}
 
 
 	this->sprite.move(this->direction);

@@ -19,7 +19,7 @@ void Level::updateEnemyList(){
 	for (int i=0; i<this->enemy_list.size(); i++){
 		if (this->enemy_list[i]->is_dead){
 			//dorp potion a third of the time
-			if (std::rand()%3 == 0){
+			if (std::rand()%3 == 0 && this->enemy_list[i]->drops_potions){
 				this->consumable_list.push_back(Potion(this->parent_game, this->enemy_list[i]->position));
 			}
 			this->parent_game->dead_enemies[this->enemy_list[i]->id] = true;
@@ -59,7 +59,7 @@ void Level::renderConsumableList(){
 
 void Level::updateFinishRects(){
 	for (int i=0; i<this->finish_rect_list.size(); i++){
-		FinishRect finish_rect = this->finish_rect_list[i];
+		FinishRect& finish_rect = this->finish_rect_list[i];
 		if (finish_rect.check_player_collision(this->parent_game->player->sprite.getGlobalBounds())){
 			this->parent_game->initLevel(
 				finish_rect.level_callback(this->parent_game),

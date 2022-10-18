@@ -10,6 +10,7 @@ Enemy::Enemy(Game *parent_game, sf::Vector2<float> start_position, int id): Dung
 	this->setPosition(start_position);
 	this->is_hit = false;
 	this->is_dead = false;
+	this->drops_potions = true;
 	this->id = id;
 
 	std::map<int,bool> *dead_enemies = &(this->parent_game->dead_enemies);

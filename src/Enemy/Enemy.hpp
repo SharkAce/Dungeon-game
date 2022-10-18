@@ -20,6 +20,7 @@ class Enemy: public Entity {
 		bool is_hit;
 		bool is_dead;
 		bool has_projectiles;
+		bool drops_potions;
 		std::vector<Projectile*> projectiles	;
 		void hit(int angle, float force, float damage);
 		virtual void update() override;

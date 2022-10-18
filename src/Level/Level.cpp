@@ -5,6 +5,8 @@
 #include <string>
 #include <vector>
 
+
+#include <iostream>
 namespace Dungeon {
 
 Level::Level(Game *parent_game) {
@@ -18,7 +20,14 @@ Level::Level(Game *parent_game) {
 };
 
 Level::~Level(){
-	for (int i=0; i<this->enemy_list.size(); i++) delete this->enemy_list[i];
+	for (int i=0; i<this->enemy_list.size(); i++) {
+		if (this->enemy_list[i]->has_projectiles) {
+			for (int j=0; j<this->enemy_list[i]->projectiles.size(); j++){
+				delete this->enemy_list[i]->projectiles[j];
+			}
+		}
+		delete this->enemy_list[i];
+	}
 };
 
 
@@ -35,22 +44,22 @@ FinishRect::FinishRect(char rect_type, std::function<Level *(Game*)> level_callb
 
 	switch (rect_type) {
 		case 't':{
-							 this->rect = sf::FloatRect(0,0,width,0.1);
+							 this->rect = sf::FloatRect(0,0,width,1);
 							 this->axis = sf::Vector2<bool>(false,true);
 							 break;
 						 }
 		case 'b':{
-							 this->rect = sf::FloatRect(0,height,width,0.1);
+							 this->rect = sf::FloatRect(0,height,width,1);
 							 this->axis = sf::Vector2<bool>(false,true);
 							 break;
 						 }
 		case 'l':{
-							 this->rect = sf::FloatRect(0,0,0.1,height);
+							 this->rect = sf::FloatRect(0,0,1,height);
 							 this->axis = sf::Vector2<bool>(true,false);
 							 break;
 						 }
 		case 'r':{
-							 this->rect = sf::FloatRect(width,0,0.1,height);
+							 this->rect = sf::FloatRect(width,0,1,height);
 							 this->axis = sf::Vector2<bool>(true,false);
 							 break;
 						 }

@@ -17,6 +17,14 @@ class Zombie: public Enemy {
 
 };
 
+class Armored_Zombie: public Enemy {
+	public:
+		Armored_Zombie(Game* parent_game, sf::Vector2<float> start_position, int id);
+
+		void update() override;
+
+};
+
 class Sorcerer: public Enemy {
 	public:
 		Sorcerer(Game* parent_game, sf::Vector2<float> start_position, int id);
@@ -30,6 +38,33 @@ class Sorcerer: public Enemy {
 		bool is_projectile_cooldown;
 
 
+};
+
+class Ghost: public Enemy {
+	public:
+		Ghost(Game* parent_game, sf::Vector2<float> start_position, int id);
+
+		void update() override;
+};
+
+
+class BigSlime: public Enemy {
+	public:
+		BigSlime(Game* parent_game, sf::Vector2<float> start_position, int id);
+
+		void update() override;
+
+		int child_max_count;
+		int child_cooldown;
+		int child_cooldown_current;
+		bool is_child_cooldown;
+};
+
+class SmallSlime: public Enemy {
+	public:
+		SmallSlime(Game* parent_game, sf::Vector2<float> start_position, int id);
+
+		void update() override;
 };
 
 };

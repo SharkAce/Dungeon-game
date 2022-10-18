@@ -6,39 +6,86 @@
 namespace Dungeon {
 
 
-Level* World1::level1(Game *game_ptr){
+Level* World1::level1C(Game *game_ptr){
 
 Dungeon::Level* level = new Dungeon::Level(game_ptr);	
-level->parsePtltFile("res/level1.ptlt");
+level->parsePtltFile("res/level1C.ptlt");
 level->enemy_list.push_back(new Zombie(game_ptr,sf::Vector2<float>(17*48,6*48),101));
 level->enemy_list.push_back(new Zombie(game_ptr,sf::Vector2<float>(23*48,6*48),102));
-level->finish_rect_list.push_back(FinishRect('t',&World1::level2));
+level->finish_rect_list.push_back(FinishRect('t',&World1::level2C));
 
 return level;
 };	
 
-Level* World1::level2(Game *game_ptr){
+Level* World1::level2C(Game *game_ptr){
 
 Dungeon::Level* level = new Dungeon::Level(game_ptr);	
-level->parsePtltFile("res/level2.ptlt");
+level->parsePtltFile("res/level2C.ptlt");
 level->enemy_list.push_back(new Sorcerer(game_ptr,sf::Vector2<float>(10*48,6*48),201));
 level->enemy_list.push_back(new Sorcerer(game_ptr,sf::Vector2<float>(30*48,6*48),202));
-level->finish_rect_list.push_back(FinishRect('b',&World1::level1));
-level->finish_rect_list.push_back(FinishRect('l',&World1::level3));
+level->finish_rect_list.push_back(FinishRect('b',&World1::level1C));
+level->finish_rect_list.push_back(FinishRect('r',&World1::level2D));
+level->finish_rect_list.push_back(FinishRect('l',&World1::level2B));
 
 return level;
 };	
 	
 
-Level* World1::level3(Game *game_ptr){
+Level* World1::level2B(Game *game_ptr){
 
 Dungeon::Level* level = new Dungeon::Level(game_ptr);	
-level->parsePtltFile("res/level3.ptlt");
+level->parsePtltFile("res/level2B.ptlt");
 level->enemy_list.push_back(new Sorcerer(game_ptr,sf::Vector2<float>(10*48,9*48),301));
 level->enemy_list.push_back(new Zombie(game_ptr,sf::Vector2<float>(20*48,6*48),302));
 level->enemy_list.push_back(new Zombie(game_ptr,sf::Vector2<float>(20*48,12*48),303));
-level->finish_rect_list.push_back(FinishRect('r',&World1::level2));
+level->finish_rect_list.push_back(FinishRect('r',&World1::level2C));
+level->finish_rect_list.push_back(FinishRect('b',&World1::level1B));
 
 return level;
 };	
+
+Level* World1::level2D(Game *game_ptr){
+
+Dungeon::Level* level = new Dungeon::Level(game_ptr);	
+level->parsePtltFile("res/level2D.ptlt");
+level->enemy_list.push_back(new Ghost(game_ptr,sf::Vector2<float>(30*48,5*48),401));
+level->enemy_list.push_back(new Ghost(game_ptr,sf::Vector2<float>(10*48,20*48),402));
+level->enemy_list.push_back(new Sorcerer(game_ptr,sf::Vector2<float>(20*48,10*48),403));
+level->finish_rect_list.push_back(FinishRect('l',&World1::level2C));
+level->finish_rect_list.push_back(FinishRect('t',&World1::level3D));
+
+return level;
+};
+
+Level* World1::level3D(Game *game_ptr){
+
+Dungeon::Level* level = new Dungeon::Level(game_ptr);	
+level->parsePtltFile("res/level3D.ptlt");
+level->enemy_list.push_back(new BigSlime(game_ptr,sf::Vector2<float>(10*48,6*48),501));
+level->enemy_list.push_back(new BigSlime(game_ptr,sf::Vector2<float>(30*48,6*48),502));
+level->enemy_list.push_back(new Ghost(game_ptr,sf::Vector2<float>(5*48,18*48),503));
+level->enemy_list.push_back(new Ghost(game_ptr,sf::Vector2<float>(35*48,18*48),504));
+level->finish_rect_list.push_back(FinishRect('b',&World1::level2D));
+level->finish_rect_list.push_back(FinishRect('r',&World1::level3E));
+
+return level;
+};
+
+Level* World1::level1B(Game *game_ptr){
+
+Dungeon::Level* level = new Dungeon::Level(game_ptr);
+level->parsePtltFile("res/level1B.ptlt");
+level->finish_rect_list.push_back(FinishRect('t',&World1::level2B));
+
+return level;
 }
+
+Level* World1::level3E(Game *game_ptr){
+
+Dungeon::Level* level = new Dungeon::Level(game_ptr);
+level->parsePtltFile("res/level3E.ptlt");
+level->finish_rect_list.push_back(FinishRect('l',&World1::level3D));
+
+return level;
+}
+};

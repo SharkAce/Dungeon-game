@@ -35,6 +35,7 @@ class Entity {
 		void startKnockback(int angle, float force);
 
 
+		bool has_collisions;
 		int sprite_coord_x;
 		int sprite_coord_y;
 		int px_height;
