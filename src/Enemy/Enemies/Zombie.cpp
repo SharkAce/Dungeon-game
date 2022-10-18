@@ -33,8 +33,8 @@ void Zombie::update(){
 Armored_Zombie::Armored_Zombie(Game* parent_game, sf::Vector2<float> start_position, int id): Dungeon::Enemy(parent_game, start_position, id) {
 
 	this->scale = 3.0;
-	this->max_hp = 200;
-	this->current_hp = 200;
+	this->max_hp = 160;
+	this->current_hp = 160;
 	this->damage = 20;
 	this->sprite_coord_x = 48;
 	this->sprite_coord_y = 160;

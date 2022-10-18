@@ -36,8 +36,8 @@ Level* World1::level2B(Game *game_ptr){
 Dungeon::Level* level = new Dungeon::Level(game_ptr);	
 level->parsePtltFile("res/level2B.ptlt");
 level->enemy_list.push_back(new Sorcerer(game_ptr,sf::Vector2<float>(10*48,9*48),301));
-level->enemy_list.push_back(new Zombie(game_ptr,sf::Vector2<float>(20*48,6*48),302));
-level->enemy_list.push_back(new Zombie(game_ptr,sf::Vector2<float>(20*48,12*48),303));
+level->enemy_list.push_back(new Armored_Zombie(game_ptr,sf::Vector2<float>(20*48,6*48),302));
+level->enemy_list.push_back(new Armored_Zombie(game_ptr,sf::Vector2<float>(20*48,12*48),303));
 level->finish_rect_list.push_back(FinishRect('r',&World1::level2C));
 level->finish_rect_list.push_back(FinishRect('b',&World1::level1B));
 
