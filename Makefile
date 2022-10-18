@@ -32,8 +32,8 @@ clean:
 
 # Run in Fullscreen
 run:
-	$(BUILD_DIR)/$(EXEC) f
+	$(BUILD_DIR)/$(EXEC)
 
 # Run windowed
 runw:
-	$(BUILD_DIR)/$(EXEC)
+	$(BUILD_DIR)/$(EXEC) w

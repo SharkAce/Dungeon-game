@@ -9,10 +9,13 @@ namespace Dungeon {
 class Game;
 
 struct World1 {
-	static Level *level1(Game *game_ptr);
-	static Level *level2(Game *game_ptr);
-	static Level *level3(Game *game_ptr);
-	static Level *level4(Game *game_ptr);
+	static Level *level1C(Game *game_ptr);
+	static Level *level2C(Game *game_ptr);
+	static Level *level2B(Game *game_ptr);
+	static Level *level2D(Game *game_ptr);
+	static Level *level3D(Game *game_ptr);
+	static Level *level1B(Game *game_ptr);
+	static Level *level3E(Game *game_ptr);
 };
 
 };

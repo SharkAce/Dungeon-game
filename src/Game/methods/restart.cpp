@@ -8,7 +8,7 @@ void Game::restart(){
 	this->dead_enemies.clear();
 
 
-	this->initLevel(World1::level1(this),sf::Vector2f(20*48,20*48));
+	this->initLevel(World1::level1C(this),sf::Vector2f(20*48,20*48));
 
 	this->game_over = false;
 
