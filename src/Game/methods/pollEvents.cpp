@@ -16,6 +16,7 @@ void Game::pollEvents() {
 						this->player->weapon->initAttack();
 					}
 			case sf::Event::KeyPressed :
+				if (this->help_menu == true) help_menu = false;
 				if (this->events.key.code == sf::Keyboard::Escape){
 					this->pause = !(this->pause);
 				}
