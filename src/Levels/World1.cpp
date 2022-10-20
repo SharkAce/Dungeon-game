@@ -40,6 +40,8 @@ level->enemy_list.push_back(new Armored_Zombie(game_ptr,sf::Vector2<float>(20*48
 level->enemy_list.push_back(new Armored_Zombie(game_ptr,sf::Vector2<float>(20*48,12*48),303));
 level->finish_rect_list.push_back(FinishRect('r',&World1::level2C));
 level->finish_rect_list.push_back(FinishRect('b',&World1::level1B));
+level->finish_rect_list.push_back(FinishRect('l',&World1::level2A));
+level->finish_rect_list.push_back(FinishRect('t',&World1::level3B));
 
 return level;
 };	
@@ -78,7 +80,7 @@ level->parsePtltFile("res/level1B.ptlt");
 level->finish_rect_list.push_back(FinishRect('t',&World1::level2B));
 
 return level;
-}
+};
 
 Level* World1::level3E(Game *game_ptr){
 
@@ -87,5 +89,45 @@ level->parsePtltFile("res/level3E.ptlt");
 level->finish_rect_list.push_back(FinishRect('l',&World1::level3D));
 
 return level;
-}
+};
+
+Level* World1::level4B(Game *game_ptr){
+
+Dungeon::Level* level = new Dungeon::Level(game_ptr);
+level->parsePtltFile("res/level4B.ptlt");
+level->finish_rect_list.push_back(FinishRect('b',&World1::level3B));
+//level->finish_rect_list.push_back(FinishRect('l',&World1::level4A));
+//level->finish_rect_list.push_back(FinishRect('r',&World1::level4C));
+
+return level;
+};
+
+Level* World1::level3A(Game *game_ptr){
+
+Dungeon::Level* level = new Dungeon::Level(game_ptr);
+level->parsePtltFile("res/level3A.ptlt");
+level->finish_rect_list.push_back(FinishRect('b',&World1::level2A));
+level->finish_rect_list.push_back(FinishRect('r',&World1::level3B));
+
+return level;
+};
+Level* World1::level2A(Game *game_ptr){
+
+Dungeon::Level* level = new Dungeon::Level(game_ptr);
+level->parsePtltFile("res/level2A.ptlt");
+level->finish_rect_list.push_back(FinishRect('r',&World1::level2B));
+level->finish_rect_list.push_back(FinishRect('t',&World1::level3A));
+
+return level;
+};
+Level* World1::level3B(Game *game_ptr){
+
+Dungeon::Level* level = new Dungeon::Level(game_ptr);
+level->parsePtltFile("res/level3B.ptlt");
+level->finish_rect_list.push_back(FinishRect('b',&World1::level2B));
+level->finish_rect_list.push_back(FinishRect('l',&World1::level3A));
+level->finish_rect_list.push_back(FinishRect('t',&World1::level4B));
+
+return level;
+};
 };
