@@ -25,6 +25,7 @@ Game::Game(bool is_fullscreen) {
 
 	this->pause = false;
 	this->game_over = false;
+	this->help_menu = true;
 	
 	//Heart sprite
 	this->heart_sprite.setTexture(this->sprite_sheet);

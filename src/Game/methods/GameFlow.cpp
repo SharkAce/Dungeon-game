@@ -7,13 +7,21 @@ bool Game::isOpen() {
 };
 
 void Game::update() {
+
+	// Clock things
+	if (this->current_frame % 20 == 0)
+		this->framerate = 1.f / this->base_clock->getElapsedTime().asSeconds();
+	
+	this->base_clock->restart();
+	this->current_frame ++;
+
 	// Events
 	this->pollEvents();
 
 	//set mouse position
 	mouse_pos = sf::Mouse::getPosition(*(this->window));
 
-	if (this->pause || this->game_over) {
+	if (this->pause || this->game_over || this->help_menu) {
 		return;
 	}
 
@@ -33,12 +41,6 @@ void Game::update() {
 	//Consumable update
 	this->current_level->updateConsumableList();
 
-	// Clock things
-	if (this->current_frame % 20 == 0)
-		this->framerate = 1.f / this->base_clock->getElapsedTime().asSeconds();
-	
-	this->base_clock->restart();
-	this->current_frame ++;
 };
 
 void Game::render() {
@@ -58,6 +60,8 @@ void Game::render() {
 	if (this->pause && !game_over) this->drawPause();
 
 	if (this->game_over) this->drawGameOver();
+
+	if (this->help_menu) this->drawHelpMenu();
 
 	// Display player hearts
 	this->drawHearts();

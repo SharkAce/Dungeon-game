@@ -30,6 +30,7 @@ class Game {
 		void drawPause();
 		void drawHearts();
 		void drawGameOver();
+		void drawHelpMenu();
 
 		void deleteDeadEnemies(std::vector<Enemy*> *enemy_list);
 
@@ -45,6 +46,7 @@ class Game {
 		int framerate;
 		bool pause;
 		bool game_over;
+		bool help_menu;
 
 		sf::RenderWindow *window;
 		sf::Texture sprite_sheet;
