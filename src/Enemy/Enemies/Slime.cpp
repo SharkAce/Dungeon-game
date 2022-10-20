@@ -17,9 +17,9 @@ BigSlime::BigSlime(Game* parent_game, sf::Vector2<float> start_position, int id)
 	this->kb_force = 14.f;
 	this->has_projectiles = false;
 
-	this->child_cooldown = 150;
+	this->child_cooldown = 120;
 	this->child_cooldown_current = 0;
-	this-> is_child_cooldown = false;
+	this-> is_child_cooldown = true;
 
 	this->makeEntitySprite();
 

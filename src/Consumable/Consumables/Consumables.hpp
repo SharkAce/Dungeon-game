@@ -1,7 +1,7 @@
 #ifndef CONSUMABLES_H
 #define CONSUMABLES_H
 
-#include "Consumable.hpp"
+#include "../Consumable.hpp"
 #include <SFML/System/Vector2.hpp>
 
 namespace Dungeon {

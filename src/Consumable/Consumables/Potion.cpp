@@ -1,6 +1,6 @@
-#include "Consumable.hpp"
 #include "Consumables.hpp"
-#include "../Game/Game.hpp"
+#include "../Consumable.hpp"
+#include "../../Game/Game.hpp"
 #include <SFML/System/Vector2.hpp>
 
 namespace Dungeon {
