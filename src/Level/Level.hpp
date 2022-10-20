@@ -12,7 +12,7 @@
 #include <cstdlib>
 #include "../Enemy/Enemy.hpp"
 #include "../Tile/Tile.hpp"
-#include "../Consumable/Consumables.hpp"
+#include "../Consumable/Consumables/Consumables.hpp"
 
 namespace Dungeon {
 
