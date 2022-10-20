@@ -20,8 +20,9 @@ Consumable::Consumable(
 	this->px_width = sprite_rect.width;
 	this->speed = speed;
 	this->angle = Game::radToDeg(std::atan2(
-				start_position.y-parent_game->player->position.y,start_position.x-parent_game->player->position.x)
-			);
+			start_position.y-parent_game->player->position.y,
+			start_position.x-parent_game->player->position.x
+		));
 	this->end_of_life = false;
 	this->makeEntitySprite();
 	this->sprite.setScale(2.5,2.5);
