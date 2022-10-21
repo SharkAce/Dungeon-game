@@ -67,6 +67,27 @@ class SmallSlime: public Enemy {
 		void update() override;
 };
 
+class BigFire: public Enemy {
+	public:
+		BigFire(Game* parent_game, sf::Vector2<float> start_position, int id);
+
+		void update() override;
+
+		int child_max_count;
+		int child_cooldown;
+		int child_cooldown_current;
+		bool is_child_cooldown;
+};
+
+class SmallFire: public Enemy {
+	public:
+		SmallFire(Game* parent_game, sf::Vector2<float> start_position, int id);
+
+		int lifetime_current_frame;
+		int lifetime_max_frame;
+
+		void update() override;
+};
 };
 
 
