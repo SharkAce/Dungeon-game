@@ -20,6 +20,9 @@ struct World1 {
 	static Level *level3A(Game *game_ptr);
 	static Level *level2A(Game *game_ptr);
 	static Level *level3B(Game *game_ptr);
+	static Level *level4A(Game *game_ptr);
+	static Level *level3C(Game *game_ptr);
+	static Level *level4C(Game *game_ptr);
 };
 
 };

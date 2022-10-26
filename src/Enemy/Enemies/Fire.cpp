@@ -59,8 +59,9 @@ SmallFire::SmallFire(Game* parent_game, sf::Vector2<float> start_position, int i
 	this->kb_force = 11.f;
 	this->has_projectiles = false;
 	this->drops_potions = false;
+	this->is_invincible = true;
 
-	this->lifetime_max_frame = 240;
+	this->lifetime_max_frame = 160;
 	this->lifetime_current_frame = 0;
 
 	this->makeEntitySprite();

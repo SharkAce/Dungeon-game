@@ -40,6 +40,21 @@ class Sorcerer: public Enemy {
 
 };
 
+class Skeleton: public Enemy {
+	public:
+		Skeleton(Game* parent_game, sf::Vector2<float> start_position, int id);
+
+		void update() override;
+		
+
+		int projectile_max_count;
+		int projectile_cooldown;
+		int projectile_cooldown_current;
+		bool is_projectile_cooldown;
+
+};
+
+
 class Ghost: public Enemy {
 	public:
 		Ghost(Game* parent_game, sf::Vector2<float> start_position, int id);

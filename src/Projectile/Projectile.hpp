@@ -15,6 +15,7 @@ class Projectile : public Entity {
 			Game *parent_game, 
 			std::vector<sf::FloatRect> *collision_bounds,
 			sf::Rect<int> sprite_rect,
+			float sprite_angle,
 			sf::Vector2<float> start_position,
 			float angle, 
 			float speed
