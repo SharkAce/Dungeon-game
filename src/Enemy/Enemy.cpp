@@ -11,6 +11,7 @@ Enemy::Enemy(Game *parent_game, sf::Vector2<float> start_position, int id): Dung
 	this->is_hit = false;
 	this->is_dead = false;
 	this->drops_potions = true;
+	this->is_invincible = false;
 	this->id = id;
 
 	std::map<int,bool> *dead_enemies = &(this->parent_game->dead_enemies);
@@ -21,6 +22,7 @@ Enemy::Enemy(Game *parent_game, sf::Vector2<float> start_position, int id): Dung
 };
 
 void Enemy::hit(int angle, float force, float damage){
+	if (this->is_invincible) return;
 	if (this->kb_last_frame == 0) this->current_hp -= damage;
 	this->startKnockback(angle, force);
 	this->is_hit = true;

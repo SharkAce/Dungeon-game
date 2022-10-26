@@ -7,13 +7,13 @@
 
 namespace Dungeon {
 
-Sorcerer::Sorcerer(Game* parent_game, sf::Vector2<float> start_position, int id): Dungeon::Enemy(parent_game, start_position, id) {
+Skeleton::Skeleton(Game* parent_game, sf::Vector2<float> start_position, int id): Dungeon::Enemy(parent_game, start_position, id) {
 
 	this->scale = 3.0;
-	this->max_hp = 100;
-	this->current_hp = 100;
+	this->max_hp = 60;
+	this->current_hp = 60;
 	this->damage = 20;
-	this->sprite_coord_x = 81;
+	this->sprite_coord_x = 18;
 	this->sprite_coord_y = 144;
 	this->px_height = 16;
 	this->px_width = 15;
@@ -29,7 +29,7 @@ Sorcerer::Sorcerer(Game* parent_game, sf::Vector2<float> start_position, int id)
 
 };
 
-void Sorcerer::update(){
+void Skeleton::update(){
 	if (this->is_projectile_cooldown){
 		this->projectile_cooldown_current ++;
 		if (this->projectile_cooldown_current >= this->projectile_cooldown){
@@ -41,10 +41,10 @@ void Sorcerer::update(){
 
 	if (!(this->is_projectile_cooldown) && this->projectiles.size() <= this->projectile_max_count){
 		sf::Rect<int>	sprite_rect;
-		sprite_rect.top = 245;
-		sprite_rect.left = 18;
-		sprite_rect.width = 12;
-		sprite_rect.height = 10;
+		sprite_rect.top = 243;
+		sprite_rect.left = 49;
+		sprite_rect.width = 13;
+		sprite_rect.height = 12;
 
 		float enemy_player_angle = Game::radToDeg(atan2(
 					this->parent_game->player->position.y - this->position.y, 
@@ -55,10 +55,10 @@ void Sorcerer::update(){
 				this->parent_game,
 				this->collision_bounds,
 				sprite_rect,
-				0,
+				45,
 				this->position,
 				enemy_player_angle,
-				12
+				10
 		));
 
 		this->is_projectile_cooldown = true;

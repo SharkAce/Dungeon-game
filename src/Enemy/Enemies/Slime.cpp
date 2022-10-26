@@ -46,8 +46,8 @@ SmallSlime::SmallSlime(Game* parent_game, sf::Vector2<float> start_position, int
 	this->current_hp = 30;
 	this->damage = 20;
 	this->sprite_coord_x = 81;
-	this->sprite_coord_y = 208;
-	this->px_height = 16;
+	this->sprite_coord_y = 214;
+	this->px_height = 12;
 	this->px_width = 14;
 	this->speed = 8.f;
 	this->kb_force = 14.f;
