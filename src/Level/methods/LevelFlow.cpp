@@ -63,8 +63,9 @@ void Level::updateFinishRects(){
 		if (finish_rect.check_player_collision(this->parent_game->player->sprite.getGlobalBounds())){
 			this->parent_game->initLevel(
 				finish_rect.level_callback(this->parent_game),
-				this->parent_game->getMirroredVector2(this->parent_game->player->position, finish_rect.axis,52)
+				this->parent_game->getMirroredVector2(this->parent_game->player->position, finish_rect.axis, true)
 			);
+			break;
 		}
 	}
 

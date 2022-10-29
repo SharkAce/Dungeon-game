@@ -69,7 +69,7 @@ class Game {
 		static float radToDeg(float radian);
 
 		void writeToScreen(std::string text_to_print, float posX, float posY);
-		sf::Vector2f getMirroredVector2(sf::Vector2f vec, sf::Vector2<bool> axis,float center_offset);
+		sf::Vector2f getMirroredVector2(sf::Vector2f vec, sf::Vector2<bool> axis,bool center_offset);
 };
 
 };
