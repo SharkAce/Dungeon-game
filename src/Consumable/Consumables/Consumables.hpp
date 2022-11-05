@@ -14,6 +14,12 @@ class Potion : public Consumable {
 
 };
 
+class Key : public Consumable {
+	public:
+		Key(Game *parent_game, sf::Vector2<float> start_position, int id);
+
+};
+
 };
 
 #endif

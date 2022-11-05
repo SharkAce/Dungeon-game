@@ -42,7 +42,7 @@ void Skeleton::update(){
 	if (!(this->is_projectile_cooldown) && this->projectiles.size() <= this->projectile_max_count){
 		sf::Rect<int>	sprite_rect;
 		sprite_rect.top = 243;
-		sprite_rect.left = 49;
+		sprite_rect.left = 65;
 		sprite_rect.width = 13;
 		sprite_rect.height = 12;
 

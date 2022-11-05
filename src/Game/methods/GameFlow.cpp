@@ -66,6 +66,9 @@ void Game::render() {
 	// Display player hearts
 	this->drawHearts();
 
+	// Display player keys
+	this->drawKeys();
+
 	// 
 	this->window->display();
 };

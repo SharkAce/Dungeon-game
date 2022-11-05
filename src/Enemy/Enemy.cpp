@@ -16,7 +16,7 @@ Enemy::Enemy(Game *parent_game, sf::Vector2<float> start_position, int id): Dung
 
 	std::map<int,bool> *dead_enemies = &(this->parent_game->dead_enemies);
 
-	if (dead_enemies->find(id) != dead_enemies->end()){
+	if (dead_enemies->find(id) == dead_enemies->end()){
 		dead_enemies->insert({id,false});
 	}
 };

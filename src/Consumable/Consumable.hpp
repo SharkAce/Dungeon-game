@@ -22,6 +22,7 @@ class Consumable : public Entity {
 		bool end_of_life;
 		float angle;
 		float force;
+		int id;
 		std::string name;
 
 };

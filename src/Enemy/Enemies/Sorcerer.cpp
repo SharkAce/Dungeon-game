@@ -42,7 +42,7 @@ void Sorcerer::update(){
 	if (!(this->is_projectile_cooldown) && this->projectiles.size() <= this->projectile_max_count){
 		sf::Rect<int>	sprite_rect;
 		sprite_rect.top = 245;
-		sprite_rect.left = 18;
+		sprite_rect.left = 34;
 		sprite_rect.width = 12;
 		sprite_rect.height = 10;
 
