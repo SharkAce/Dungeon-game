@@ -29,6 +29,7 @@ class Player: public Entity {
 
 		int max_hp;
 		int current_hp;
+		int key_count;
 		int damage;	
 		float player_mouse_angle;
 		

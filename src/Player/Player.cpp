@@ -7,8 +7,9 @@ namespace Dungeon {
 Player::Player(Game *parent_game): Dungeon::Entity(parent_game) {
 
 	this->scale = 3.0;
-	this->max_hp = 5;
-	this->current_hp = 5;
+	this->max_hp = 3;
+	this->current_hp = 3;
+	this->key_count = 0;
 	this->damage = 20;
 	this->sprite_coord_x = 224;
 	this->sprite_coord_y = 236;
@@ -59,9 +60,16 @@ void Player::hit(int angle, float force){
 void Player::handleConsumableCollision(){
 	for (int i=0; i<this->parent_game->current_level->consumable_list.size(); i++){
 		Consumable& consumable = this->parent_game->current_level->consumable_list[i];
-		if (consumable.sprite.getGlobalBounds().intersects(this->sprite.getGlobalBounds())){
-			if (consumable.name == "potion") this->current_hp ++;
-			consumable.end_of_life = true;
+
+		if (consumable.sprite.getGlobalBounds().intersects(this->sprite.getGlobalBounds())) { 
+			if (consumable.name == "potion" && this-> current_hp < this->max_hp){
+				this->current_hp ++;
+				consumable.end_of_life = true;
+			} else if (consumable.name == "key"){
+				this->key_count ++;
+				consumable.end_of_life = true;
+				this->parent_game->taken_keys[consumable.id] = true;
+			}
 		}
 	}
 };

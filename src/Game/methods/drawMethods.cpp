@@ -3,12 +3,26 @@
 namespace Dungeon {
 
 void Game::drawHearts(){
+	this->heart_sprite_empty.setPosition(5,0);
 	this->heart_sprite.setPosition(5,0);
+	for (int i=0; i<this->player->max_hp;i++){
+		this->window->draw(this->heart_sprite_empty);
+		this->heart_sprite_empty.move(45,0);
+	}
 	for (int i=0; i<this->player->current_hp;i++){
 		this->window->draw(this->heart_sprite);
 		this->heart_sprite.move(45,0);
 	}
 };
+
+void Game::drawKeys(){
+	this->key_sprite.setPosition(5,45);
+	for (int i=0; i<this->player->key_count;i++){
+		this->window->draw(this->key_sprite);
+		this->key_sprite.move(45,0);
+	}
+};
+
 
 void Game::drawFramerate() {
 	this->writeToScreen(std::to_string((int)this->framerate),this->window->getSize().x - 24.f,0);

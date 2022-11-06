@@ -27,10 +27,18 @@ Game::Game(bool is_fullscreen) {
 	this->game_over = false;
 	this->help_menu = true;
 	
-	//Heart sprite
+	//Hud sprites
 	this->heart_sprite.setTexture(this->sprite_sheet);
 	this->heart_sprite.setTextureRect(sf::IntRect(0,16*15,16,16));
 	this->heart_sprite.scale(2.5,2.5);
+
+	this->heart_sprite_empty.setTexture(this->sprite_sheet);
+	this->heart_sprite_empty.setTextureRect(sf::IntRect(16,16*15,16,16));
+	this->heart_sprite_empty.scale(2.5,2.5);
+
+	this->key_sprite.setTexture(this->sprite_sheet);
+	this->key_sprite.setTextureRect(sf::IntRect(32,257,16,15));
+	this->key_sprite.scale(2.5,2.5);
 
 	//Generate seed for rand()
 	std::srand(std::time(nullptr));

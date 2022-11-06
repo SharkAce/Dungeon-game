@@ -29,6 +29,7 @@ class Game {
 		void drawFramerate();
 		void drawPause();
 		void drawHearts();
+		void drawKeys();
 		void drawGameOver();
 		void drawHelpMenu();
 
@@ -42,6 +43,7 @@ class Game {
 		Dungeon::Level *current_level;
 		Dungeon::Player *player;
 		std::map<int,bool> dead_enemies;
+		std::map<int,bool> taken_keys;
 		long int current_frame;
 		int framerate;
 		bool pause;
@@ -55,6 +57,8 @@ class Game {
 		sf::Text *default_text;	
 		sf::Vector2i mouse_pos;
 		sf::Sprite heart_sprite;
+		sf::Sprite heart_sprite_empty;
+		sf::Sprite key_sprite;
 		sf::FloatRect window_bound;
 
 		int sprite_size;
