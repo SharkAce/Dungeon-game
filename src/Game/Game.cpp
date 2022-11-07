@@ -40,7 +40,7 @@ Game::Game(bool is_fullscreen) {
 	this->heart_sprite_empty.scale(2.5,2.5);
 
 	this->key_sprite.setTexture(this->sprite_sheet);
-	this->key_sprite.setTextureRect(sf::IntRect(32,257,16,15));
+	this->key_sprite.setTextureRect(sf::IntRect(32,257,16,14));
 	this->key_sprite.scale(2.5,2.5);
 
 	//Generate seed for rand()
