@@ -139,9 +139,19 @@ level->enemy_list.push_back(new Skeleton(game_ptr,sf::Vector2<float>(18*48,4*48)
 level->enemy_list.push_back(new Skeleton(game_ptr,sf::Vector2<float>(22*48,4*48),343));
 level->enemy_list.push_back(new Armored_Zombie(game_ptr,sf::Vector2<float>(16*48,9*48),344));
 level->enemy_list.push_back(new Armored_Zombie(game_ptr,sf::Vector2<float>(20*48,13*48),345));
-//level->finish_rect_list.push_back(FinishRect('t',&World1::level5C));
+level->finish_rect_list.push_back(FinishRect('t',&World1::level3E));
 level->finish_rect_list.push_back(FinishRect('l',&World1::level2D));
 level->finish_rect_list.push_back(FinishRect('b',&World1::level3C));
+
+return level;
+};
+
+Level* World1::level3E(Game *game_ptr){
+
+Dungeon::Level* level = new Dungeon::Level(game_ptr);
+level->gate_level = true;
+level->parsePtltFile("res/level3E.ptlt");
+level->finish_rect_list.push_back(FinishRect('b',&World1::level3D));
 
 return level;
 };

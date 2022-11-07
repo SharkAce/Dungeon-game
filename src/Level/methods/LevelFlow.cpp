@@ -57,6 +57,20 @@ void Level::renderConsumableList(){
 	}
 };
 
+void Level::renderKeyCount(){
+	if (!this->gate_level) return;
+
+	sf::Text text = *this->parent_game->default_text;
+	text.setFont(*this->parent_game->secondary_font);
+	
+	this->parent_game->writeToScreen(
+			std::to_string(this->parent_game->player->key_count) + "|" + std::to_string(this->key_req),
+			this->parent_game->window->getSize().x/2.0f,
+			this->parent_game->window->getSize().y/6.0f,
+			text
+	);
+};
+
 void Level::updateFinishRects(){
 	for (int i=0; i<this->finish_rect_list.size(); i++){
 		FinishRect& finish_rect = this->finish_rect_list[i];
@@ -68,7 +82,13 @@ void Level::updateFinishRects(){
 			break;
 		}
 	}
+};
 
+void Level::renderLevel(){
+	this->renderBg();
+	this->renderConsumableList();
+	this->renderEnemyList();
+	this->renderKeyCount();
 };
 
 };

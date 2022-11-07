@@ -37,6 +37,12 @@ class Level {
 		int tiles_y;
 		int tile_px;
 		float sprite_scale;
+		
+		bool gate_level = false;
+		int key_req = 3;
+		std::vector<sf::Vector2<int>> door_tiles;
+		void updateDoor();
+		void renderKeyCount();
 
 		
 		std::vector<Enemy*> enemy_list;
@@ -51,6 +57,8 @@ class Level {
 
 		void enemiesSetSolidTilesSprites();
 		void updateFinishRects();
+
+		void renderLevel();
 
 		//std::vector<Game_obj> Game_obj_list;
 

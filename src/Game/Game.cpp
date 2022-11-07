@@ -15,9 +15,12 @@ Game::Game(bool is_fullscreen) {
 	//Font stuff
 	this->default_font = new sf::Font;
 	this->default_font->loadFromFile("res/ARCADECLASSIC.TTF");
+	this->secondary_font = new sf::Font;
+	this->secondary_font->loadFromFile("res/PressStart2P-vaV7.ttf");
 	this->default_text = new sf::Text;
-	this->default_text->setFont(*(this->default_font));
+	this->default_text->setFont(*default_font);
 	this->default_text->setFillColor(sf::Color::White);
+
 	
 	//Clock stuff
 	this->base_clock = new sf::Clock;
