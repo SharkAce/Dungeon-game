@@ -54,6 +54,7 @@ class Game {
 		sf::Texture sprite_sheet;
 		sf::Clock *base_clock;
 		sf::Font *default_font;
+		sf::Font *secondary_font;
 		sf::Text *default_text;	
 		sf::Vector2i mouse_pos;
 		sf::Sprite heart_sprite;
@@ -72,7 +73,7 @@ class Game {
 		static float degToRad(float degree);
 		static float radToDeg(float radian);
 
-		void writeToScreen(std::string text_to_print, float posX, float posY);
+		void writeToScreen(std::string text_to_print, float posX, float posY, sf::Text text);
 		sf::Vector2f getMirroredVector2(sf::Vector2f vec, sf::Vector2<bool> axis,bool center_offset);
 };
 

@@ -48,9 +48,7 @@ void Game::render() {
 	this->window->clear(sf::Color(96,8,64));
 	
 	// Render 
-	this->current_level->renderBg();
-	this->current_level->renderConsumableList();
-	this->current_level->renderEnemyList();
+	this->current_level->renderLevel();
 	this->player->render();
 
 	// Display framerate in top left corner
