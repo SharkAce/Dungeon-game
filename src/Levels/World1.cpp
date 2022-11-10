@@ -33,7 +33,7 @@ Level* World1::level1D(Game *game_ptr){
 
 Dungeon::Level* level = new Dungeon::Level(game_ptr);
 level->parsePtltFile("res/level1D.ptlt");
-level->consumable_list.push_back(Key(game_ptr, sf::Vector2<float>(20*48,12*48),1));
+level->consumable_list.push_back(Key(game_ptr, sf::Vector2<float>(20*48,9*48),1));
 level->finish_rect_list.push_back(FinishRect('r',&World1::level2D));
 
 return level;
@@ -134,7 +134,7 @@ Level* World1::level3D(Game *game_ptr){
 
 Dungeon::Level* level = new Dungeon::Level(game_ptr);
 level->parsePtltFile("res/level3D.ptlt");
-level->enemy_list.push_back(new Sorcerer(game_ptr,sf::Vector2<float>(20*48,4*48),341));
+level->enemy_list.push_back(new Sorcerer(game_ptr,sf::Vector2<float>(20*48,3*48),341));
 level->enemy_list.push_back(new Skeleton(game_ptr,sf::Vector2<float>(18*48,4*48),342));
 level->enemy_list.push_back(new Skeleton(game_ptr,sf::Vector2<float>(22*48,4*48),343));
 level->enemy_list.push_back(new Armored_Zombie(game_ptr,sf::Vector2<float>(16*48,9*48),344));
@@ -152,6 +152,18 @@ Dungeon::Level* level = new Dungeon::Level(game_ptr);
 level->gate_level = true;
 level->parsePtltFile("res/level3E.ptlt");
 level->finish_rect_list.push_back(FinishRect('b',&World1::level3D));
+
+level->gate_area = sf::Rect<float>(0,0,23*48,6*48);
+level->gate_finish_rect = new FinishRect(sf::FloatRect(0,0,48*40,2.5*48),sf::Vector2<bool>(false,true),&World1::level3F);
+level->door_position = sf::Vector2<int>(19,0);
+
+return level;
+};
+
+Level* World1::level3F(Game *game_ptr){
+
+Dungeon::Level* level = new Dungeon::Level(game_ptr);
+level->parsePtltFile("res/level3F.ptlt");
 
 return level;
 };
@@ -188,7 +200,7 @@ Level* World1::level5C(Game *game_ptr){
 
 Dungeon::Level* level = new Dungeon::Level(game_ptr);
 level->parsePtltFile("res/level5C.ptlt");
-level->consumable_list.push_back(Key(game_ptr, sf::Vector2<float>(20*48,12*48),3));
+level->consumable_list.push_back(Key(game_ptr, sf::Vector2<float>(20*48,9*48),3));
 level->finish_rect_list.push_back(FinishRect('l',&World1::level4C));
 
 return level;

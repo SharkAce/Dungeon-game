@@ -39,8 +39,12 @@ class Level {
 		float sprite_scale;
 		
 		bool gate_level = false;
+		bool gate_is_open = false;
 		int key_req = 3;
-		std::vector<sf::Vector2<int>> door_tiles;
+		sf::Sprite* door_sprite;
+		sf::Rect<float> gate_area;
+		FinishRect* gate_finish_rect;
+		sf::Vector2<int> door_position;
 		void updateDoor();
 		void renderKeyCount();
 
