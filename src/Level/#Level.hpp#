@@ -21,7 +21,7 @@ class FinishRect;
 
 class Level {
 	public:
-		Level(Game *parent_game);
+  Level(Game *parent_game);
 		virtual ~Level();
 		std::vector<Tile> bg_tiles;
 		std::vector<Tile> fg_tiles;

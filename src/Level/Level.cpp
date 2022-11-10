@@ -28,6 +28,7 @@ Level::~Level(){
 		}
 		delete this->enemy_list[i];
 	}
+	if (this->gate_level) delete this->gate_finish_rect;
 };
 
 

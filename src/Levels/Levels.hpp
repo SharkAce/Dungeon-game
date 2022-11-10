@@ -39,6 +39,7 @@ A   k s
 	static Level *level3C(Game *game_ptr);
 	static Level *level3D(Game *game_ptr);
 	static Level *level3E(Game *game_ptr);
+	static Level *level3F(Game *game_ptr);
 	static Level *level4B(Game *game_ptr);
 	static Level *level4C(Game *game_ptr);
 	static Level *level5C(Game *game_ptr);

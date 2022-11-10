@@ -27,6 +27,11 @@ Player::Player(Game *parent_game): Dungeon::Entity(parent_game) {
 
 
 void Player::update() {
+	if (this->direction.x < 0){
+		this->sprite.setScale(this->scale*-1,this->scale);
+	} else if (this->direction.x > 0){
+		this->sprite.setScale(this->scale,this->scale);
+	};
 	this->handleEnemyCollision();
 	this->handleConsumableCollision();
 	this->setPlayerMouseAngle();

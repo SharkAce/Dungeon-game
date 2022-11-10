@@ -41,6 +41,9 @@ void Game::update() {
 	//Consumable update
 	this->current_level->updateConsumableList();
 
+	//Gate update
+	this->current_level->updateDoor();
+
 };
 
 void Game::render() {

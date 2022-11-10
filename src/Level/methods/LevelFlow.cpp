@@ -13,13 +13,15 @@ void Level::renderBg() {
 	for (int i = 0; i < (int)(fg_tiles.size()); i++){
 		this->fg_tiles[i].render();
 	}	
+	
+	if (gate_is_open) this->parent_game->window->draw(*this->door_sprite);
 };
 
 void Level::updateEnemyList(){
 	for (int i=0; i<this->enemy_list.size(); i++){
 		if (this->enemy_list[i]->is_dead){
 			//dorp potion a third of the time
-			if (std::rand()%6 == 0 && this->enemy_list[i]->drops_potions){
+			if (std::rand()%4 == 0 && this->enemy_list[i]->drops_potions){
 				this->consumable_list.push_back(Potion(this->parent_game, this->enemy_list[i]->position));
 			}
 			this->parent_game->dead_enemies[this->enemy_list[i]->id] = true;
@@ -58,7 +60,7 @@ void Level::renderConsumableList(){
 };
 
 void Level::renderKeyCount(){
-	if (!this->gate_level) return;
+	if (!this->gate_level || this->parent_game->player->key_count == -1) return;
 
 	sf::Text text = *this->parent_game->default_text;
 	text.setFont(*this->parent_game->secondary_font);
@@ -70,6 +72,28 @@ void Level::renderKeyCount(){
 			text
 	);
 };
+
+void Level::updateDoor(){
+	if (!this->gate_level || this->gate_is_open) return;
+
+	if ((this->parent_game->player->key_count == this->key_req &&
+			this->parent_game->player->sprite.getGlobalBounds().intersects(this->gate_area)) || 
+			this->parent_game->player->key_count == -1
+			){
+		this->gate_is_open = true;
+		this->parent_game->player->key_count = -1;
+		//create Open Door Sprite
+		sf::Sprite* sprite = new sf::Sprite(this->parent_game->sprite_sheet);
+		sprite->setTextureRect(sf::Rect<int>(160,112,32,32));
+		sprite->setScale(3.f,3.f);
+		sprite->setPosition(this->door_position.x*48, this->door_position.y*48);
+		this->door_sprite = sprite;
+
+		//add FinishRect
+		this->finish_rect_list.push_back(*this->gate_finish_rect);
+
+	}
+}
 
 void Level::updateFinishRects(){
 	for (int i=0; i<this->finish_rect_list.size(); i++){
