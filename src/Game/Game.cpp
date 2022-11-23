@@ -21,6 +21,13 @@ Game::Game(bool is_fullscreen) {
 	this->default_text->setFont(*default_font);
 	this->default_text->setFillColor(sf::Color::White);
 
+	//Audio stuff
+	this->sfx_sound_buffer = new sf::SoundBuffer();
+	this->sfx_sound_buffer->loadFromFile("res/sfx.wav");
+	this->sfx_sound = new sf::Sound(*this->sfx_sound_buffer);
+	this->sfx_sound->setVolume(10.f);
+	this->makeSfxSoundDelta();
+
 	
 	//Clock stuff
 	this->base_clock = new sf::Clock;
@@ -54,6 +61,8 @@ Game::~Game() {
 	delete this->base_clock;
 	delete this->default_font;
 	delete this->current_level;
+	delete this->sfx_sound;
+	delete this->sfx_sound_buffer;
 };
 
 };

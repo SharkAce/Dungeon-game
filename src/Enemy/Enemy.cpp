@@ -27,6 +27,7 @@ void Enemy::hit(int angle, float force, float damage){
 	this->startKnockback(angle, force);
 	this->is_hit = true;
 	this->sprite.setColor(sf::Color::Red);
+	this->parent_game->startSfx("Hit1");
 };
 
 void Enemy::update(){
