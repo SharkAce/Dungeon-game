@@ -10,10 +10,14 @@ OPTIONS := -Wall -O3
 SOURCE := $(shell find src -name '*.cpp')
 OBJECTS := $(SOURCE:.cpp=.o)
 
-all: $(BUILD_DIR)/$(EXEC)
+all: clean
+	$(CC) $(SOURCE) -o $(BUILD_DIR)/$(EXEC) $(LIBRARIES)
 
 vbuild: $(OBJECTS) $(BUILD_DIR)/$(EXEC)
 	$(CC) $(OPTIONS) --verbose -o $(BUILD_DIR)/$(EXEC) $(OBJECTS) $(LIBRARIES)
+
+# fastbuild can cause wierd issues after modifing header files
+fastbuild: $(BUILD_DIR)/$(EXEC)
 
 $(BUILD_DIR)/$(EXEC): $(OBJECTS)
 	$(CC) $(OPTIONS) -o $@ $^ $(LIBRARIES)
