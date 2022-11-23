@@ -19,6 +19,7 @@ void Item::initAttack(){
 	this->attack_frame = 0;
 	this->charge = 0;
 	this->initAttackCooldown();
+	this->parent_game->startSfx("SwordSwing");
 };
 
 void Item::initAttackCooldown(){

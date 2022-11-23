@@ -114,6 +114,8 @@ level->finish_rect_list.push_back(FinishRect('b',&World1::level3A));
 level->finish_rect_list.push_back(FinishRect('r',&World1::level4B));
 level->finish_rect_list.push_back(FinishRect('l',&World1::level2B));
 
+if (game_ptr->background_music->getStatus() != sf::Music::Status::Playing)
+	game_ptr->background_music->play();
 return level;
 };
 

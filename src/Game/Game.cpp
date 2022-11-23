@@ -26,7 +26,12 @@ Game::Game(bool is_fullscreen) {
 	this->sfx_sound_buffer->loadFromFile("res/sfx.wav");
 	this->sfx_sound = new sf::Sound(*this->sfx_sound_buffer);
 	this->sfx_sound->setVolume(10.f);
-	this->makeSfxSoundDelta();
+	this->makeSfxSoundMap();
+
+	this->background_music = new sf::Music();
+	this->background_music->openFromFile("res/033253562-dungeon.wav");
+	this->background_music->setLoopPoints(sf::Music::TimeSpan(sf::Time::Zero,this->background_music->getDuration()));
+	this->background_music->setLoop(true);
 
 	
 	//Clock stuff
@@ -63,6 +68,7 @@ Game::~Game() {
 	delete this->current_level;
 	delete this->sfx_sound;
 	delete this->sfx_sound_buffer;
+	delete this->background_music;
 };
 
 };

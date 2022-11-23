@@ -62,17 +62,32 @@ class Game {
 		sf::Font *secondary_font;
 		sf::Text *default_text;	
 		
-		
 		sf::Sprite heart_sprite;
 		sf::Sprite heart_sprite_empty;
 		sf::Sprite key_sprite;
-		
+
+		sf::Music *background_music;
+		void updateBackgroundMusic();
 		
 		sf::SoundBuffer *sfx_sound_buffer;
 		sf::Sound *sfx_sound;
-		std::map<std::string, sf::Vector2<int>> sfx_sound_delta;
+		sf::Sound *sfx_sound_fg;
+
+		struct sfx_instance {
+			sfx_instance(int a, int b, float volume){
+				this->a = a;
+				this->b = b;
+				this->volume = volume;
+			}
+			int a;
+			int b;
+			float volume;
+		};
+
+		std::map<std::string, sfx_instance> sfx_sound_map;
 		std::string current_sfx;
-		void makeSfxSoundDelta();
+		std::string current_sfx_fg;
+		void makeSfxSoundMap();
 
 		void startSfx(std::string sound_name);
 		void updateSfx();
