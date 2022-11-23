@@ -3,7 +3,7 @@ CC := g++
 EXEC := debug
 BUILD_DIR := build
 
-LIBRARIES := -lsfml-graphics -lsfml-window -lsfml-system
+LIBRARIES := -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
 OPTIONS := -Wall -O3
 

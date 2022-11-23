@@ -17,6 +17,7 @@ Item::Item(
 	this->frame_per_attack = 11;
 	this->attack_frame = 0;
 	this->is_attacking = false;
+	this->can_attack = true;
 	this->make_sprite();
 };
 

@@ -6,6 +6,7 @@
 #include <SFML/System/Vector2.hpp>
 #include <string>
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <map>
 #include <cstdlib>
 #include <time.h>
@@ -52,15 +53,29 @@ class Game {
 
 		sf::RenderWindow *window;
 		sf::Texture sprite_sheet;
+		sf::FloatRect window_bound;
+		
 		sf::Clock *base_clock;
+		sf::Vector2i mouse_pos;
+		
 		sf::Font *default_font;
 		sf::Font *secondary_font;
 		sf::Text *default_text;	
-		sf::Vector2i mouse_pos;
+		
+		
 		sf::Sprite heart_sprite;
 		sf::Sprite heart_sprite_empty;
 		sf::Sprite key_sprite;
-		sf::FloatRect window_bound;
+		
+		
+		sf::SoundBuffer *sfx_sound_buffer;
+		sf::Sound *sfx_sound;
+		std::map<std::string, sf::Vector2<int>> sfx_sound_delta;
+		std::string current_sfx;
+		void makeSfxSoundDelta();
+
+		void startSfx(std::string sound_name);
+		void updateSfx();
 
 		int sprite_size;
 

@@ -103,6 +103,18 @@ class SmallFire: public Enemy {
 
 		void update() override;
 };
+
+class BossZombie: public Enemy {
+	public:
+		BossZombie(Game* parent_game, sf::Vector2<float> start_position, int id);
+
+		int attack_type;
+		float dash_angle;
+
+		void update() override;
+		void renderHealthBar();
+};
+
 };
 
 

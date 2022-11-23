@@ -18,6 +18,9 @@ void Game::update() {
 	// Events
 	this->pollEvents();
 
+	// Update sfx
+	this->updateSfx();
+
 	//set mouse position
 	mouse_pos = sf::Mouse::getPosition(*(this->window));
 
