@@ -60,6 +60,7 @@ void Player::hit(int angle, float force){
 			if (this->kb_last_frame == 0) this->current_hp -= 1;
 			this->startKnockback(angle,force);
 			this->sprite.setColor(sf::Color::Red);
+			this->parent_game->startSfx("Hit2");
 }
 
 void Player::handleConsumableCollision(){
@@ -70,10 +71,12 @@ void Player::handleConsumableCollision(){
 			if (consumable.name == "potion" && this-> current_hp < this->max_hp){
 				this->current_hp ++;
 				consumable.end_of_life = true;
+				this->parent_game->startSfx("PotionPickup");
 			} else if (consumable.name == "key"){
 				this->key_count ++;
 				consumable.end_of_life = true;
 				this->parent_game->taken_keys[consumable.id] = true;
+				this->parent_game->startSfx("KeyPickup");
 			}
 		}
 	}

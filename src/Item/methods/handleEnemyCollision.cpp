@@ -27,6 +27,7 @@ void Item::handleEnemyCollision(){
 
 				if (ptile.sprite.getGlobalBounds().intersects(this->sprite.getGlobalBounds())){
 					ptile.end_of_life = true;
+					this->parent_game->startSfx("FireBusrt");
 				}
 			}
 		}
