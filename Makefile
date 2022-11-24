@@ -7,32 +7,27 @@ LIBRARIES := -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
 OPTIONS := -Wall -O3
 
-SOURCE := $(shell find src -name '*.cpp')
-OBJECTS := $(SOURCE:.cpp=.o)
+SOURCES := $(shell find src -name '*.cpp')
+OBJECTS := $(SOURCES:.cpp=.o)
+DEPENDS := $(SOURCES:.cpp=.d)
 
-all: clean
-	$(CC) $(SOURCE) -o $(BUILD_DIR)/$(EXEC) $(LIBRARIES)
+.PHONY: all clean
 
-vbuild: $(OBJECTS) $(BUILD_DIR)/$(EXEC)
-	$(CC) $(OPTIONS) --verbose -o $(BUILD_DIR)/$(EXEC) $(OBJECTS) $(LIBRARIES)
-
-# fastbuild can cause wierd issues after modifing header files
-fastbuild: $(BUILD_DIR)/$(EXEC)
+all: $(BUILD_DIR)/$(EXEC)
 
 $(BUILD_DIR)/$(EXEC): $(OBJECTS)
-	$(CC) $(OPTIONS) -o $@ $^ $(LIBRARIES)
+	@mkdir -p $(BUILD_DIR)
+	$(CC) $(OPTIONS) $^ -o $@ $(LIBRARIES)
 
-$(OBJECTS): | $(BUILD_DIR)
+-include $(DEPENDS)
 
-$(BUILD_DIR):
-	mkdir build
-
-$(OBJECTS): %.o : %.cpp
-	$(CC) -o $@ -c $<	
+%.o : %.cpp Makefile
+	$(CC) -MMD -MP -c $< -o $@	
 
 clean:
 	rm -f $(BUILD_DIR)/$(EXEC)
 	rm -f $(OBJECTS)
+	rm -f $(DEPENDS)
 
 # Run in Fullscreen
 run:

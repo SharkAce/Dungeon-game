@@ -1,7 +1,6 @@
 #include "../Game.hpp"
 #include <SFML/Graphics/Rect.hpp>
 
-#include <iostream>
 
 namespace Dungeon {
 

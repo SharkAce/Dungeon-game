@@ -5,6 +5,7 @@
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/System/Vector2.hpp>
 #include <string>
+#include <sstream>
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <map>
@@ -13,7 +14,7 @@
 
 #include "../Player/Player.hpp"
 #include "../Level/Level.hpp"
-#include "../Levels//Levels.hpp"
+#include "../Levels/Levels.hpp"
 
 namespace Dungeon {
 
@@ -33,6 +34,7 @@ class Game {
 		void drawKeys();
 		void drawGameOver();
 		void drawHelpMenu();
+		void drawWinScreen();
 
 		void deleteDeadEnemies(std::vector<Enemy*> *enemy_list);
 
@@ -47,6 +49,7 @@ class Game {
 		std::map<int,bool> taken_keys;
 		long int current_frame;
 		int framerate;
+		float time_unit;
 		bool pause;
 		bool game_over;
 		bool help_menu;
@@ -56,6 +59,8 @@ class Game {
 		sf::FloatRect window_bound;
 		
 		sf::Clock *base_clock;
+		sf::Clock *game_clock;
+		float game_time;
 		sf::Vector2i mouse_pos;
 		
 		sf::Font *default_font;
@@ -68,6 +73,7 @@ class Game {
 
 		sf::Music *background_music;
 		void updateBackgroundMusic();
+		
 		
 		sf::SoundBuffer *sfx_sound_buffer;
 		sf::Sound *sfx_sound;
@@ -99,12 +105,15 @@ class Game {
 		void render();
 		void update();
 		void restart();
+		bool win_state;
+		void activateWinState();
 
 		static float degToRad(float degree);
 		static float radToDeg(float radian);
 
 		void writeToScreen(std::string text_to_print, float posX, float posY, sf::Text text);
 		sf::Vector2f getMirroredVector2(sf::Vector2f vec, sf::Vector2<bool> axis,bool center_offset);
+
 };
 
 };

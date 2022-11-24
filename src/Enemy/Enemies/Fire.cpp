@@ -3,7 +3,9 @@
 
 namespace Dungeon {
 
-BigFire::BigFire(Game* parent_game, sf::Vector2<float> start_position, int id): Dungeon::Enemy(parent_game, start_position, id) {
+BigFire::BigFire(Game* parent_game, sf::Vector2<float> start_position, int id): 
+	Dungeon::Enemy(parent_game, start_position, id), 
+	child_sw(20.f,parent_game,true){
 
 	this->scale = 3.0;
 	this->max_hp = 60;
@@ -17,24 +19,13 @@ BigFire::BigFire(Game* parent_game, sf::Vector2<float> start_position, int id): 
 	this->kb_force = 14.f;
 	this->has_projectiles = false;
 
-	this->child_cooldown = 20;
-	this->child_cooldown_current = 0;
-	this-> is_child_cooldown = false;
-
 	this->makeEntitySprite();
 
 };
 
 void BigFire::update(){
-	if (this->is_child_cooldown) {
-		this->child_cooldown_current ++;
-		if (this->child_cooldown_current >= this->child_cooldown){
-			this->is_child_cooldown = false;
-			child_cooldown_current = 0;
-		}
-	} else {
+	if (!this->child_sw.update()) {
 		this->parent_game->current_level->enemy_list.push_back(new SmallFire(this->parent_game, this->position, -1));
-		this->is_child_cooldown = true;
 	}
 
 	sf::Vector2f position = this->sprite.getPosition();

@@ -22,7 +22,9 @@ class Enemy: public Entity {
 		bool has_projectiles;
 		bool drops_potions;
 		bool is_invincible;
-		std::vector<Projectile*> projectiles	;
+		bool has_healthbar;
+		std::vector<Projectile*> projectiles;
+		void renderHealthBar();
 		void hit(int angle, float force, float damage);
 		virtual void update() override;
 		virtual void render() override;

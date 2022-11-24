@@ -3,7 +3,9 @@
 
 namespace Dungeon {
 
-BigSlime::BigSlime(Game* parent_game, sf::Vector2<float> start_position, int id): Dungeon::Enemy(parent_game, start_position, id) {
+BigSlime::BigSlime(Game* parent_game, sf::Vector2<float> start_position, int id): 
+	Dungeon::Enemy(parent_game, start_position, id),
+	child_sw(80,parent_game,true){
 
 	this->scale = 3.0;
 	this->max_hp = 60;
@@ -17,24 +19,15 @@ BigSlime::BigSlime(Game* parent_game, sf::Vector2<float> start_position, int id)
 	this->kb_force = 14.f;
 	this->has_projectiles = false;
 
-	this->child_cooldown = 80;
-	this->child_cooldown_current = 60;
-	this-> is_child_cooldown = true;
+	this->child_sw.current_time = 60.f;
 
 	this->makeEntitySprite();
 
 };
 
 void BigSlime::update(){
-	if (this->is_child_cooldown) {
-		this->child_cooldown_current ++;
-		if (this->child_cooldown_current >= this->child_cooldown){
-			this->is_child_cooldown = false;
-			child_cooldown_current = 0;
-		}
-	} else {
+	if (!this->child_sw.update()){
 		this->parent_game->current_level->enemy_list.push_back(new SmallSlime(this->parent_game, this->position, -1));
-		this->is_child_cooldown = true;
 	}
 	return;
 };
