@@ -3,6 +3,7 @@
 
 #include "../Enemy.hpp"
 #include "../../Projectile/Projectile.hpp"
+#include "../../Stopwatch/Stopwatch.hpp"
 #include <SFML/Graphics/Color.hpp>
 #include <SFML/System/Vector2.hpp>
 #include <vector>
@@ -31,11 +32,7 @@ class Sorcerer: public Enemy {
 
 		void update() override;
 		
-
-		int projectile_max_count;
-		int projectile_cooldown;
-		int projectile_cooldown_current;
-		bool is_projectile_cooldown;
+		Stopwatch projectile_sw;
 
 
 };
@@ -43,14 +40,10 @@ class Sorcerer: public Enemy {
 class Skeleton: public Enemy {
 	public:
 		Skeleton(Game* parent_game, sf::Vector2<float> start_position, int id);
-
-		void update() override;
 		
+		void update() override;
 
-		int projectile_max_count;
-		int projectile_cooldown;
-		int projectile_cooldown_current;
-		bool is_projectile_cooldown;
+		Stopwatch projectile_sw;
 
 };
 
@@ -69,10 +62,8 @@ class BigSlime: public Enemy {
 
 		void update() override;
 
-		int child_max_count;
-		int child_cooldown;
-		int child_cooldown_current;
-		bool is_child_cooldown;
+		Stopwatch child_sw;
+
 };
 
 class SmallSlime: public Enemy {
@@ -88,10 +79,7 @@ class BigFire: public Enemy {
 
 		void update() override;
 
-		int child_max_count;
-		int child_cooldown;
-		int child_cooldown_current;
-		bool is_child_cooldown;
+		Stopwatch child_sw;
 };
 
 class SmallFire: public Enemy {
@@ -108,11 +96,23 @@ class BossZombie: public Enemy {
 	public:
 		BossZombie(Game* parent_game, sf::Vector2<float> start_position, int id);
 
-		int attack_type;
+		sf::FloatRect destination_pt;
+
+		bool is_in_dash;
+
+		int movement_count;
+		int max_movement_count;
+
+		Stopwatch projectile_sw;
+		Stopwatch dash_charge_sw;
+
+		int dash_count;
+		int max_dash_count;
 		float dash_angle;
+		float dash_speed;
+
 
 		void update() override;
-		void renderHealthBar();
 };
 
 };

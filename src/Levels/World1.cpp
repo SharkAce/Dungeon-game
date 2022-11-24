@@ -166,6 +166,7 @@ Level* World1::level3F(Game *game_ptr){
 
 Dungeon::Level* level = new Dungeon::Level(game_ptr);
 level->parsePtltFile("res/level3F.ptlt");
+level->enemy_list.push_back(new BossZombie(game_ptr,sf::Vector2<float>(960,160),1101));
 
 return level;
 };

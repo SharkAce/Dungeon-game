@@ -19,6 +19,8 @@ namespace Dungeon {
 class Game;
 class FinishRect;
 
+
+
 class Level {
 	public:
 		Level(Game *parent_game);

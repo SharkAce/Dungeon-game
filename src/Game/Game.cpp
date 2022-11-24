@@ -18,8 +18,11 @@ Game::Game(bool is_fullscreen) {
 	this->secondary_font = new sf::Font;
 	this->secondary_font->loadFromFile("res/PressStart2P-vaV7.ttf");
 	this->default_text = new sf::Text;
-	this->default_text->setFont(*default_font);
+	this->default_text->setFont(*secondary_font);
 	this->default_text->setFillColor(sf::Color::White);
+	this->default_text->setCharacterSize(20);
+	this->default_text->setLetterSpacing(0.8);
+	this->default_text->setLineSpacing(1.4);
 
 	//Audio stuff
 	this->sfx_sound_buffer = new sf::SoundBuffer();
@@ -36,11 +39,15 @@ Game::Game(bool is_fullscreen) {
 	
 	//Clock stuff
 	this->base_clock = new sf::Clock;
+	this->game_clock = new sf::Clock;
+	this->game_clock->restart();
 	this->current_frame = 1;
+	this->time_unit = 1;
 
 	this->pause = false;
 	this->game_over = false;
 	this->help_menu = true;
+	this->win_state = false;
 	
 	//Hud sprites
 	this->heart_sprite.setTexture(this->sprite_sheet);

@@ -4,6 +4,7 @@
 #include <SFML/System/Vector2.hpp>
 #include <SFML/Window.hpp>
 #include "../Entity/Entity.hpp"
+#include "../Stopwatch/Stopwatch.hpp"
 #include <math.h>
 
 namespace Dungeon {
@@ -31,18 +32,12 @@ public:
 	void setItemPosition();
 	void setItemAngle();
 
-	bool is_attacking;
-	bool can_attack;
+	Stopwatch cooldown_sw;
+	Stopwatch attack_sw;
 	float angle;
 	int charge;
-	int attack_frame;
-	int cooldown_frame;
-	int frame_per_attack;
 	float damage;
 	void initAttack();
-	void initAttackCooldown();
-	void updateCooldown();
-	void updateAttackFrame();
 	void handleEnemyCollision();
 };
 

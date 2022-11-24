@@ -11,8 +11,8 @@ void Item::render() {
 
 void Item::update() {
 
-	this->updateCooldown();
-	this->updateAttackFrame();
+	this->cooldown_sw.update();
+	this->attack_sw.update();
 	this->handleEnemyCollision();
 	this->setItemAngle();
 	this->setItemPosition();

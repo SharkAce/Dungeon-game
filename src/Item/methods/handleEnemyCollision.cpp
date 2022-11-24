@@ -9,7 +9,7 @@ namespace Dungeon {
 namespace Items {
 
 void Item::handleEnemyCollision(){
-	if (!(this->is_attacking)) return;
+	if (this->attack_sw.is_stop) return;
 
 	for (int i=0; i<this->parent_game->current_level->enemy_list.size(); i++){
 		Enemy& enemy = *this->parent_game->current_level->enemy_list[i];

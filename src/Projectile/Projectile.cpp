@@ -40,7 +40,7 @@ void Projectile::update(){
 	} else {
 
 	
-		this->sprite.move(this->direction);
+		this->sprite.move(this->direction*this->parent_game->time_unit);
 		this->position = this->sprite.getPosition();
 	}
 

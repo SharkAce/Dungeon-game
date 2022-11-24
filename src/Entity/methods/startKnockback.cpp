@@ -3,8 +3,9 @@
 namespace Dungeon {
 
 void Entity::startKnockback(int angle, float force){
-	  this->kb_current_frame = 0; 
-    this->kb_last_frame = force;
+		
+		this->kb_stopwatch.is_stop = false;
+		this->kb_stopwatch.stop_time = force;
     this->kb_angle = angle;
 };
 

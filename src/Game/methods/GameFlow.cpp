@@ -9,8 +9,12 @@ bool Game::isOpen() {
 void Game::update() {
 
 	// Clock things
-	if (this->current_frame % 20 == 0)
-		this->framerate = 1.f / this->base_clock->getElapsedTime().asSeconds();
+	if (this->current_frame % 20 == 0){
+		float time = this->base_clock->getElapsedTime().asSeconds();
+		this->framerate = 1.f / time;
+		this->time_unit = time * 60;
+
+	}
 	
 	this->base_clock->restart();
 	this->current_frame ++;
@@ -59,6 +63,9 @@ void Game::render() {
 
 	// Display framerate in top left corner
 	this->drawFramerate();
+
+	// Displat win screen
+	if (this->win_state) this->drawWinScreen();
 
 	// Display pause message
 	if (this->pause && !game_over) this->drawPause();

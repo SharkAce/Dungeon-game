@@ -5,6 +5,7 @@
 #include <SFML/Graphics/Rect.hpp>
 #include <SFML/System/Vector2.hpp>
 #include <math.h>
+#include "../Stopwatch/Stopwatch.hpp"
 
 namespace Dungeon {
 
@@ -42,8 +43,7 @@ class Entity {
 		int px_width;
 		float scale;
 		float speed;
-		int kb_current_frame;
-		int kb_last_frame;
+		Stopwatch kb_stopwatch;
 		float kb_angle;
 		sf::Vector2f direction;
 		sf::Vector2f position;

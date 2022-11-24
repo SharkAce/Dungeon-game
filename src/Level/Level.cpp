@@ -6,7 +6,6 @@
 #include <vector>
 
 
-#include <iostream>
 namespace Dungeon {
 
 Level::Level(Game *parent_game) {

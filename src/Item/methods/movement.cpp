@@ -12,7 +12,7 @@ void Item::setItemPosition(){
 
 	float player_mouse_angle = this->parent->player_mouse_angle - 95.f;
 
-	if (this->is_attacking) player_mouse_angle += (this->attack_frame*8);
+	if (!this->attack_sw.is_stop) player_mouse_angle += (this->attack_sw.current_time*8);
 
 	float x_offset = 55 * std::sin(Game::degToRad(player_mouse_angle));
 	float y_offset = 55 * std::cos(Game::degToRad(player_mouse_angle))*-1;
@@ -23,8 +23,8 @@ void Item::setItemPosition(){
 void Item::setItemAngle(){
 	this->angle = this->parent->player_mouse_angle - 120 - 90;
 
-	if (this->is_attacking){
-		this->sprite.setRotation(this->angle+(this->attack_frame*15));	
+	if (!this->attack_sw.is_stop){
+		this->sprite.setRotation(this->angle+(this->attack_sw.current_time*15));	
 	} else {
 		this->sprite.setRotation(this->angle);
 	}

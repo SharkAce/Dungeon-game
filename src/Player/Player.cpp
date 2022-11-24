@@ -1,6 +1,5 @@
 #include "Player.hpp"
 #include "../Game/Game.hpp"
-#include <iostream>
 
 namespace Dungeon {
 
@@ -27,6 +26,7 @@ Player::Player(Game *parent_game): Dungeon::Entity(parent_game) {
 
 
 void Player::update() {
+
 	if (this->direction.x < 0){
 		this->sprite.setScale(this->scale*-1,this->scale);
 	} else if (this->direction.x > 0){
@@ -57,7 +57,7 @@ void Player::setPlayerMouseAngle(){
 }; 
 
 void Player::hit(int angle, float force){
-			if (this->kb_last_frame == 0) this->current_hp -= 1;
+			if (this->kb_stopwatch.is_stop) this->current_hp -= 1;
 			this->startKnockback(angle,force);
 			this->sprite.setColor(sf::Color::Red);
 			this->parent_game->startSfx("Hit2");
