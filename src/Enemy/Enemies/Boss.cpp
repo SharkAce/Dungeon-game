@@ -6,7 +6,7 @@ namespace Dungeon {
 BossZombie::BossZombie(Game* parent_game, sf::Vector2<float> start_position, int id): 
 	Dungeon::Enemy(parent_game, start_position, id),
 	projectile_sw(30.f, parent_game, true),
-	dash_charge_sw(120.f, parent_game, false){
+	dash_charge_sw(80.f, parent_game, false){
 
 	this->scale = 3.0;
 	this->max_hp = 600;
@@ -100,7 +100,7 @@ void BossZombie::update(){
 	else {
 		if (!this->dash_charge_sw.is_stop){
 			if (this->dash_charge_sw.update()){
-				//jiggle
+				this->direction.x += ((float)((int)(this->dash_charge_sw.current_time/3.f) % 2)-0.5)*4.f;
 			} else {
 				this->dash_angle = Game::radToDeg(atan2(
 					this->parent_game->player->position.y - this->position.y, 
