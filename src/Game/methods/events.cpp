@@ -53,7 +53,7 @@ void Game::handleKeyPress() {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
 		this->player->direction.x += speed;
 	}
-	//slow when in diagnal
+	//slow when in diagonal
 	if (
 		this->player->direction.x != 0.f &&
 		this->player->direction.y != 0.f 

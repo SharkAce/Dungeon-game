@@ -12,6 +12,7 @@ int main(int argc, char *argv[])
 
 	// Main loop
 	while(game.isOpen()){
+		/* ./Game/methods/GameFlow.cpp */
 		game.update();
 		game.render();
 	}

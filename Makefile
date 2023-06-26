@@ -11,7 +11,7 @@ SOURCES := $(shell find src -name '*.cpp')
 OBJECTS := $(SOURCES:.cpp=.o)
 DEPENDS := $(SOURCES:.cpp=.d)
 
-.PHONY: all clean
+.PHONY: all clean audio
 
 all: $(BUILD_DIR)/$(EXEC)
 
@@ -28,6 +28,14 @@ clean:
 	rm -f $(BUILD_DIR)/$(EXEC)
 	rm -f $(OBJECTS)
 	rm -f $(DEPENDS)
+
+audio:
+	rm -f res/sfx.wav
+	find res/sfx/* | sed "s/.*/file \'&\'/" > audiolist
+	ffmpeg -f concat -safe 0 -i audiolist -c copy res/sfx.wav
+	@rm audiolist
+
+
 
 # Run in Fullscreen
 run:
