@@ -26,6 +26,7 @@ BigSlime::BigSlime(Game* parent_game, sf::Vector2<float> start_position, int id)
 };
 
 void BigSlime::update(){
+	if (this->is_hit) this->child_sw.current_time = 0.f;
 	if (!this->child_sw.update()){
 		this->parent_game->current_level->enemy_list.push_back(new SmallSlime(this->parent_game, this->position, -1));
 	}

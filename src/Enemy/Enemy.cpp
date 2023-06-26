@@ -46,7 +46,6 @@ void Enemy::renderHealthBar(){
 void Enemy::update(){
 	if (this->current_hp <= 0) this->is_dead = true;
 	if (this->sprite.getColor() == sf::Color::White) this->is_hit = false;
-
 	if (this->has_projectiles){
 		for (int i=0; i<this->projectiles.size(); i++){
 			if (this->projectiles[i]->end_of_life) {

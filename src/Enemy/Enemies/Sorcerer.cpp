@@ -27,6 +27,7 @@ Sorcerer::Sorcerer(Game* parent_game, sf::Vector2<float> start_position, int id)
 };
 
 void Sorcerer::update(){
+	if (this->is_hit) this->projectile_sw.current_time = 0.f;
 	if (!this->projectile_sw.update()){
 		sf::Rect<int>	sprite_rect;
 		sprite_rect.top = 245;
