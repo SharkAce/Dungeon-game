@@ -30,9 +30,10 @@ clean:
 	rm -f $(DEPENDS)
 
 audio:
+	rm -f res/sfx.wav
 	find res/sfx/* | sed "s/.*/file \'&\'/" > audiolist
 	ffmpeg -f concat -safe 0 -i audiolist -c copy res/sfx.wav
-	rm audiolist
+	@rm audiolist
 
 
 
