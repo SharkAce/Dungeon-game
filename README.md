@@ -6,11 +6,9 @@ g++\
 Make\
 Sfml
 
-## Screenshots
+## Screenshot
 
-![Death screen](https://github.com/SharkAce/Dungeon-game/blob/main/screenshots/2024-06-12_16.png?raw=true)
 ![Tutorial screen](https://github.com/SharkAce/Dungeon-game/blob/main/screenshots/2024-06-12_18.png?raw=true)
-![End screen](https://github.com/SharkAce/Dungeon-game/blob/main/screenshots/2024-06-12_18-2.png?raw=true)
 
 ## Credit
 Sprites : https://0x72.itch.io/16x16-dungeon-tileset \
