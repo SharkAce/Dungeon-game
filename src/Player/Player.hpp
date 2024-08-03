@@ -19,6 +19,7 @@ class Player: public Entity {
 		Dungeon::Items::Item *weapon;
 		void sword_attack();
 		void handleEnemyCollision();
+		void handleConsumableCollision();
 		void setEnemyList();
 		void setPlayerMouseAngle();
 
@@ -28,6 +29,7 @@ class Player: public Entity {
 
 		int max_hp;
 		int current_hp;
+		int key_count;
 		int damage;	
 		float player_mouse_angle;
 		

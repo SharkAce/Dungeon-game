@@ -6,17 +6,17 @@ namespace Dungeon {
 namespace Items {
 
 Item::Item(
-	Dungeon::Player *parent
-) : Dungeon::Entity(parent->parent_game){
+	Dungeon::Player *parent): 
+		cooldown_sw(16.f, parent->parent_game, false), 
+		attack_sw(11.f, parent->parent_game, false),
+		Dungeon::Entity(parent->parent_game){
+
 	this->window = parent->window;
 	this->sheet = parent->texture;
 	this->parent = parent;
 	this->parent_game = parent->parent_game;
 	this->scale = 3.f;
 	this->damage = 34.f;
-	this->frame_per_attack = 11;
-	this->attack_frame = 0;
-	this->is_attacking = false;
 	this->make_sprite();
 };
 

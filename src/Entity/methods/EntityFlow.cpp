@@ -5,26 +5,27 @@
 namespace Dungeon {
 
 void Entity::update() {
-	if (this->kb_last_frame!=0) {
-		this->kb_current_frame ++;
-		
-		if (this->kb_last_frame == this->kb_current_frame){
+
+	if (!this->kb_stopwatch.is_stop){
+		if (this->kb_stopwatch.update()){
+			this->applyKnockback();
+		} else {
 			this->direction.x = 0;
 			this->direction.y = 0;
 			this->sprite.setColor(sf::Color::White);
 		}
 	}
 
-	if (this->kb_current_frame < this->kb_last_frame){
-		this->applyKnockback();
-	} else this->kb_last_frame = 0;
-
 	sf::Vector2<bool> wall_collisions = wallCollisionCheck();
 
-	if (wall_collisions.x) this->direction.x = 0;
-	if (wall_collisions.y) this->direction.y = 0;
+	if (this->has_collisions){
+		if (wall_collisions.x) this->direction.x = 0;
+		if (wall_collisions.y) this->direction.y = 0;
+	}
 
 
+	this->direction.x *= this->parent_game->time_unit;
+	this->direction.y *= this->parent_game->time_unit;
 	this->sprite.move(this->direction);
 
 	

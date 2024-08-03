@@ -14,7 +14,7 @@ void Game::initWindow(bool is_fullscreen) {
 		is_fullscreen ? sf::Style::Fullscreen : sf::Style::None
 	);
 
-	this->window->setFramerateLimit(60);
+	this->window->setFramerateLimit(144);
 
 	this->window_bound = sf::FloatRect(0.f,0.f,this->window->getSize().x,this->window->getSize().y);
 };

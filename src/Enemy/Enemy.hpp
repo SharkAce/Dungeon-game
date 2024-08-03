@@ -2,27 +2,32 @@
 #define ENEMY_H
 
 #include "../Entity/Entity.hpp"
-#include "../Projectile//Projectile.hpp"
+#include "../Projectile/Projectile.hpp"
 
 namespace Dungeon {
 
 class Enemy: public Entity { 
 	public:
-		Enemy(Game *parent_game);
+		Enemy(Game *parent_game, sf::Vector2<float> start_position, int id);
 
 
 		int max_hp;
 		int current_hp;
 		int damage;
 		float kb_force;
+		int id;
 
 		bool is_hit;
 		bool is_dead;
 		bool has_projectiles;
-		std::vector<Projectile*> projectiles	;
+		bool drops_potions;
+		bool is_invincible;
+		bool has_healthbar;
+		std::vector<Projectile*> projectiles;
+		void renderHealthBar();
 		void hit(int angle, float force, float damage);
-		void update() override;
-		void render() override;
+		virtual void update() override;
+		virtual void render() override;
 
 };
 

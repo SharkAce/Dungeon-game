@@ -4,7 +4,7 @@
 namespace Dungeon {
 
 void Entity::applyKnockback(){
-	float force = this->kb_last_frame - this->kb_current_frame;
+	float force = this->kb_stopwatch.stop_time - this->kb_stopwatch.current_time;
 
 	float x_offset = force * (std::cos(Game::degToRad(this->kb_angle)));
 	float y_offset = force * (std::sin(Game::degToRad(this->kb_angle)));

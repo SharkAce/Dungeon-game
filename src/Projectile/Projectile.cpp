@@ -7,6 +7,7 @@ Projectile::Projectile(
 	Game *parent_game,
 	std::vector<sf::FloatRect> *collision_bounds,
 	sf::Rect<int> sprite_rect,
+	float sprite_angle,
 	sf::Vector2<float> start_position,
 	float angle,
 	float speed
@@ -21,7 +22,7 @@ Projectile::Projectile(
 	this->angle = angle;
 	this->end_of_life = false;
 	this->makeEntitySprite();
-	this->sprite.setRotation(angle);
+	this->sprite.setRotation(360-(angle-90)+sprite_angle);
 	this->setCollisionBounds(collision_bounds);
 	this->setPosition(start_position.x, start_position.y);
 };
@@ -39,7 +40,7 @@ void Projectile::update(){
 	} else {
 
 	
-		this->sprite.move(this->direction);
+		this->sprite.move(this->direction*this->parent_game->time_unit);
 		this->position = this->sprite.getPosition();
 	}
 
