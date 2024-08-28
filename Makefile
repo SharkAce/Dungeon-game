@@ -70,9 +70,11 @@ release: $(TARGET)
 	@cp $(TARGET) release/
 	@cp -r $(RES_DIR) release/
 ifeq ($(PLATFORM), linux)
-	@tar -czvf release/$(APP_NAME)-$(VERSION).tar.gz -C release $(notdir $(TARGET)) $(RES_DIR)
+	@tar -czvf "release/$(APP_NAME)_$(PLATFORM)-$(VERSION).tar.gz" -C release $(notdir $(TARGET)) $(RES_DIR)
 else ifeq ($(PLATFORM), win64)
-	@cd release && zip -r $(APP_NAME)-$(VERSION).zip $(notdir $(TARGET)) $(RES_DIR)
+	@cp $(WIN64_SFML_DIR)/bin/openal32.dll release/ 
+	@cd release && zip -r "$(APP_NAME)_$(PLATFORM)-$(VERSION).zip" $(notdir $(TARGET)) $(RES_DIR) openal32.dll
+	@rm release/openal32.dll
 endif
 	@rm release/$(notdir $(TARGET))
 	@rm -rf release/$(RES_DIR)
