@@ -22,7 +22,6 @@ After compiling, the application can be started using `make run`.
 ### Windows
 A Windows release can be extracted and then launched by executing the `Dungeon-Game.exe`.
 
-## Screenshots
 ![Tutorial screen](https://github.com/SharkAce/Dungeon-game/blob/main/screenshots/2024-06-12_18.png?raw=true)
 
 ## Credit
