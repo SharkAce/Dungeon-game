@@ -19,13 +19,13 @@ Level::Level(Game *parent_game) {
 };
 
 Level::~Level(){
-	for (int i=0; i<this->enemy_list.size(); i++) {
-		if (this->enemy_list[i]->has_projectiles) {
-			for (int j=0; j<this->enemy_list[i]->projectiles.size(); j++){
-				delete this->enemy_list[i]->projectiles[j];
+	for (auto enemy: enemy_list) {
+		if (enemy->has_projectiles) {
+			for (auto projectile: enemy->projectiles){
+				delete projectile;
 			}
 		}
-		delete this->enemy_list[i];
+		delete enemy;
 	}
 	if (this->gate_level) delete this->gate_finish_rect;
 };
