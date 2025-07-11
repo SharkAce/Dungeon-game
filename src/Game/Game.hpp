@@ -21,13 +21,12 @@ namespace Dungeon {
 class Game {
 	private:
 		sf::VideoMode videoMode;
-		sf::Event events;
 
 		void initVariables();
 		void initWindow(bool is_fullscreen);
 
 
-		void handleKeyPress();
+		void handleKeyState();
 		void drawFramerate();
 		void drawPause();
 		void drawHearts();
@@ -54,30 +53,29 @@ class Game {
 		bool game_over;
 		bool help_menu;
 
-		sf::RenderWindow *window;
+		sf::RenderWindow window;
 		sf::Texture sprite_sheet;
-		sf::FloatRect window_bound;
+		sf::IntRect window_bound;
 		
-		sf::Clock *base_clock;
-		sf::Clock *game_clock;
+		sf::Clock base_clock;
+		sf::Clock game_clock;
 		float game_time;
 		sf::Vector2i mouse_pos;
 		
-		sf::Font *default_font;
-		sf::Font *secondary_font;
-		sf::Text *default_text;	
+		sf::Font default_font;
+		sf::Font secondary_font;
+		sf::Text default_text;	
 		
 		sf::Sprite heart_sprite;
 		sf::Sprite heart_sprite_empty;
 		sf::Sprite key_sprite;
 
-		sf::Music *background_music;
+		sf::Music background_music;
 		void updateBackgroundMusic();
 		
 		
-		sf::SoundBuffer *sfx_sound_buffer;
-		sf::Sound *sfx_sound;
-		sf::Sound *sfx_sound_fg;
+		sf::SoundBuffer sfx_sound_buffer;
+		sf::Sound sfx_sound;
 
 		struct sfx_instance {
 			sfx_instance(int a, int b, float volume){
@@ -98,7 +96,7 @@ class Game {
 		void startSfx(std::string sound_name);
 		void updateSfx();
 
-		int sprite_size;
+		int sprite_size = 16;
 
 		bool isOpen();
 		void pollEvents();

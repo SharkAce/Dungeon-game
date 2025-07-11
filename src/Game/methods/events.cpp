@@ -1,56 +1,53 @@
 #include "../Game.hpp"
 #include <SFML/Window/Keyboard.hpp>
 #include <SFML/Window/Mouse.hpp>
+#include <optional>
 
 namespace Dungeon {
+	/*
+		 else if (const auto* keyPressed = event->getIf<sf::Event::KeyPressed>())
+	 */
 
 void Game::pollEvents() {
-	while (this->window->pollEvent(this->events)){
-		switch (this->events.type){
-			case sf::Event::Closed :
-				this->window->close();
-				break;
-			case sf::Event::MouseButtonPressed :
-				if (this->events.mouseButton.button == sf::Mouse::Left)
-					if (this->player->weapon->cooldown_sw.is_stop){
-						this->player->weapon->initAttack();
-					}
-			case sf::Event::KeyPressed :
-				if (this->help_menu == true) help_menu = false;
-				if (this->events.key.code == sf::Keyboard::Escape){
-					this->pause = !(this->pause);
+	while (const std::optional event = this->window.pollEvent()) {
+		if (event->is<sf::Event::Closed>()) {
+			this->window.close();
+		} else if (const auto* mousePressed = event->getIf<sf::Event::MouseButtonPressed>()) {
+			if (mousePressed->button == sf::Mouse::Button::Left)
+				if (this->player->weapon->cooldown_sw.is_stop){
+					this->player->weapon->initAttack();
 				}
-				else if (this->events.key.code == sf::Keyboard::Enter){
-					if (this->game_over) this->restart();
-				}
-				else if (this->events.key.code == sf::Keyboard::R){
-					if (this->win_state) this->restart();
-				}
-				break;
-			default:
-				break;
-
+		} else if (const auto* keyPressed = event->getIf<sf::Event::KeyPressed>()) {
+			if (this->help_menu == true) help_menu = false;
+			if (keyPressed->code == sf::Keyboard::Key::Escape){
+				this->pause = !(this->pause);
+			}
+			else if (keyPressed->code == sf::Keyboard::Key::Enter){
+				if (this->game_over) this->restart();
+			}
+			else if (keyPressed->code == sf::Keyboard::Key::R){
+				if (this->win_state) this->restart();
+			}
 		}
 	}
-};
+}
 
-
-void Game::handleKeyPress() {
+void Game::handleKeyState() {
 	float speed = this->player->speed;
 	
 	this->player->direction.x = 0.f;
 	this->player->direction.y = 0.f;
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)){
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W)){
 		this->player->direction.y += speed*-1.f;
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)){
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A)){
 		this->player->direction.x += speed*-1.f;
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)){
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S)){
 		this->player->direction.y += speed;
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D)){
 		this->player->direction.x += speed;
 	}
 	//slow when in diagonal
@@ -65,7 +62,7 @@ void Game::handleKeyPress() {
 
 void Game::activateWinState() {
 	this->win_state = true;
-	this->game_time = this->game_clock->getElapsedTime().asSeconds();
+	this->game_time = this->game_clock.getElapsedTime().asSeconds();
 
 	return;
 };

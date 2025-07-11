@@ -14,22 +14,22 @@ void Game::makeSfxSoundMap(){
 }
 
 void Game::startSfx(std::string sound_name){
-	if (this->sfx_sound->getStatus() != sf::Sound::Status::Stopped) this->sfx_sound->stop();
+	if (this->sfx_sound.getStatus() != sf::Sound::Status::Stopped) this->sfx_sound.stop();
 
 	sfx_instance& sfx = this->sfx_sound_map.find(sound_name)->second;
 	this->current_sfx = sound_name;
-	this->sfx_sound->setPlayingOffset(sf::milliseconds(sfx.a));
-	this->sfx_sound->setVolume(sfx.volume);
-	this->sfx_sound->play();
+	this->sfx_sound.setPlayingOffset(sf::milliseconds(sfx.a));
+	this->sfx_sound.setVolume(sfx.volume);
+	this->sfx_sound.play();
 }
 
 void Game::updateSfx(){
-	if (this->sfx_sound->getStatus() == sf::Sound::Status::Stopped) return;
+	if (this->sfx_sound.getStatus() == sf::Sound::Status::Stopped) return;
 
-	float current_time = this->sfx_sound->getPlayingOffset().asMilliseconds();
+	float current_time = this->sfx_sound.getPlayingOffset().asMilliseconds();
 	sfx_instance& sfx = this->sfx_sound_map.find(this->current_sfx)->second;
 	if (current_time > sfx.b){
-		this->sfx_sound->stop();
+		this->sfx_sound.stop();
 	}	
 }
 

@@ -3,20 +3,20 @@
 namespace Dungeon {
 
 bool Game::isOpen() {
-	return this->window->isOpen();
+	return this->window.isOpen();
 };
 
 void Game::update() {
 
 	// Clock things
 	if (this->current_frame % 20 == 0){
-		float time = this->base_clock->getElapsedTime().asSeconds();
+		float time = this->base_clock.getElapsedTime().asSeconds();
 		this->framerate = 1.f / time;
 		this->time_unit = time * 60;
 
 	}
 	
-	this->base_clock->restart();
+	this->base_clock.restart();
 	this->current_frame ++;
 
 	// Events
@@ -26,13 +26,13 @@ void Game::update() {
 	this->updateSfx();
 
 	//set mouse position
-	mouse_pos = sf::Mouse::getPosition(*(this->window));
+	mouse_pos = sf::Mouse::getPosition(this->window);
 
 	if (this->pause || this->game_over || this->help_menu) {
 		return;
 	}
 
-	this->handleKeyPress();
+	this->handleKeyState();
 
 	// Player update
 	//           Same thing as previous `base_update`
@@ -55,7 +55,7 @@ void Game::update() {
 
 void Game::render() {
 	// Clear window
-	this->window->clear(sf::Color(96,8,64));
+	this->window.clear(sf::Color(96,8,64));
 	
 	// Render 
 	this->current_level->renderLevel();
@@ -81,7 +81,7 @@ void Game::render() {
 	this->drawKeys();
 
 	// 
-	this->window->display();
+	this->window.display();
 };
 
 };

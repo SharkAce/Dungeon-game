@@ -5,18 +5,18 @@ namespace Dungeon {
 
 void Game::initWindow(bool is_fullscreen) {
 
-	short int wnx = is_fullscreen ? 1920 : 1280;
-	short int wny = is_fullscreen ? 1080 : 720;
+	unsigned int wnx = is_fullscreen ? 1920 : 1280;
+	unsigned int wny = is_fullscreen ? 1080 : 720;
 
-	this->window = new sf::RenderWindow(
-		sf::VideoMode(wnx, wny, 32),
+	this->window = sf::RenderWindow(
+		sf::VideoMode({wnx, wny}, 32),
 		"SFML Game", // My desktop is configured for windows with "SFML" in their titles popup as floating windows
-		is_fullscreen ? sf::Style::Fullscreen : sf::Style::None
+		is_fullscreen ? sf::State::Fullscreen : sf::State::Windowed
 	);
 
-	this->window->setFramerateLimit(144);
+	this->window.setFramerateLimit(144);
 
-	this->window_bound = sf::FloatRect(0.f,0.f,this->window->getSize().x,this->window->getSize().y);
+	this->window_bound = {{0,0},{(int)this->window.getSize().x,(int)this->window.getSize().y}};
 };
 
 };
