@@ -8,7 +8,7 @@ namespace Dungeon {
 Key::Key(Game *parent_game, sf::Vector2<float> start_position, int id): 
 	Consumable(
 			parent_game, 
-			sf::Rect<int> (32,257,16,15), 
+			{{32,257},{16,15}}, 
 			start_position, 
 			"key"
 			){

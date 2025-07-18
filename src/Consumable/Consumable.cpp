@@ -14,10 +14,10 @@ Consumable::Consumable(
 ): Dungeon::Entity(parent_game) {
 
 	this->name = name;
-	this->sprite_coord_x = sprite_rect.left;
-	this->sprite_coord_y = sprite_rect.top;
-	this->px_height = sprite_rect.height;
-	this->px_width = sprite_rect.width;
+	this->sprite_coord_x = sprite_rect.position.x;
+	this->sprite_coord_y = sprite_rect.position.y;
+	this->px_width = sprite_rect.size.x;
+	this->px_height = sprite_rect.size.y;
 	this->speed = speed;
 	this->angle = Game::radToDeg(std::atan2(
 			start_position.y-parent_game->player->position.y,
@@ -25,7 +25,7 @@ Consumable::Consumable(
 		));
 	this->end_of_life = false;
 	this->makeEntitySprite();
-	this->sprite.setScale(2.5,2.5);
+	this->sprite.setScale({2.5,2.5});
 	this->setPosition(start_position.x, start_position.y);
 	this->startKnockback(angle,9);
 };
