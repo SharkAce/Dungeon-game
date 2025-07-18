@@ -4,10 +4,10 @@
 
 int main(int argc, char *argv[])
 {
-					   // Is fullscreen ?
+	// Is fullscreen ?
 	Dungeon::Game game(argc > 1 ? argv[1][0] != 'w' : true);
 
-	//init first level
+	// Load first level
 	game.initLevel(Dungeon::World1::level3A(&game),sf::Vector2f(20*48,20*48));
 
 	// Main loop
