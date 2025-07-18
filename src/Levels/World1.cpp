@@ -114,8 +114,8 @@ level->finish_rect_list.push_back(FinishRect('b',&World1::level3A));
 level->finish_rect_list.push_back(FinishRect('r',&World1::level4B));
 level->finish_rect_list.push_back(FinishRect('l',&World1::level2B));
 
-if (game_ptr->background_music->getStatus() != sf::Music::Status::Playing)
-	game_ptr->background_music->play();
+if (game_ptr->background_music.getStatus() != sf::Music::Status::Playing)
+	game_ptr->background_music.play();
 return level;
 };
 
@@ -155,8 +155,8 @@ level->gate_level = true;
 level->parsePtltFile("res/World1/level3E.ptlt");
 level->finish_rect_list.push_back(FinishRect('b',&World1::level3D));
 
-level->gate_area = sf::Rect<float>(0,0,23*48,6*48);
-level->gate_finish_rect = new FinishRect(sf::FloatRect(0,0,48*40,2.5*48),sf::Vector2<bool>(false,true),&World1::level3F);
+level->gate_area = {{0,0},{23*48,6*48}};
+level->gate_finish_rect = new FinishRect({{0,0},{48*40,2.5*48}}, {false,true}, &World1::level3F);
 level->door_position = sf::Vector2<int>(19,0);
 
 return level;
