@@ -55,7 +55,7 @@ class Game {
 
 		sf::RenderWindow window;
 		sf::Texture sprite_sheet;
-		sf::IntRect window_bound;
+		sf::FloatRect window_bound;
 		
 		sf::Clock base_clock;
 		sf::Clock game_clock;

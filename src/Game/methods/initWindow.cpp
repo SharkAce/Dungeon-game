@@ -16,7 +16,7 @@ void Game::initWindow(bool is_fullscreen) {
 
 	this->window.setFramerateLimit(144);
 
-	this->window_bound = {{0,0},{(int)this->window.getSize().x,(int)this->window.getSize().y}};
+	this->window_bound = {{0,0},{(float)this->window.getSize().x,(float)this->window.getSize().y}};
 };
 
 };
