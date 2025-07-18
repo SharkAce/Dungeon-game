@@ -30,10 +30,10 @@ void Sorcerer::update(){
 	if (this->is_hit) this->projectile_sw.current_time = 0.f;
 	if (!this->projectile_sw.update()){
 		sf::Rect<int>	sprite_rect;
-		sprite_rect.top = 245;
-		sprite_rect.left = 34;
-		sprite_rect.width = 12;
-		sprite_rect.height = 10;
+		sprite_rect.position.x = 34;
+		sprite_rect.position.y = 245;
+		sprite_rect.size.x = 12;
+		sprite_rect.size.y = 10;
 
 		float enemy_player_angle = Game::radToDeg(atan2(
 					this->parent_game->player->position.y - this->position.y, 

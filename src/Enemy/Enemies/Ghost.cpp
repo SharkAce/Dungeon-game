@@ -19,7 +19,7 @@ Ghost::Ghost(Game* parent_game, sf::Vector2<float> start_position, int id): Dung
 
 	this->makeEntitySprite();
 
-	this->sprite.setScale(4.0,4.0);
+	this->sprite.setScale({4.0,4.0});
 };
 
 void Ghost::update(){

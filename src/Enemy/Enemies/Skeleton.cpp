@@ -29,10 +29,10 @@ Skeleton::Skeleton(Game* parent_game, sf::Vector2<float> start_position, int id)
 void Skeleton::update(){
 	if (!this->projectile_sw.update()){
 		sf::Rect<int>	sprite_rect;
-		sprite_rect.top = 243;
-		sprite_rect.left = 65;
-		sprite_rect.width = 13;
-		sprite_rect.height = 12;
+		sprite_rect.position.x = 65;
+		sprite_rect.position.y = 243;
+		sprite_rect.size.x = 13;
+		sprite_rect.size.y = 12;
 
 		float enemy_player_angle = Game::radToDeg(atan2(
 					this->parent_game->player->position.y - this->position.y, 

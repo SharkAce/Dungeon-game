@@ -31,16 +31,16 @@ void Enemy::hit(int angle, float force, float damage){
 };
 
 void Enemy::renderHealthBar(){
-	sf::RectangleShape outline(sf::Vector2<float>(this->parent_game->window->getSize().x-300.f,19.f));
-	outline.move(150.f, 8.f);
+	sf::RectangleShape outline(sf::Vector2<float>(this->parent_game->window.getSize().x-300.f,19.f));
+	outline.move({150.f, 8.f});
 	outline.setFillColor(sf::Color::Black);
 
-	sf::RectangleShape hp(sf::Vector2<float>(((this->parent_game->window->getSize().x-308.f)/(float)this->max_hp)*(float)this->current_hp,11.f));
-	hp.move(154,12.f);
+	sf::RectangleShape hp(sf::Vector2<float>(((this->parent_game->window.getSize().x-308.f)/(float)this->max_hp)*(float)this->current_hp,11.f));
+	hp.move({154,12.f});
 	hp.setFillColor(sf::Color::Red);
 
-	this->parent_game->window->draw(outline);
-	this->parent_game->window->draw(hp);
+	this->parent_game->window.draw(outline);
+	this->parent_game->window.draw(hp);
 }
 
 void Enemy::update(){

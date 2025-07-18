@@ -21,7 +21,7 @@ BossZombie::BossZombie(Game* parent_game, sf::Vector2<float> start_position, int
 	this->has_projectiles = true;
 	this->has_healthbar = true;
 
-	this->destination_pt = sf::FloatRect(700,640,5,5);
+	this->destination_pt = sf::FloatRect({{700,640},{5,5}});
 	this-> is_in_dash = false;
 	this->movement_count = 0;
 	this->max_movement_count = 6;
@@ -40,10 +40,10 @@ void BossZombie::update(){
 
 		if (!this->projectile_sw.update()){
 			sf::Rect<int>	sprite_rect;
-			sprite_rect.top = 98;
-			sprite_rect.left = 152;
-			sprite_rect.width = 6;
-			sprite_rect.height = 13;
+			sprite_rect.position.x = 152;
+			sprite_rect.position.y = 98;
+			sprite_rect.size.x = 6;
+			sprite_rect.size.y = 13;
 
 			float enemy_player_angle = Game::radToDeg(atan2(
 						this->parent_game->player->position.y - this->position.y, 
@@ -59,11 +59,11 @@ void BossZombie::update(){
 					enemy_player_angle,
 					10	
 			));
-			this->projectiles[projectiles.size()-1]->sprite.scale(1.3,1.3);
+			this->projectiles[projectiles.size()-1]->sprite.scale({1.3,1.3});
 
 		}
 	
-		if (this->sprite.getGlobalBounds().intersects(this->destination_pt)){
+		if (this->sprite.getGlobalBounds().findIntersection(this->destination_pt)){
 
 			sf::Vector2<int> new_destination = sf::Vector2<int>(std::rand()%480 + 480,std::rand()%288 + 240);
 			
@@ -78,8 +78,8 @@ void BossZombie::update(){
 			else if (destination_quad == 2) new_destination.y += 240;
 			else if (destination_quad == 3) {new_destination.x += 480; new_destination.y += 240;}
 
-			this->destination_pt.left = new_destination.x;
-			this->destination_pt.top = new_destination.y;
+			this->destination_pt.position.x = new_destination.x;
+			this->destination_pt.position.y = new_destination.y;
 			
 			this->movement_count ++;
 			if (this->movement_count >= this->max_movement_count){
@@ -90,7 +90,10 @@ void BossZombie::update(){
 
 			
 		} else {
-			float angle = std::atan2(this->destination_pt.top-position.y,this->destination_pt.left-position.x);
+			float angle = std::atan2(
+				this->destination_pt.position.y-position.y,
+				this->destination_pt.position.x-position.x
+			);
 			this->direction.x = this->speed*cos(angle);
 			this->direction.y = this->speed*sin(angle);
 		}
