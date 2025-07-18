@@ -17,7 +17,6 @@ private:
 	Dungeon::Player *parent;
 	Dungeon::Game *parent_game;
 	sf::RenderWindow *window;
-	sf::Texture *sheet;
 	sf::Sprite sprite;
 	float scale; 
 public:

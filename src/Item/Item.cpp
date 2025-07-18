@@ -9,10 +9,10 @@ Item::Item(
 	Dungeon::Player *parent): 
 		cooldown_sw(16.f, parent->parent_game, false), 
 		attack_sw(11.f, parent->parent_game, false),
-		Dungeon::Entity(parent->parent_game){
+		Dungeon::Entity(parent->parent_game),
+		sprite(parent->parent_game->sprite_sheet){
 
 	this->window = parent->window;
-	this->sheet = parent->texture;
 	this->parent = parent;
 	this->parent_game = parent->parent_game;
 	this->scale = 3.f;
@@ -22,10 +22,9 @@ Item::Item(
 
 //this should be done by entity's makeEntitySprite method instead
 void Item::make_sprite() {
-	this->sprite.setTexture(*(this->sheet));
-	this->sprite.setTextureRect(sf::IntRect(163, 32, 10, 32));
-	this->sprite.setScale(this->scale, this->scale);
-	this->sprite.setOrigin(8.f, 28.f);
+	this->sprite.setTextureRect({{163, 32}, {10, 32}});
+	this->sprite.setScale({this->scale, this->scale});
+	this->sprite.setOrigin({8.f, 28.f});
 };
 
 };

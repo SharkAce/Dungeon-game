@@ -15,7 +15,7 @@ void Item::handleEnemyCollision(){
 		Enemy& enemy = *this->parent_game->current_level->enemy_list[i];
 		sf::Vector2f enemy_pos = enemy.sprite.getPosition();
 		if (!(enemy.is_hit)){
-			if (enemy.sprite.getGlobalBounds().intersects(this->sprite.getGlobalBounds())){
+			if (enemy.sprite.getGlobalBounds().findIntersection(this->sprite.getGlobalBounds())){
 				
 				int attack_degree = std::atan2(this->parent->position.y - enemy_pos.y, this->parent->position.x - enemy_pos.x)*180/M_PI;
 				enemy.hit(attack_degree-180,12,this->damage);
@@ -25,9 +25,9 @@ void Item::handleEnemyCollision(){
 			for (int j=0; j<this->parent_game->current_level->enemy_list.at(i)->projectiles.size(); j++){
 				Projectile& ptile = *enemy.projectiles[j];
 
-				if (ptile.sprite.getGlobalBounds().intersects(this->sprite.getGlobalBounds())){
+				if (ptile.sprite.getGlobalBounds().findIntersection(this->sprite.getGlobalBounds())){
 					ptile.end_of_life = true;
-					this->parent_game->startSfx("FireBusrt");
+					this->parent_game->startSfx("FireBurst");
 				}
 			}
 		}
