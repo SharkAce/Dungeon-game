@@ -11,7 +11,7 @@ namespace Dungeon {
 Level::Level(Game *parent_game) {
 	this->parent_game = parent_game;
 	this->texture = &(parent_game->sprite_sheet);
-	this->window = parent_game->window;
+	this->window = &parent_game->window;
 	this->tiles_x = 40;
 	this->tiles_y = 23;
 	this->tile_px = 16;
@@ -44,22 +44,22 @@ FinishRect::FinishRect(char rect_type, std::function<Level *(Game*)> level_callb
 
 	switch (rect_type) {
 		case 't':{
-							 this->rect = sf::FloatRect(0,0,width,1);
+							 this->rect = sf::FloatRect({{0,0},{width,1}});
 							 this->axis = sf::Vector2<bool>(false,true);
 							 break;
 						 }
 		case 'b':{
-							 this->rect = sf::FloatRect(0,height,width,1);
+							 this->rect = sf::FloatRect({{0,height},{width,1}});
 							 this->axis = sf::Vector2<bool>(false,true);
 							 break;
 						 }
 		case 'l':{
-							 this->rect = sf::FloatRect(0,0,1,height);
+							 this->rect = sf::FloatRect({{0,0},{1,height}});
 							 this->axis = sf::Vector2<bool>(true,false);
 							 break;
 						 }
 		case 'r':{
-							 this->rect = sf::FloatRect(width,0,1,height);
+							 this->rect = sf::FloatRect({{width,0},{1,height}});
 							 this->axis = sf::Vector2<bool>(true,false);
 							 break;
 						 }
@@ -74,7 +74,7 @@ FinishRect::FinishRect(sf::FloatRect rect, sf::Vector2<bool> axis, std::function
 }
 
 bool FinishRect::check_player_collision(sf::FloatRect player_pos){
-	return player_pos.intersects(this->rect);
+	return (bool)player_pos.findIntersection(this->rect);
 };
 
 };

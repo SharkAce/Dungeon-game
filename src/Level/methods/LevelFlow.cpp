@@ -14,7 +14,7 @@ void Level::renderBg() {
 		this->fg_tiles[i].render();
 	}	
 	
-	if (gate_is_open) this->parent_game->window->draw(*this->door_sprite);
+	if (gate_is_open) this->parent_game->window.draw(*this->door_sprite);
 };
 
 void Level::updateEnemyList(){
@@ -62,13 +62,13 @@ void Level::renderConsumableList(){
 void Level::renderKeyCount(){
 	if (!this->gate_level || this->parent_game->player->key_count == -1) return;
 
-	sf::Text text = *this->parent_game->default_text;
-	text.setFont(*this->parent_game->secondary_font);
+	sf::Text& text = this->parent_game->default_text;
+	text.setFont(this->parent_game->secondary_font);
 	
 	this->parent_game->writeToScreen(
 			std::to_string(this->parent_game->player->key_count) + "|" + std::to_string(this->key_req),
-			this->parent_game->window->getSize().x/2.0f,
-			this->parent_game->window->getSize().y/6.0f,
+			this->parent_game->window.getSize().x/2.0f,
+			this->parent_game->window.getSize().y/6.0f,
 			text
 	);
 };
@@ -77,16 +77,16 @@ void Level::updateDoor(){
 	if (!this->gate_level || this->gate_is_open) return;
 
 	if ((this->parent_game->player->key_count == this->key_req &&
-			this->parent_game->player->sprite.getGlobalBounds().intersects(this->gate_area)) || 
+			this->parent_game->player->sprite.getGlobalBounds().findIntersection(this->gate_area)) || 
 			this->parent_game->player->key_count == -1
 			){
 		this->gate_is_open = true;
 		this->parent_game->player->key_count = -1;
 		//create Open Door Sprite
 		sf::Sprite* sprite = new sf::Sprite(this->parent_game->sprite_sheet);
-		sprite->setTextureRect(sf::Rect<int>(160,112,32,32));
-		sprite->setScale(3.f,3.f);
-		sprite->setPosition(this->door_position.x*48, this->door_position.y*48);
+		sprite->setTextureRect({{160,112},{32,32}});
+		sprite->setScale({3.f,3.f});
+		sprite->setPosition({(float)this->door_position.x*48, (float)this->door_position.y*48});
 		this->door_sprite = sprite;
 
 		//add FinishRect

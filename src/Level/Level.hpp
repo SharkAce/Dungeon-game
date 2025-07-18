@@ -66,8 +66,6 @@ class Level {
 
 		void renderLevel();
 
-		//std::vector<Game_obj> Game_obj_list;
-
 };
 
 struct FinishRect {

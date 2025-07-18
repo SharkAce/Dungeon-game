@@ -79,12 +79,10 @@ void Level::parsePtltFile(std::string file_path){
 		}
 			
 			if (solid_tiles[i] == 1) {
-				this->solid_tiles_rect.push_back(sf::FloatRect(
-					(i%this->tiles_x)*game_sprite_size,
-					(i/this->tiles_x)*game_sprite_size,
-					game_sprite_size,
-					game_sprite_size
-				));
+				this->solid_tiles_rect.push_back({
+					{(i%this->tiles_x)*game_sprite_size, (i/this->tiles_x)*game_sprite_size},
+					{game_sprite_size, game_sprite_size}
+				});
 			}
 		}
 
