@@ -33,7 +33,7 @@ void Entity::update() {
 };
 
 void Entity::render() {
-	this->parent_game->window->draw(this->sprite);
+	this->parent_game->window.draw(this->sprite);
 };
 
 };

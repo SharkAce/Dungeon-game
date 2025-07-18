@@ -15,20 +15,19 @@ class Entity {
 	private:
 
 	public:
-		Entity(Game *parent_game);
+		Entity(Game* parent_game);
 		void makeEntitySprite();
 
 		virtual void update();
 		virtual void render();
 
 		sf::Sprite sprite;
-		sf::Texture *texture;
-		sf::RenderWindow *window;
+		sf::RenderWindow* window;
 		Game* parent_game;
 
 		sf::Vector2<bool> wallCollisionCheck();
-		void setCollisionBounds(std::vector<sf::FloatRect> *sts);
-		std::vector<sf::FloatRect> *collision_bounds; // This should be a class, called Wall or Tile or something
+		void setCollisionBounds(std::vector<sf::FloatRect>* sts);
+		std::vector<sf::FloatRect>* collision_bounds;
 
 		void setPosition(float x, float y);
 		void setPosition(sf::Vector2<float> pos);
