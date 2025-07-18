@@ -4,9 +4,6 @@
 #include <optional>
 
 namespace Dungeon {
-	/*
-		 else if (const auto* keyPressed = event->getIf<sf::Event::KeyPressed>())
-	 */
 
 void Game::pollEvents() {
 	while (const std::optional event = this->window.pollEvent()) {
