@@ -14,7 +14,6 @@ class Tile{
 		Game *parent_game;
 	public:
 		Tile(Game *parent_game, int tile_id, int rotation, float scale, sf::Vector2i position);
-		Tile(sf::Sprite sprite){this->sprite = sprite;};
 
 		void render();
 		
