@@ -8,7 +8,7 @@ void Game::makeSfxSoundMap(){
 	this->sfx_sound_map.insert({"Hit1", sfx_instance(2084,2300,17.f)});
 	this->sfx_sound_map.insert({"Hit2", sfx_instance(2120,2500,40.f)});
 	this->sfx_sound_map.insert({"PotionPickup", sfx_instance(0,300,30.f)});
-	this->sfx_sound_map.insert({"FireBusrt", sfx_instance(1085,1600,15.f)});
+	this->sfx_sound_map.insert({"FireBurst", sfx_instance(1085,1600,15.f)});
 	this->sfx_sound_map.insert({"KeyPickup", sfx_instance(625,800,30.f)});
 	this->sfx_sound_map.insert({"SwordSwing", sfx_instance(880,1000,18.f)});
 }
