@@ -21,16 +21,16 @@ Player::Player(Game *parent_game): Dungeon::Entity(parent_game) {
 	);
 
 	this->makeEntitySprite();
-	this->sprite.setOrigin(float(this->px_width)/2,float(this->px_height)/1.5);
+	this->sprite.setOrigin({float(this->px_width/2),float(this->px_height/1.5)});
 };
 
 
 void Player::update() {
 
 	if (this->direction.x < 0){
-		this->sprite.setScale(this->scale*-1,this->scale);
+		this->sprite.setScale({this->scale*-1,this->scale});
 	} else if (this->direction.x > 0){
-		this->sprite.setScale(this->scale,this->scale);
+		this->sprite.setScale({this->scale,this->scale});
 	};
 	this->handleEnemyCollision();
 	this->handleConsumableCollision();
@@ -67,7 +67,7 @@ void Player::handleConsumableCollision(){
 	for (int i=0; i<this->parent_game->current_level->consumable_list.size(); i++){
 		Consumable& consumable = this->parent_game->current_level->consumable_list[i];
 
-		if (consumable.sprite.getGlobalBounds().intersects(this->sprite.getGlobalBounds())) { 
+		if (consumable.sprite.getGlobalBounds().findIntersection(this->sprite.getGlobalBounds())) { 
 			if (consumable.name == "potion" && this-> current_hp < this->max_hp){
 				this->current_hp ++;
 				consumable.end_of_life = true;
@@ -86,7 +86,7 @@ void Player::handleEnemyCollision(){
 	for (int i=0; i<this->enemy_list->size(); i++){
 		Enemy& enemy = *enemy_list->at(i);
 		if (enemy.sprite.getGlobalBounds()
-		.intersects(this->sprite.getGlobalBounds())
+		.findIntersection(this->sprite.getGlobalBounds())
 		){
 
 			sf::Vector2f enemy_pos = enemy.sprite.getPosition();
@@ -99,7 +99,7 @@ void Player::handleEnemyCollision(){
 			for (int j=0; j<enemy.projectiles.size(); j++){
 				Projectile& projectile = *enemy.projectiles.at(j);
 				if (projectile.sprite.getGlobalBounds()
-				.intersects(this->sprite.getGlobalBounds())
+				.findIntersection(this->sprite.getGlobalBounds())
 				){
 
 					sf::Vector2f ptile_pos = projectile.sprite.getPosition();
